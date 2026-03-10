@@ -117,6 +117,9 @@ header {
   border-bottom: 1px solid var(--border);
   background: radial-gradient(ellipse 80% 60% at 50% -10%, #200808 0%, transparent 70%);
 }
+@media (min-width:900px) {
+  header { padding: 72px 0 56px; }
+}
 
 .date-pill {
   display: inline-flex;
@@ -632,6 +635,12 @@ blockquote cite { display:block; margin-top:10px; font-style:normal; font-family
 }
 @media (min-width:900px) {
   .nav-cards { grid-template-columns: 1fr 1fr 1fr; }
+  .stat-box { padding: 28px 20px; }
+  .stat-num { font-size: 52px; }
+  section { padding: 64px 0; }
+  .pbar { height: 44px; }
+  .ba-split { gap: 4px; }
+  .ba-col { padding: 24px 20px; }
 }
 
 /* ── 600px: flow-chain vertical layout ── */

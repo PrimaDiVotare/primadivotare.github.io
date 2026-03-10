@@ -24,8 +24,8 @@
   nav.innerHTML = '<div class="nav-inner">' + inner + '</div>';
 
   var header = document.querySelector('header');
-  if (header && header.nextSibling) {
-    header.parentNode.insertBefore(nav, header.nextSibling);
+  if (header) {
+    header.parentNode.insertBefore(nav, header);
   } else {
     document.body.insertBefore(nav, document.body.firstChild);
   }

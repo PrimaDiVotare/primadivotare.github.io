@@ -29,4 +29,12 @@
   } else {
     document.body.insertBefore(nav, document.body.firstChild);
   }
+
+  // Floating contact button
+  var fab = document.createElement('a');
+  fab.className = 'fab-contact';
+  fab.href = 'mailto:primadivotareadmin@gmail.com?subject=Segnalazione%20imprecisione';
+  fab.setAttribute('aria-label', 'Segnala imprecisioni');
+  fab.innerHTML = '<span class="fab-icon">\u00A7</span><span class="fab-text">Imprecisioni? Scrivici</span>';
+  document.body.appendChild(fab);
 })();

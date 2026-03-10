@@ -648,6 +648,11 @@ blockquote cite { display:block; margin-top:10px; font-style:normal; font-family
   font-family: 'IBM Plex Mono', monospace;
   text-align: center;
 }
+.flow-note.danger { background: var(--red-bg); border-color: var(--red); color: #c09090; }
+
+/* ── CHART CAPTION / LABEL ── */
+.chart-caption { font-size:13px; color:var(--muted); line-height:1.6; max-width:680px; }
+.chart-label { font-size:13px; color:var(--muted); margin-bottom:16px; font-family:'IBM Plex Mono',monospace; letter-spacing:0.05em; text-transform:uppercase; }
 
 /* ── NEXT LINK ── */
 .next-link {

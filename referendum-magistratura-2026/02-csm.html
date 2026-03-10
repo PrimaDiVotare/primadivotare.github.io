@@ -189,8 +189,8 @@
   <div class="wrap">
     <div class="sec-label">La soglia</div>
     <h2>Chi controlla la lista controlla il bacino</h2>
-    <p>Oggi i laici del CSM sono eletti dal Parlamento in seduta comune con una <strong>maggioranza qualificata dei 3/5 dei votanti</strong> (art. 22 L. 195/1958, modificato dalla L. 71/2022). Questa soglia obbliga le forze politiche al compromesso: nessuna coalizione puo' imporre unilateralmente i propri candidati.</p>
-    <p>Il testo riformato prevede che il Parlamento &laquo;compili mediante elezione&raquo; un elenco di candidati da cui i laici vengono poi sorteggiati. Ma <mark>non fissa nessuna maggioranza</mark> per la compilazione di questo elenco.</p>
+    <p>Oggi i laici del CSM sono eletti dal Parlamento in seduta comune con una <strong>maggioranza qualificata dei 3/5 dei votanti</strong> (cioè una soglia più alta della maggioranza semplice, che obbliga al compromesso tra schieramenti) (art. 22 L. 195/1958, modificato dalla L. 71/2022). Questa soglia obbliga le forze politiche al compromesso: nessuna coalizione puo' imporre unilateralmente i propri candidati.</p>
+    <p>Il testo riformato prevede che il Parlamento prepari una lista di candidati (la formula usata è &laquo;compili mediante elezione&raquo;), da cui i laici vengono poi sorteggiati. Ma <mark>non fissa nessuna maggioranza</mark> per la compilazione di questo elenco.</p>
 
     <div class="soglia-grid reveal">
       <div class="soglia-cell old">
@@ -225,14 +225,14 @@
         <div class="pbar-seg" style="width:66.7%;background:#1a3a20;color:var(--grn-l);"><span>Togati eletti (66,7%)</span></div>
         <div class="pbar-seg" style="width:33.3%;background:#1a2540;color:var(--blu-l);"><span>Laici eletti (33,3%)</span></div>
       </div>
-      <div class="pbar-note">20 togati eletti dai colleghi magistrati + 10 laici eletti dal Parlamento con maggioranza qualificata dei 3/5 dei votanti. I 3 membri di diritto (PdR, Primo Pres. e Proc. Gen. Cassazione) non rientrano nella proporzione e non si computano.</div>
+      <div class="pbar-note">20 togati eletti dai colleghi magistrati + 10 laici eletti dal Parlamento con maggioranza qualificata dei 3/5 dei votanti. I 3 membri di diritto (Primo Pres. e Proc. Gen. Cassazione; il PdR presiede) non rientrano nella proporzione e non si computano.</div>
     </div>
 
     <div class="power-bar-wrap reveal">
       <div class="pbar-label">Dopo la riforma &mdash; ciascun CSM</div>
       <div class="pbar">
-        <div class="pbar-seg" style="width:67%;background:#2a1a10;color:#c87060;"><span>Togati sorteggiati (67%)</span></div>
-        <div class="pbar-seg" style="width:33%;background:#1a2540;color:var(--blu-l);"><span>Laici da lista parl. (33%)</span></div>
+        <div class="pbar-seg" style="width:66.7%;background:#2a1a10;color:#c87060;"><span>Togati sorteggiati (66,7%)</span></div>
+        <div class="pbar-seg" style="width:33.3%;background:#1a2540;color:var(--blu-l);"><span>Laici da lista parl. (33,3%)</span></div>
       </div>
       <div class="pbar-note">Proporzione 2/3 &ndash; 1/3 invariata nella formula costituzionale. Cambiano tre cose: i togati non hanno mandato elettivo, i laici sono sorteggiati da una lista compilata senza soglia garantita, il Vicepresidente e' sempre un laico dalla lista parlamentare. Il numero totale dei componenti e' demandato interamente a legge ordinaria.</div>
     </div>
@@ -244,24 +244,24 @@
     </div>
 
     <!-- DONUT CHART: Composizione CSM attuale -->
-    <div style="margin:40px 0 12px 0;">
+    <div class="chart-wrap" style="margin-top:40px">
       <h3>Composizione CSM attuale &mdash; 33 componenti</h3>
-      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;font-family:'IBM Plex Mono',monospace;letter-spacing:0.05em;">POST L. 71/2022 (RIFORMA CARTABIA)</p>
+      <p class="chart-label">POST L. 71/2022 (RIFORMA CARTABIA)</p>
     </div>
-    <div style="margin:24px 0;max-width:420px;">
+    <div class="chart-wrap" style="max-width:420px;">
       <canvas id="donutCsmAttuale" style="max-width:100%;max-height:350px;"></canvas>
     </div>
-    <p style="font-size:13px;color:var(--muted);line-height:1.6;max-width:680px;">20 togati eletti dai colleghi magistrati (66,7% dei 30 elettivi) + 10 laici eletti dal Parlamento con maggioranza qualificata dei 3/5 dei votanti + 3 membri di diritto (PdR, Primo Pres. e Proc. Gen. Cassazione). <strong style="color:var(--text)">Fonte:</strong> L. 71/2022; art. 22 L. 195/1958.</p>
+    <p class="chart-caption">20 togati eletti dai colleghi magistrati (66,7% dei 30 elettivi) + 10 laici eletti dal Parlamento con maggioranza qualificata dei 3/5 dei votanti + 3 membri di diritto (Primo Pres. e Proc. Gen. Cassazione; il PdR presiede). <strong style="color:var(--text)">Fonte:</strong> L. 71/2022; art. 22 L. 195/1958.</p>
 
     <!-- GROUPED BAR CHART: Confronto PRIMA vs DOPO -->
-    <div style="margin:48px 0 12px 0;">
+    <div class="chart-wrap" style="margin-top:48px">
       <h3>Chi li sceglie: prima e dopo</h3>
-      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;font-family:'IBM Plex Mono',monospace;letter-spacing:0.05em;">MECCANISMO DI SELEZIONE DEI COMPONENTI</p>
+      <p class="chart-label">MECCANISMO DI SELEZIONE DEI COMPONENTI</p>
     </div>
-    <div style="margin:24px 0;max-width:680px;">
+    <div class="chart-wrap" style="max-width:680px;">
       <canvas id="barConfrontoCSM" style="max-width:100%;max-height:350px;"></canvas>
     </div>
-    <p style="font-size:13px;color:var(--muted);line-height:1.6;max-width:680px;">Prima della riforma: 20 togati eletti dai magistrati, 10 laici eletti dal Parlamento con soglia dei 3/5, 3 di diritto. Dopo: nessun componente eletto dai colleghi &mdash; i togati sono sorteggiati, i laici estratti a sorte da una lista parlamentare compilata senza soglia qualificata garantita. I 3 membri di diritto restano invariati (PdR presiede, PP e PG Cassazione).</p>
+    <p class="chart-caption">Prima della riforma: 20 togati eletti dai magistrati, 10 laici eletti dal Parlamento con soglia dei 3/5, 3 di diritto. Dopo: nessun componente eletto dai colleghi &mdash; i togati sono sorteggiati, i laici estratti a sorte da una lista parlamentare compilata senza soglia qualificata garantita. I 3 membri di diritto restano invariati (PdR presiede, PP e PG Cassazione).</p>
 
   </div>
 </section>
@@ -274,7 +274,7 @@
     <p>La riforma introduce due tipi di sorteggio, con un livello di controllo politico diverso per ciascuno.</p>
 
     <h3>Sorteggio dei togati</h3>
-    <p>Il sorteggio avviene tra tutti i magistrati della rispettiva carriera (giudicante o requirente). La Costituzione riformata <strong>non fissa alcun requisito</strong> di anzianita', funzione o merito: la formula e' &laquo;nel numero e secondo le procedure previsti dalla legge&raquo;. Ogni eventuale filtro e' rimesso interamente alla <mark>legge ordinaria</mark>.</p>
+    <p>Il sorteggio avviene tra tutti i magistrati della rispettiva carriera (giudicante o requirente). La Costituzione riformata <strong>non fissa alcun requisito</strong> di anzianita', funzione o merito — si limita a dire: &laquo;nel numero e secondo le procedure previsti dalla legge&raquo;. Ogni eventuale filtro e' rimesso interamente alla <mark>legge ordinaria</mark>.</p>
 
     <div class="alert warning reveal">
       <div class="alert-title">Chi scrive i requisiti decide la platea</div>
@@ -282,7 +282,7 @@
     </div>
 
     <h3>Sorteggio dei laici</h3>
-    <p>Opera un &laquo;sorteggio temperato&raquo;: il Parlamento in seduta comune compila, entro sei mesi dall'insediamento, un elenco di professori ordinari e avvocati con almeno 15 anni di esercizio. Da questo elenco i laici vengono estratti a sorte.</p>
+    <p>Opera un &laquo;sorteggio temperato&raquo; (cioè un sorteggio non tra tutti i candidati possibili, ma da una lista pre-selezionata dal Parlamento): il Parlamento in seduta comune compila, entro sei mesi dall'insediamento, un elenco di professori ordinari e avvocati con almeno 15 anni di esercizio. Da questo elenco i laici vengono estratti a sorte.</p>
     <p>Il testo costituzionale <strong>non fissa</strong> ne' il numero minimo dei componenti dell'elenco parlamentare, ne' la maggioranza richiesta per la sua compilazione.</p>
 
     <div class="flip-stack">
@@ -349,7 +349,7 @@
           </div>
         </div>
 
-        <div style="margin-top:10px;background:var(--red-bg);border:1px dashed var(--red);padding:12px;font-size:12px;color:#c09090;border-radius:2px;font-family:'IBM Plex Mono',monospace;">
+        <div class="flow-note danger">
           Il Parlamento scrive le regole del sorteggio, compila la lista dei laici, e stabilisce i requisiti per i togati sorteggiabili. Tre leve, tutte in legge ordinaria.
         </div>
       </div>
@@ -393,8 +393,9 @@
 
     <div class="alert warning reveal" style="margin-top:20px;">
       <div class="alert-title">Il punto</div>
-      <p>Chi scrive i requisiti del sorteggio &mdash; anzianita', sede, funzione &mdash; decide chi puo' essere estratto. E' una legge ordinaria: basta una maggioranza semplice per cambiarla.</p>
+      <p>Chi scriverà i requisiti del sorteggio &mdash; anzianità, sede, funzione &mdash; determinerà chi può essere estratto. Sarà una legge ordinaria, modificabile a maggioranza semplice. La domanda è: quali garanzie ci sono che questi criteri restino indipendenti dalla maggioranza di turno?</p>
     </div>
+    <p class="pbar-note">Nota: la cifra di 8.800 magistrati ordinari è una stima indicativa basata sui dati CSM. La distribuzione per anzianità è simulata a scopo illustrativo.</p>
   </div>
 </section>
 
@@ -425,7 +426,7 @@
         </div>
         <div class="card after">
           <div class="card-label">Lettura critica</div>
-          <p>L'unanimita' nasconde accordi correntizi pre-concordati &mdash; il &laquo;sistema della scacchiera&raquo; descritto nel caso Palamara (cons. Mirenda).</p>
+          <p>L'unanimita' nasconde accordi correntizi pre-concordati &mdash; il &laquo;sistema della scacchiera&raquo; (una distribuzione alternata delle nomine tra le diverse correnti della magistratura) descritto nel caso Palamara (cons. Mirenda).</p>
         </div>
       </div>
     </div>
@@ -468,6 +469,10 @@
       &laquo;Se il problema era il correntismo nelle nomine, la soluzione e' eliminare il voto dei magistrati &mdash; oppure riformare il sistema elettorale del CSM, come gia' fatto con la legge Cartabia nel 2022? Lo sdoppiamento in due organi, il sorteggio senza criteri costituzionali, e l'eliminazione della soglia dei 3/5 sono strumenti proporzionati al problema dichiarato?&raquo;
     </blockquote>
 
+    <p style="text-align:center;margin-top:28px;">
+      <a href="03-alta-corte.html" class="next-link">Prossima pagina: l'Alta Corte Disciplinare →</a>
+    </p>
+
     <div class="source-note">
       <strong>Fonti</strong><br>
       Art. 104 Cost. vigente e riformato (art. 3 legge cost., G.U. n. 253 del 30/10/2025) &middot; Art. 105 Cost. riformato (art. 4 legge cost.) &middot; L. 24 marzo 1958, n. 195 (art. 22, come mod. dalla L. 71/2022 &mdash; soglia 3/5 votanti per elezione laici) &middot; L. 17 giugno 2022, n. 71 (riforma Cartabia: CSM 33 componenti, 20 togati + 10 laici + 3 di diritto) &middot; Parere CSM 8 gennaio 2025 &middot; AreaDG/Il Sole 24 Ore (dati nomine direttivi 2023-2024) &middot; Caso Palamara, intercettazioni Hotel Champagne, maggio 2019 &middot; TAR Lazio sent. 23352/2025 &middot; Dichiarazioni Presidenti della Repubblica (Ciampi&ndash;Mattarella) sul condizionamento correntizio.<br><br>
@@ -501,7 +506,17 @@
       maintainAspectRatio: true,
       cutout: '60%',
       plugins: {
-        legend: { display: false },
+        legend: {
+          display: true,
+          position: 'bottom',
+          labels: {
+            color: '#636070',
+            font: { family: "'IBM Plex Mono', monospace", size: 10 },
+            padding: 14,
+            usePointStyle: true,
+            pointStyleWidth: 12
+          }
+        },
         tooltip: {
           backgroundColor: '#17171e',
           borderColor: '#252530',

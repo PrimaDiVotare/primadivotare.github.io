@@ -6,6 +6,7 @@
 <title>§ 04 — Il contratto in bianco — Referendum Giustizia 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -69,6 +70,11 @@
     </div>
 
     <p style="font-size:13px; color:var(--muted);">Norma costituzionale: 2 letture per Camera, intervallo minimo 3 mesi, maggioranza dei 2/3 o referendum popolare. Legge ordinaria: una lettura per Camera, maggioranza semplice. Circolare ministeriale: una firma del Ministro.</p>
+
+    <div style="margin:24px 0;">
+      <canvas id="chart-tempi-norma" style="max-width:100%;max-height:300px;"></canvas>
+    </div>
+    <p style="font-size:13px; color:var(--muted); margin-top:8px;">Le garanzie oggi in Costituzione richiedono anni per essere modificate. Dopo la riforma, molte saranno in legge ordinaria — modificabili in settimane da una maggioranza semplice.</p>
   </div>
 </section>
 
@@ -341,6 +347,94 @@ const obs = new IntersectionObserver((entries) => {
   });
 }, { rootMargin: '-40% 0px -55% 0px' });
 sections.forEach(s => obs.observe(s));
+</script>
+
+<script>
+/* Chart.js defaults — design system */
+Chart.defaults.color = '#636070';
+Chart.defaults.font.family = "'IBM Plex Mono', monospace";
+Chart.defaults.font.size = 11;
+
+/* Horizontal bar chart — Quanto ci vuole a cambiare una norma */
+(function() {
+  const ctx = document.getElementById('chart-tempi-norma');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Norma costituzionale', 'Legge ordinaria', 'Circolare ministeriale'],
+      datasets: [{
+        data: [730, 30, 1],
+        backgroundColor: ['#38b368', '#e85444', '#d13020'],
+        borderRadius: 4,
+        barThickness: 28
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              const labels = ['~2 anni (730 giorni)', '~1 mese (30 giorni)', '1 giorno'];
+              return labels[context.dataIndex];
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          type: 'logarithmic',
+          title: {
+            display: true,
+            text: 'Giorni (scala logaritmica)',
+            color: '#636070'
+          },
+          grid: {
+            color: '#252530'
+          },
+          ticks: {
+            callback: function(value) {
+              if (value === 1) return '1';
+              if (value === 10) return '10';
+              if (value === 100) return '100';
+              if (value === 1000) return '1000';
+              return '';
+            }
+          }
+        },
+        y: {
+          grid: {
+            display: false
+          },
+          ticks: {
+            color: '#636070'
+          }
+        }
+      }
+    },
+    plugins: [{
+      id: 'barLabels',
+      afterDatasetsDraw: function(chart) {
+        const ctx = chart.ctx;
+        const meta = chart.getDatasetMeta(0);
+        const labels = ['~2 anni', '~1 mese', '1 giorno'];
+        ctx.save();
+        ctx.font = "600 11px 'IBM Plex Mono', monospace";
+        ctx.textBaseline = 'middle';
+        meta.data.forEach(function(bar, i) {
+          const x = bar.x + 8;
+          const y = bar.y;
+          ctx.fillStyle = '#e6e2db';
+          ctx.fillText(labels[i], x, y);
+        });
+        ctx.restore();
+      }
+    }]
+  });
+})();
 </script>
 
 </body>

@@ -6,6 +6,7 @@
 <title>Separazione delle carriere — Referendum Giustizia 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -100,6 +101,12 @@
         <div class="stat-desc">Percentuale annua di passaggi sul totale dei magistrati</div>
       </div>
     </div>
+
+    <!-- Bar chart: Passaggi PM↔Giudice per anno -->
+    <div style="margin:24px 0;">
+      <canvas id="chart-passaggi" style="max-width:100%;max-height:350px;"></canvas>
+    </div>
+    <p class="pbar-note" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin-top:4px;margin-bottom:20px;">Fonte: audizioni parlamentari CSM 2023&#8211;2024. Media: ~28 passaggi/anno su 8.800 magistrati = 0,31%.</p>
 
     <p>Circa 28 magistrati su 8.800 cambiavano funzione ogni anno &#8212; lo 0,31% del corpo. Dopo l'entrata in vigore del D.lgs. 44/2024, questo numero sarebbe sceso ulteriormente, perche&#769; il passaggio era limitato a una sola volta nell'intera carriera.</p>
 
@@ -257,5 +264,97 @@
   </div>
 </section>
 
+<script>
+// Chart.js global defaults
+Chart.defaults.color = '#636070';
+Chart.defaults.font.family = "'IBM Plex Mono', monospace";
+Chart.defaults.font.size = 11;
+
+// Bar chart — Passaggi PM↔Giudice per anno (2019-2023)
+(function() {
+  var ctx = document.getElementById('chart-passaggi').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['2019', '2020', '2021', '2022', '2023'],
+      datasets: [{
+        label: 'Passaggi PM\u2194Giudice',
+        data: [32, 26, 30, 25, 28],
+        backgroundColor: '#4490e0',
+        borderColor: '#4490e0',
+        borderWidth: 0,
+        borderRadius: 2,
+        barPercentage: 0.6
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          callbacks: {
+            afterLabel: function(context) {
+              return (context.raw / 8800 * 100).toFixed(2) + '% su 8.800 magistrati';
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: {
+            display: false
+          },
+          border: {
+            display: false
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'NUMERO PASSAGGI',
+            font: { size: 10, family: "'IBM Plex Mono', monospace" },
+            color: '#636070'
+          },
+          grid: {
+            color: '#252530'
+          },
+          border: {
+            display: false
+          },
+          beginAtZero: true,
+          max: 45
+        }
+      }
+    },
+    plugins: [{
+      id: 'sogliaCartabia',
+      afterDraw: function(chart) {
+        var yScale = chart.scales.y;
+        var xScale = chart.scales.x;
+        var yPixel = yScale.getPixelForValue(1);
+        var ctx = chart.ctx;
+
+        ctx.save();
+        ctx.setLineDash([6, 4]);
+        ctx.strokeStyle = '#e0b848';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(xScale.left, yPixel);
+        ctx.lineTo(xScale.right, yPixel);
+        ctx.stroke();
+
+        ctx.fillStyle = '#e0b848';
+        ctx.font = "10px 'IBM Plex Mono', monospace";
+        ctx.textAlign = 'right';
+        ctx.fillText('Soglia Cartabia (1 passaggio/carriera)', xScale.right, yPixel - 6);
+        ctx.restore();
+      }
+    }]
+  });
+})();
+</script>
 </body>
 </html>

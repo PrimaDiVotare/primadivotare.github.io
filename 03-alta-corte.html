@@ -6,6 +6,7 @@
 <title>Alta Corte Disciplinare — Referendum Giustizia 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -447,6 +448,111 @@
       </table>
     </div>
     <p style="font-size:12px;color:var(--muted);">Per avvocati, notai e medici il disciplinare e affidato a organi interni alla categoria, con pieno controllo esterno della Cassazione. Per i magistrati ordinari la riforma crea un regime che combina un organo esterno all'autogoverno con l'assenza (nella lettura prevalente) di un controllo giurisdizionale ulteriore &#8212; una combinazione senza precedenti nel sistema italiano.</p>
+
+    <!-- CHART: Ricorso in Cassazione per categoria -->
+    <div style="margin:24px 0;">
+      <canvas id="chartCassazione" style="max-width:100%;max-height:400px;"></canvas>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;max-width:680px;">Tutti i professionisti italiani hanno il ricorso in Cassazione come ultima garanzia. Dopo la riforma, i magistrati ordinari sarebbero l'unica categoria a perderlo (secondo la tesi prevalente in dottrina). Fonti: art. 111 Cost., nuovo art. 105 Cost.</p>
+
+    <script>
+    (function() {
+      Chart.defaults.color = '#636070';
+      Chart.defaults.font.family = "'IBM Plex Mono', monospace";
+      Chart.defaults.font.size = 11;
+
+      var ctx = document.getElementById('chartCassazione').getContext('2d');
+
+      var categorie = [
+        'Cittadino comune',
+        'Avvocato',
+        'Notaio',
+        'Medico',
+        'Mag. militare',
+        'Mag. ordinario (PRIMA)',
+        'Mag. ordinario (DOPO)'
+      ];
+
+      var valori = [3, 3, 3, 3, 3, 3, 2];
+
+      var colori = [
+        '#38b368',
+        '#38b368',
+        '#38b368',
+        '#38b368',
+        '#38b368',
+        '#38b368',
+        '#e85444'
+      ];
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: categorie,
+          datasets: [{
+            data: valori,
+            backgroundColor: colori,
+            borderColor: colori,
+            borderWidth: 1,
+            borderRadius: 3,
+            barThickness: 22
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: { display: false },
+            title: {
+              display: true,
+              text: 'GRADI DI GARANZIA ESTERNA PER CATEGORIA',
+              color: '#e6e2db',
+              font: { family: "'IBM Plex Mono', monospace", size: 12, weight: 600 },
+              padding: { bottom: 16 }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  var v = context.raw;
+                  if (v === 3) return '1\u00B0 grado + Appello + Cassazione';
+                  if (v === 2) return '1\u00B0 grado + Appello interno \u2014 NO Cassazione';
+                  return '';
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              min: 0,
+              max: 3,
+              ticks: {
+                stepSize: 1,
+                callback: function(value) {
+                  if (value === 1) return '1\u00B0 grado';
+                  if (value === 2) return '+ Appello';
+                  if (value === 3) return '+ Cassazione';
+                  return '';
+                }
+              },
+              grid: { color: '#252530', drawTicks: false }
+            },
+            y: {
+              grid: { display: false },
+              ticks: {
+                color: function(context) {
+                  return context.index === 6 ? '#e85444' : '#636070';
+                },
+                font: function(context) {
+                  return { weight: context.index === 6 ? '600' : '400' };
+                }
+              }
+            }
+          }
+        }
+      });
+    })();
+    </script>
   </div>
 </section>
 

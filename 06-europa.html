@@ -7,6 +7,7 @@
 <meta name="description" content="La separazione delle carriere esiste in Europa. Ma ogni sistema ha le sue garanzie. Cosa prende la riforma italiana e cosa lascia?">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -221,6 +222,143 @@
     </div>
   </div>
 </section>
+
+<!-- ═══ § 03b — RADAR CHART COMPARATIVO ═══ -->
+<section id="radar">
+  <div class="wrap">
+    <div class="sec-label">Il confronto visivo</div>
+    <h2>Cinque paesi, cinque dimensioni</h2>
+    <p>Un confronto qualitativo su scala 0-5 delle garanzie di indipendenza della magistratura. Ogni asse rappresenta una dimensione critica. La forma del grafico mostra la direzione del cambiamento.</p>
+
+    <div style="margin:24px 0;text-align:center;">
+      <canvas id="radarEuropa" style="max-width:600px;max-height:500px;margin:0 auto;"></canvas>
+    </div>
+
+    <p style="font-size:13px;color:var(--muted);max-width:680px;margin:12px auto 0;text-align:center;">Confronto qualitativo basato sulle fonti citate. L'Italia dopo la riforma si avvicina al modello tedesco (PM meno indipendente) allontanandosi da quello portoghese (garanzie costituzionali).</p>
+    <p style="font-size:12px;color:var(--dim);max-width:680px;margin:6px auto 0;text-align:center;font-family:'IBM Plex Mono',monospace;letter-spacing:0.05em;">NOTA: i valori sono stime editoriali a scopo illustrativo, non indici ufficiali. Scala 0 (minimo) - 5 (massimo).</p>
+  </div>
+</section>
+
+<script>
+(function() {
+  Chart.defaults.color = '#636070';
+  Chart.defaults.font.family = "'IBM Plex Mono', monospace";
+  Chart.defaults.font.size = 11;
+
+  var ctx = document.getElementById('radarEuropa').getContext('2d');
+  new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: [
+        'Indipendenza PM\ndall\'esecutivo',
+        'Garanzie costituzionali\nPM',
+        'Separazione\ncarriere',
+        'Controllo politico\nsulle nomine',
+        'Ricorso esterno\nsu disciplina'
+      ],
+      datasets: [
+        {
+          label: 'IT oggi',
+          data: [5, 5, 2, 2, 5],
+          borderColor: '#38b368',
+          backgroundColor: 'rgba(56, 179, 104, 0.08)',
+          borderWidth: 2,
+          pointBackgroundColor: '#38b368',
+          pointRadius: 3,
+          fill: true
+        },
+        {
+          label: 'IT dopo riforma',
+          data: [3, 2, 5, 3, 2],
+          borderColor: '#e85444',
+          backgroundColor: 'rgba(232, 84, 68, 0.08)',
+          borderWidth: 2,
+          pointBackgroundColor: '#e85444',
+          pointRadius: 3,
+          fill: true
+        },
+        {
+          label: 'Portogallo',
+          data: [5, 5, 5, 2, 4],
+          borderColor: '#4490e0',
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          borderDash: [6, 3],
+          pointBackgroundColor: '#4490e0',
+          pointRadius: 3,
+          fill: false
+        },
+        {
+          label: 'Germania',
+          data: [1, 1, 5, 5, 3],
+          borderColor: '#636070',
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          borderDash: [6, 3],
+          pointBackgroundColor: '#636070',
+          pointRadius: 3,
+          fill: false
+        },
+        {
+          label: 'Francia',
+          data: [4, 4, 1, 2, 4],
+          borderColor: '#e0b848',
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          borderDash: [6, 3],
+          pointBackgroundColor: '#e0b848',
+          pointRadius: 3,
+          fill: false
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      scales: {
+        r: {
+          min: 0,
+          max: 5,
+          ticks: {
+            stepSize: 1,
+            color: '#636070',
+            backdropColor: 'transparent',
+            font: { size: 9 }
+          },
+          grid: {
+            color: '#252530'
+          },
+          angleLines: {
+            color: '#252530'
+          },
+          pointLabels: {
+            color: '#636070',
+            font: {
+              family: "'IBM Plex Mono', monospace",
+              size: 10
+            }
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            color: '#636070',
+            font: {
+              family: "'IBM Plex Mono', monospace",
+              size: 10
+            },
+            padding: 14,
+            usePointStyle: true,
+            pointStyleWidth: 12
+          }
+        }
+      }
+    }
+  });
+})();
+</script>
 
 <!-- ═══ § 04 — CGUE SULLA GERMANIA ═══ -->
 <section id="cgue">

@@ -6,6 +6,7 @@
 <title>Il CSM: da eletto a sorteggiato — Referendum Giustizia 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -252,6 +253,27 @@
       <div class="leg-item"><div class="leg-dot" style="background:#c87060"></div> Togati sorteggiati (dopo)</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--blu)"></div> Laici</div>
     </div>
+
+    <!-- DONUT CHART: Composizione CSM attuale -->
+    <div style="margin:40px 0 12px 0;">
+      <h3 style="font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:var(--text);margin-bottom:4px;">Composizione CSM attuale &mdash; 33 componenti</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;font-family:'IBM Plex Mono',monospace;letter-spacing:0.05em;">POST L. 71/2022 (RIFORMA CARTABIA)</p>
+    </div>
+    <div style="margin:24px 0;max-width:420px;">
+      <canvas id="donutCsmAttuale" style="max-width:100%;max-height:350px;"></canvas>
+    </div>
+    <p style="font-size:13px;color:var(--muted);line-height:1.6;max-width:680px;">20 togati eletti dai colleghi magistrati (66,7% dei 30 elettivi) + 10 laici eletti dal Parlamento con maggioranza qualificata dei 3/5 dei votanti + 3 membri di diritto (PdR, Primo Pres. e Proc. Gen. Cassazione). <strong style="color:var(--text)">Fonte:</strong> L. 71/2022; art. 22 L. 195/1958.</p>
+
+    <!-- GROUPED BAR CHART: Confronto PRIMA vs DOPO -->
+    <div style="margin:48px 0 12px 0;">
+      <h3 style="font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:var(--text);margin-bottom:4px;">Chi li sceglie: prima e dopo</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px;font-family:'IBM Plex Mono',monospace;letter-spacing:0.05em;">MECCANISMO DI SELEZIONE DEI COMPONENTI</p>
+    </div>
+    <div style="margin:24px 0;max-width:680px;">
+      <canvas id="barConfrontoCSM" style="max-width:100%;max-height:350px;"></canvas>
+    </div>
+    <p style="font-size:13px;color:var(--muted);line-height:1.6;max-width:680px;">Prima della riforma: 20 togati eletti dai magistrati, 10 laici eletti dal Parlamento con soglia dei 3/5, 3 di diritto. Dopo: nessun componente eletto dai colleghi &mdash; i togati sono sorteggiati, i laici estratti a sorte da una lista parlamentare compilata senza soglia qualificata garantita. I 3 membri di diritto restano invariati (PdR presiede, PP e PG Cassazione).</p>
+
   </div>
 </section>
 
@@ -427,5 +449,179 @@
   </div>
 </section>
 
+<script>
+// Chart.js defaults
+Chart.defaults.color = '#636070';
+Chart.defaults.font.family = "'IBM Plex Mono', monospace";
+Chart.defaults.font.size = 11;
+
+// ── DONUT: Composizione CSM attuale ──
+(function() {
+  var ctx = document.getElementById('donutCsmAttuale').getContext('2d');
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Togati eletti (20)', 'Laici eletti (10)', 'Di diritto (3)'],
+      datasets: [{
+        data: [20, 10, 3],
+        backgroundColor: ['#38b368', '#4490e0', '#e0b848'],
+        borderColor: '#0b0b0d',
+        borderWidth: 2,
+        hoverBorderColor: '#e6e2db',
+        hoverBorderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      cutout: '60%',
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#17171e',
+          borderColor: '#252530',
+          borderWidth: 1,
+          titleColor: '#e6e2db',
+          bodyColor: '#e6e2db',
+          titleFont: { family: "'IBM Plex Mono', monospace", size: 12, weight: '600' },
+          bodyFont: { family: "'Inter', sans-serif", size: 13 },
+          padding: 12,
+          cornerRadius: 2,
+          callbacks: {
+            label: function(context) {
+              var label = context.label || '';
+              var value = context.parsed;
+              var total = context.dataset.data.reduce(function(a, b) { return a + b; }, 0);
+              var pct = ((value / total) * 100).toFixed(1);
+              return label + ' \u2014 ' + pct + '% del totale';
+            },
+            afterLabel: function(context) {
+              var notes = [
+                'Eletti dai magistrati con sistema misto\n(collegi territoriali + collegio unico nazionale)',
+                'Eletti dal Parlamento in seduta comune\ncon maggioranza qualificata dei 3/5 dei votanti',
+                'PdR (presiede), Primo Pres. Cassazione,\nProc. Gen. Cassazione'
+              ];
+              return notes[context.dataIndex] || '';
+            }
+          }
+        }
+      }
+    },
+    plugins: [{
+      id: 'donutCenterText',
+      afterDraw: function(chart) {
+        var ctx = chart.ctx;
+        var cx = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
+        var cy = chart.chartArea.top + (chart.chartArea.bottom - chart.chartArea.top) / 2;
+        ctx.save();
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.font = "700 28px 'IBM Plex Mono', monospace";
+        ctx.fillStyle = '#e6e2db';
+        ctx.fillText('33', cx, cy - 10);
+        ctx.font = "400 11px 'IBM Plex Mono', monospace";
+        ctx.fillStyle = '#636070';
+        ctx.fillText('COMPONENTI', cx, cy + 14);
+        ctx.restore();
+      }
+    }]
+  });
+})();
+
+// ── GROUPED BAR: Confronto PRIMA vs DOPO ──
+(function() {
+  var ctx = document.getElementById('barConfrontoCSM').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Eletti dai colleghi', 'Sorteggiati', 'Da lista parlamentare', 'Di diritto'],
+      datasets: [
+        {
+          label: 'PRIMA',
+          data: [20, 0, 10, 3],
+          backgroundColor: '#38b368',
+          borderColor: '#38b368',
+          borderWidth: 1,
+          borderRadius: 2
+        },
+        {
+          label: 'DOPO',
+          data: [0, 20, 10, 3],
+          backgroundColor: '#e85444',
+          borderColor: '#e85444',
+          borderWidth: 1,
+          borderRadius: 2
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      scales: {
+        x: {
+          grid: { display: false },
+          border: { color: '#252530' },
+          ticks: {
+            color: '#636070',
+            font: { size: 10, family: "'IBM Plex Mono', monospace" },
+            maxRotation: 0,
+            autoSkip: false
+          }
+        },
+        y: {
+          grid: { color: '#252530' },
+          border: { display: false },
+          ticks: {
+            color: '#636070',
+            stepSize: 5,
+            font: { size: 10, family: "'IBM Plex Mono', monospace" }
+          },
+          beginAtZero: true,
+          max: 25
+        }
+      },
+      plugins: {
+        legend: {
+          display: true,
+          position: 'top',
+          align: 'start',
+          labels: {
+            color: '#e6e2db',
+            font: { size: 11, family: "'IBM Plex Mono', monospace", weight: '600' },
+            boxWidth: 12,
+            boxHeight: 12,
+            padding: 16,
+            usePointStyle: false
+          }
+        },
+        tooltip: {
+          backgroundColor: '#17171e',
+          borderColor: '#252530',
+          borderWidth: 1,
+          titleColor: '#e6e2db',
+          bodyColor: '#e6e2db',
+          titleFont: { family: "'IBM Plex Mono', monospace", size: 12, weight: '600' },
+          bodyFont: { family: "'Inter', sans-serif", size: 13 },
+          padding: 12,
+          cornerRadius: 2,
+          callbacks: {
+            afterBody: function(context) {
+              var idx = context[0].dataIndex;
+              var ds = context[0].datasetIndex;
+              var notes = {
+                0: { 0: 'Togati eletti dai magistrati\ncon sistema misto (L. 71/2022)', 1: 'Nessun componente eletto\ndai colleghi magistrati' },
+                1: { 0: 'Nessun sorteggio nel\nsistema attuale', 1: 'Togati sorteggiati tra i magistrati\n(~2/3 per ciascun CSM)' },
+                2: { 0: 'Laici eletti dal Parlamento\ncon maggioranza dei 3/5', 1: 'Laici sorteggiati da lista\ncompilata senza soglia garantita' },
+                3: { 0: 'PdR, Primo Pres., Proc. Gen.\nCassazione', 1: 'PdR + 1 membro di diritto\nper ciascun CSM' }
+              };
+              return notes[idx] ? (notes[idx][ds] || '') : '';
+            }
+          }
+        }
+      }
+    }
+  });
+})();
+</script>
 </body>
 </html>

@@ -6,18 +6,6 @@
 <title>Il CSM: da eletto a sorteggiato — Referendum Giustizia 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
-<style>
-.tab-btn {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
-  padding: 10px 20px; border: 1px solid var(--border);
-  background: var(--bg3); color: var(--muted); cursor: pointer;
-  transition: all .2s; border-radius: 2px;
-}
-.tab-btn:hover { border-color: var(--text); color: var(--text); }
-.tab-btn-prima.active { background: var(--grn-bg); border-color: var(--grn); color: var(--grn-l); }
-.tab-btn-dopo.active { background: var(--red-bg); border-color: var(--red); color: var(--red-l); }
-</style>
 <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 </head>
 <body>
@@ -229,16 +217,11 @@
   <div class="wrap">
     <div class="sec-label">La mappa del potere</div>
     <h2>A chi rispondono i componenti del CSM</h2>
-    <p>La proporzione 2/3 togati &mdash; 1/3 laici non cambia. Cambia a chi ogni componente deve rendere conto. Passa da PRIMA a DOPO per vedere cosa succede alle linee di responsabilita'.</p>
-
-    <div class="resp-map-btns" style="display:flex;gap:2px;margin-bottom:16px;">
-      <button class="tab-btn tab-btn-prima active" data-state="prima">PRIMA</button>
-      <button class="tab-btn tab-btn-dopo" data-state="dopo">DOPO</button>
-    </div>
+    <p>A sinistra il sistema attuale. A destra quello dopo la riforma. Le linee mostrano a chi risponde ogni componente.</p>
 
     <div id="responsabilita-chart"></div>
 
-    <p class="resp-map-caption chart-caption" style="margin-top:12px;text-align:center;"></p>
+    <p class="resp-map-caption chart-caption" style="margin-top:12px;text-align:center;">A sinistra, ogni componente risponde a chi lo ha scelto. A destra, i togati non hanno mandato elettorale &mdash; il sorteggio non crea un legame di responsabilit&agrave;. I laici provengono da una lista che la maggioranza di turno pu&ograve; compilare.</p>
   </div>
 </section>
 
@@ -461,320 +444,240 @@
 </section>
 
 <script>
-// ── MAPPA RESPONSABILITÀ (D3) ──
+// ── MAPPA RESPONSABILITÀ (D3) — PRIMA e DOPO affiancati ──
 (function() {
   var container = document.getElementById('responsabilita-chart');
   if (!container) return;
 
   var isMobile = window.innerWidth < 600;
-  var W = 700, H = 500;
-  var cx = W / 2, cy = isMobile ? 220 : 260;
-  var radius = isMobile ? 120 : 160;
-  var dotR = isMobile ? 6 : 8;
+  var W = isMobile ? 550 : 1100;
+  var H = isMobile ? 900 : 480;
   var N = 33;
+  var dotR = isMobile ? 6 : 7;
+  var radius = 130;
+
+  // Centers for PRIMA and DOPO semicircles
+  var primaCx, primaCy, dopoCx, dopoCy;
+  if (isMobile) {
+    primaCx = 275; primaCy = 200;
+    dopoCx = 275;  dopoCy = 650;
+  } else {
+    primaCx = 275; primaCy = 220;
+    dopoCx = 825;  dopoCy = 220;
+  }
 
   var svg = d3.select('#responsabilita-chart')
     .append('svg')
     .attr('viewBox', '0 0 ' + W + ' ' + H)
     .attr('width', '100%')
-    .style('max-width', '700px')
+    .style('max-width', W + 'px')
     .style('display', 'block')
     .style('margin', '0 auto');
 
-  // Compute semicircle positions (pi to 0, left to right)
-  var dots = [];
-  for (var i = 0; i < N; i++) {
-    var angle = Math.PI - (i / (N - 1)) * Math.PI;
-    dots.push({
-      x: cx + radius * Math.cos(angle),
-      y: cy - radius * Math.sin(angle),
-      index: i
-    });
+  // Generate semicircle dot positions
+  function makeDots(cx, cy) {
+    var arr = [];
+    for (var i = 0; i < N; i++) {
+      var angle = Math.PI - (i / (N - 1)) * Math.PI;
+      arr.push({ x: cx + radius * Math.cos(angle), y: cy - radius * Math.sin(angle), index: i });
+    }
+    return arr;
   }
 
-  // Categorize: 0-19 togati, 20-29 laici, 30-32 diritto
   function getCategory(i) {
     if (i < 20) return 'togati';
     if (i < 30) return 'laici';
     return 'diritto';
   }
 
-  // Source boxes positions
-  var boxW = isMobile ? 150 : 170, boxH = 56;
-  var boxY = isMobile ? 340 : 400;
-  var boxes = {
-    togati:  { x: 80,  y: boxY },
-    laici:   { x: W / 2 - boxW / 2, y: boxY },
-    diritto: { x: W - 80 - boxW, y: boxY }
-  };
+  var boxW = 150, boxH = 50;
 
-  var states = {
-    prima: {
-      togati:  { fill: '#38b368', label: '', hasLine: true, lineColor: '#38b368' },
-      laici:   { fill: '#4490e0', label: '', hasLine: true, lineColor: '#4490e0' },
-      diritto: { fill: '#e0b848', label: '', hasLine: true, lineColor: '#e0b848' },
-      boxes: {
-        togati:  { fill: '#0a1810', stroke: '#27764a', title: '8.800 MAGISTRATI', sub: 'elezione tra pari', textColor: '#38b368' },
-        laici:   { fill: '#0a1222', stroke: '#1e5ea0', title: 'PARLAMENTO', sub: 'maggioranza 3/5', textColor: '#4490e0' },
-        diritto: { fill: '#181408', stroke: '#c89c30', title: 'ISTITUZIONALE', sub: 'PP e PG Cassazione, PdR', textColor: '#e0b848' }
-      },
-      caption: 'Ogni componente risponde a chi lo ha scelto'
+  // Box positions relative to a center
+  function makeBoxes(cx, cy) {
+    var boxY = cy + radius + 60;
+    return {
+      togati:  { x: cx - boxW * 1.6, y: boxY },
+      laici:   { x: cx - boxW / 2,   y: boxY },
+      diritto: { x: cx + boxW * 0.6, y: boxY }
+    };
+  }
+
+  // ── Draw one half (PRIMA or DOPO) ──
+  function drawHalf(cx, cy, config) {
+    var dots = makeDots(cx, cy);
+    var boxes = makeBoxes(cx, cy);
+    var g = svg.append('g');
+
+    // Title label above semicircle
+    g.append('text')
+      .attr('x', cx)
+      .attr('y', cy - radius - 50)
+      .attr('text-anchor', 'middle')
+      .attr('font-family', "'IBM Plex Mono', monospace")
+      .attr('font-size', '13px')
+      .attr('font-weight', '600')
+      .attr('letter-spacing', '0.2em')
+      .attr('fill', config.titleColor)
+      .text(config.title);
+
+    // Category labels above arc
+    var catMidpoints = {
+      togati:  Math.floor(9),
+      laici:   Math.floor(24),
+      diritto: Math.floor(31)
+    };
+
+    config.catLabels.forEach(function(cl) {
+      var d = dots[catMidpoints[cl.key]];
+      var ly = cy - radius - 32;
+      g.append('text')
+        .attr('x', d.x)
+        .attr('y', ly)
+        .attr('text-anchor', 'middle')
+        .attr('font-family', "'IBM Plex Mono', monospace")
+        .attr('font-size', '9px')
+        .attr('font-weight', '600')
+        .attr('letter-spacing', '0.12em')
+        .attr('fill', cl.color)
+        .text(cl.label);
+      g.append('text')
+        .attr('x', d.x)
+        .attr('y', ly + 13)
+        .attr('text-anchor', 'middle')
+        .attr('font-family', "'IBM Plex Mono', monospace")
+        .attr('font-size', '7px')
+        .attr('letter-spacing', '0.15em')
+        .attr('fill', '#636070')
+        .text(cl.sublabel);
+    });
+
+    // Lines (behind dots)
+    dots.forEach(function(d) {
+      var cat = getCategory(d.index);
+      var bx = boxes[cat];
+      var lineConf = config.lines[cat];
+      g.append('line')
+        .attr('x1', d.x).attr('y1', d.y + dotR)
+        .attr('x2', bx.x + boxW / 2).attr('y2', bx.y)
+        .attr('stroke', lineConf.color)
+        .attr('stroke-width', 1)
+        .attr('opacity', lineConf.opacity)
+        .attr('stroke-dasharray', lineConf.dash || 'none');
+    });
+
+    // Dots
+    dots.forEach(function(d) {
+      var cat = getCategory(d.index);
+      g.append('circle')
+        .attr('cx', d.x).attr('cy', d.y)
+        .attr('r', dotR)
+        .attr('fill', config.dotColors[cat]);
+    });
+
+    // "?" labels on togati dots (DOPO only)
+    if (config.showQuestion) {
+      dots.filter(function(d) { return getCategory(d.index) === 'togati'; }).forEach(function(d) {
+        g.append('text')
+          .attr('x', d.x).attr('y', d.y + 4)
+          .attr('text-anchor', 'middle')
+          .attr('font-family', "'IBM Plex Mono', monospace")
+          .attr('font-size', '9px')
+          .attr('font-weight', '600')
+          .attr('fill', '#636070')
+          .text('?');
+      });
+    }
+
+    // Boxes
+    var catKeys = ['togati', 'laici', 'diritto'];
+    catKeys.forEach(function(cat) {
+      var bx = boxes[cat];
+      var bc = config.boxes[cat];
+      g.append('rect')
+        .attr('x', bx.x).attr('y', bx.y)
+        .attr('width', boxW).attr('height', boxH)
+        .attr('rx', 3)
+        .attr('fill', bc.fill)
+        .attr('stroke', bc.stroke)
+        .attr('stroke-width', 1);
+      g.append('text')
+        .attr('x', bx.x + boxW / 2).attr('y', bx.y + 20)
+        .attr('text-anchor', 'middle')
+        .attr('font-family', "'IBM Plex Mono', monospace")
+        .attr('font-size', '9px')
+        .attr('font-weight', '600')
+        .attr('letter-spacing', '0.1em')
+        .attr('fill', bc.textColor)
+        .text(bc.title);
+      g.append('text')
+        .attr('x', bx.x + boxW / 2).attr('y', bx.y + 37)
+        .attr('text-anchor', 'middle')
+        .attr('font-family', "'IBM Plex Mono', monospace")
+        .attr('font-size', '8px')
+        .attr('fill', '#636070')
+        .text(bc.sub);
+    });
+  }
+
+  // ── PRIMA config ──
+  var primaConf = {
+    title: 'PRIMA',
+    titleColor: '#38b368',
+    showQuestion: false,
+    dotColors: { togati: '#38b368', laici: '#4490e0', diritto: '#e0b848' },
+    lines: {
+      togati:  { color: '#38b368', opacity: 0.25, dash: null },
+      laici:   { color: '#4490e0', opacity: 0.25, dash: null },
+      diritto: { color: '#e0b848', opacity: 0.25, dash: null }
     },
-    dopo: {
-      togati:  { fill: '#3a3848', label: '?', hasLine: false, lineColor: '#3a3848' },
-      laici:   { fill: '#e85444', label: '', hasLine: true, lineColor: '#e85444' },
-      diritto: { fill: '#e0b848', label: '', hasLine: true, lineColor: '#e0b848' },
-      boxes: {
-        togati:  { fill: '#17171e', stroke: '#3a3848', title: 'NESSUNO', sub: 'sorteggio senza mandato', textColor: '#636070' },
-        laici:   { fill: '#1a0a08', stroke: '#d13020', title: 'MAGGIORANZA SEMPLICE?', sub: 'lista senza soglia', textColor: '#e85444' },
-        diritto: { fill: '#181408', stroke: '#c89c30', title: 'ISTITUZIONALE', sub: 'PP e PG Cassazione, PdR', textColor: '#e0b848' }
-      },
-      caption: 'I togati non rispondono a nessuno. I laici alla maggioranza di turno.'
+    catLabels: [
+      { key: 'togati',  label: '20 TOGATI ELETTI',    sublabel: '', color: '#38b368' },
+      { key: 'laici',   label: '10 LAICI ELETTI',     sublabel: '', color: '#4490e0' },
+      { key: 'diritto', label: '3 DI DIRITTO',        sublabel: '', color: '#e0b848' }
+    ],
+    boxes: {
+      togati:  { fill: '#0a1810', stroke: '#27764a', title: '8.800 MAGISTRATI', sub: 'elezione tra pari', textColor: '#38b368' },
+      laici:   { fill: '#0a1222', stroke: '#1e5ea0', title: 'PARLAMENTO 3/5',   sub: 'maggioranza qualificata', textColor: '#4490e0' },
+      diritto: { fill: '#181408', stroke: '#c89c30', title: 'ISTITUZIONALE',     sub: 'PP e PG Cass., PdR', textColor: '#e0b848' }
     }
   };
 
-  var currentState = 'prima';
+  // ── DOPO config ──
+  var dopoConf = {
+    title: 'DOPO',
+    titleColor: '#e85444',
+    showQuestion: true,
+    dotColors: { togati: '#3a3848', laici: '#e85444', diritto: '#e0b848' },
+    lines: {
+      togati:  { color: '#3a3848', opacity: 0.06, dash: '3,3' },
+      laici:   { color: '#e85444', opacity: 0.25, dash: null },
+      diritto: { color: '#e0b848', opacity: 0.25, dash: null }
+    },
+    catLabels: [
+      { key: 'togati',  label: '20 TOGATI SORTEGGIATI', sublabel: '', color: '#636070' },
+      { key: 'laici',   label: '10 LAICI DA LISTA',     sublabel: '', color: '#e85444' },
+      { key: 'diritto', label: '3 DI DIRITTO',          sublabel: '', color: '#e0b848' }
+    ],
+    boxes: {
+      togati:  { fill: '#17171e', stroke: '#3a3848', title: 'NESSUNO',              sub: 'sorteggio senza mandato', textColor: '#636070' },
+      laici:   { fill: '#1a0a08', stroke: '#d13020', title: 'MAGG. SEMPLICE?',      sub: 'lista senza soglia',      textColor: '#e85444' },
+      diritto: { fill: '#181408', stroke: '#c89c30', title: 'ISTITUZIONALE',         sub: 'PP e PG Cass., PdR',     textColor: '#e0b848' }
+    }
+  };
 
-  // Draw lines group (behind dots)
-  var linesGroup = svg.append('g').attr('class', 'resp-lines');
-  var dotsGroup = svg.append('g').attr('class', 'resp-dots');
-  var labelsGroup = svg.append('g').attr('class', 'resp-labels');
-  var boxesGroup = svg.append('g').attr('class', 'resp-boxes');
-  var captionEl = document.querySelector('.resp-map-caption');
+  // Draw both halves
+  drawHalf(primaCx, primaCy, primaConf);
+  drawHalf(dopoCx, dopoCy, dopoConf);
 
-  // Create line elements
-  var lineEls = linesGroup.selectAll('line')
-    .data(dots)
-    .enter()
-    .append('line')
-    .attr('x1', function(d) { return d.x; })
-    .attr('y1', function(d) { return d.y + dotR; })
-    .attr('x2', function(d) {
-      var cat = getCategory(d.index);
-      return boxes[cat].x + boxW / 2;
-    })
-    .attr('y2', function(d) {
-      var cat = getCategory(d.index);
-      return boxes[cat].y;
-    })
-    .attr('stroke', '#38b368')
-    .attr('stroke-width', 1)
-    .attr('opacity', 0.3);
-
-  // Create dot elements
-  var dotEls = dotsGroup.selectAll('circle')
-    .data(dots)
-    .enter()
-    .append('circle')
-    .attr('cx', function(d) { return d.x; })
-    .attr('cy', function(d) { return d.y; })
-    .attr('r', dotR)
-    .attr('fill', '#38b368');
-
-  // Create "?" labels (hidden initially)
-  var qLabels = labelsGroup.selectAll('text.q-label')
-    .data(dots.filter(function(d) { return getCategory(d.index) === 'togati'; }))
-    .enter()
-    .append('text')
-    .attr('class', 'q-label')
-    .attr('x', function(d) { return d.x; })
-    .attr('y', function(d) { return d.y + (isMobile ? 3 : 4); })
-    .attr('text-anchor', 'middle')
-    .attr('font-family', "'IBM Plex Mono', monospace")
-    .attr('font-size', isMobile ? '8px' : '10px')
-    .attr('font-weight', '600')
-    .attr('fill', '#636070')
-    .attr('opacity', 0)
-    .text('?');
-
-  // Create box elements
-  var catKeys = ['togati', 'laici', 'diritto'];
-  catKeys.forEach(function(cat) {
-    var bx = boxes[cat].x;
-    var by = boxes[cat].y;
-
-    boxesGroup.append('rect')
-      .attr('class', 'box-rect box-' + cat)
-      .attr('x', bx)
-      .attr('y', by)
-      .attr('width', boxW)
-      .attr('height', boxH)
-      .attr('rx', 3)
-      .attr('fill', states.prima.boxes[cat].fill)
-      .attr('stroke', states.prima.boxes[cat].stroke)
-      .attr('stroke-width', 1);
-
-    boxesGroup.append('text')
-      .attr('class', 'box-title box-title-' + cat)
-      .attr('x', bx + boxW / 2)
-      .attr('y', by + 22)
-      .attr('text-anchor', 'middle')
-      .attr('font-family', "'IBM Plex Mono', monospace")
-      .attr('font-size', isMobile ? '8px' : '10px')
-      .attr('font-weight', '600')
-      .attr('letter-spacing', '0.1em')
-      .attr('fill', states.prima.boxes[cat].textColor)
-      .text(states.prima.boxes[cat].title);
-
-    boxesGroup.append('text')
-      .attr('class', 'box-sub box-sub-' + cat)
-      .attr('x', bx + boxW / 2)
-      .attr('y', by + 40)
-      .attr('text-anchor', 'middle')
-      .attr('font-family', "'IBM Plex Mono', monospace")
-      .attr('font-size', isMobile ? '7px' : '9px')
-      .attr('fill', '#636070')
-      .text(states.prima.boxes[cat].sub);
-  });
-
-  // Category labels above the semicircle
-  var catLabelGroup = svg.append('g').attr('class', 'resp-cat-labels');
-
-  // Position labels above each group segment
-  var togatiMidIdx = 9, laiciMidIdx = 24, dirittoMidIdx = 31;
-  var catLabelData = [
-    { idx: togatiMidIdx, label: '20 TOGATI', sublabel: 'ELETTI', color: '#38b368', key: 'togati' },
-    { idx: laiciMidIdx, label: '10 LAICI', sublabel: 'ELETTI', color: '#4490e0', key: 'laici' },
-    { idx: dirittoMidIdx, label: '3', sublabel: 'DI DIRITTO', color: '#e0b848', key: 'diritto' }
-  ];
-
-  catLabelData.forEach(function(cl) {
-    var d = dots[cl.idx];
-    var ly = cy - radius - (isMobile ? 24 : 32);
-
-    catLabelGroup.append('text')
-      .attr('class', 'cat-label cat-label-' + cl.key)
-      .attr('x', d.x)
-      .attr('y', ly)
-      .attr('text-anchor', 'middle')
-      .attr('font-family', "'IBM Plex Mono', monospace")
-      .attr('font-size', isMobile ? '8px' : '10px')
-      .attr('font-weight', '600')
-      .attr('letter-spacing', '0.12em')
-      .attr('fill', cl.color)
-      .text(cl.label);
-
-    catLabelGroup.append('text')
-      .attr('class', 'cat-sublabel cat-sublabel-' + cl.key)
-      .attr('x', d.x)
-      .attr('y', ly + (isMobile ? 12 : 14))
-      .attr('text-anchor', 'middle')
-      .attr('font-family', "'IBM Plex Mono', monospace")
-      .attr('font-size', isMobile ? '7px' : '8px')
-      .attr('letter-spacing', '0.15em')
-      .attr('fill', '#636070')
-      .text(cl.sublabel);
-  });
-
-  // Set initial caption
-  captionEl.textContent = states.prima.caption;
-
-  // Transition function
-  function transitionTo(stateName) {
-    if (stateName === currentState) return;
-    currentState = stateName;
-    var st = states[stateName];
-
-    // Transition dots
-    dotEls.transition().duration(600)
-      .attr('fill', function(d) {
-        var cat = getCategory(d.index);
-        return st[cat].fill;
-      });
-
-    // Transition lines
-    lineEls.transition().duration(400)
-      .attr('stroke', function(d) {
-        var cat = getCategory(d.index);
-        return st[cat].lineColor;
-      })
-      .attr('opacity', function(d) {
-        var cat = getCategory(d.index);
-        if (!st[cat].hasLine) return 0.06;
-        return 0.3;
-      })
-      .attr('stroke-dasharray', function(d) {
-        var cat = getCategory(d.index);
-        if (!st[cat].hasLine) return '3,3';
-        return 'none';
-      });
-
-    // Transition "?" labels
-    qLabels.transition().duration(600)
-      .attr('opacity', stateName === 'dopo' ? 1 : 0);
-
-    // Transition boxes
-    catKeys.forEach(function(cat) {
-      svg.select('.box-rect.box-' + cat)
-        .transition().duration(600)
-        .attr('fill', st.boxes[cat].fill)
-        .attr('stroke', st.boxes[cat].stroke);
-
-      svg.select('.box-title-' + cat)
-        .transition().duration(300)
-        .attr('opacity', 0)
-        .on('end', function() {
-          d3.select(this)
-            .text(st.boxes[cat].title)
-            .attr('fill', st.boxes[cat].textColor)
-            .transition().duration(300)
-            .attr('opacity', 1);
-        });
-
-      svg.select('.box-sub-' + cat)
-        .transition().duration(300)
-        .attr('opacity', 0)
-        .on('end', function() {
-          d3.select(this)
-            .text(st.boxes[cat].sub)
-            .transition().duration(300)
-            .attr('opacity', 1);
-        });
-    });
-
-    // Update category labels
-    var catLabelsAfter = {
-      prima: {
-        togati:  { label: '20 TOGATI', sublabel: 'ELETTI', color: '#38b368' },
-        laici:   { label: '10 LAICI', sublabel: 'ELETTI', color: '#4490e0' },
-        diritto: { label: '3', sublabel: 'DI DIRITTO', color: '#e0b848' }
-      },
-      dopo: {
-        togati:  { label: '20 TOGATI', sublabel: 'SORTEGGIATI', color: '#636070' },
-        laici:   { label: '10 LAICI', sublabel: 'DA LISTA', color: '#e85444' },
-        diritto: { label: '3', sublabel: 'DI DIRITTO', color: '#e0b848' }
-      }
-    };
-
-    catKeys.forEach(function(cat) {
-      var cl = catLabelsAfter[stateName][cat];
-      svg.select('.cat-label-' + cat)
-        .transition().duration(600)
-        .attr('fill', cl.color);
-      svg.select('.cat-sublabel-' + cat)
-        .transition().duration(400)
-        .attr('opacity', 0)
-        .on('end', function() {
-          d3.select(this)
-            .text(cl.sublabel)
-            .transition().duration(300)
-            .attr('opacity', 1);
-        });
-    });
-
-    // Update caption
-    captionEl.textContent = st.caption;
+  // Vertical separator line (desktop only)
+  if (!isMobile) {
+    svg.append('line')
+      .attr('x1', 550).attr('y1', 20)
+      .attr('x2', 550).attr('y2', H - 20)
+      .attr('stroke', '#252530')
+      .attr('stroke-width', 1)
+      .attr('stroke-dasharray', '4,4');
   }
-
-  // Button event listeners
-  var btns = document.querySelectorAll('.resp-map-btns .tab-btn');
-  btns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      btns.forEach(function(b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      transitionTo(btn.getAttribute('data-state'));
-    });
-  });
 })();
 
 // ── SIMULAZIONE SORTEGGIO ──

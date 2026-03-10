@@ -468,53 +468,124 @@
 <section id="potere">
   <div class="wrap">
     <div class="sec-label">Dove va il potere</div>
-    <h2>Il flusso del potere: prima e dopo</h2>
-    <p>Non una questione di intenzioni, ma di architettura. Dove si sposta il potere decisionale sull'autogoverno della magistratura?</p>
+    <h2>L'equilibrio si sposta</h2>
+    <p>Ogni barra mostra chi controlla una leva dell'autogoverno della magistratura. A sinistra la magistratura, a destra il Parlamento. Guarda come cambia.</p>
 
-    <div class="flow-diagram reveal">
-      <div class="flow-inner">
-        <div class="flow-section-label" style="color:var(--pri-l);background:var(--pri-bg);border:1px solid var(--pri);">PRIMA &mdash; flusso indipendente</div>
-        <div class="flow-chain">
-          <div class="flow-node green">Magistrati<small>votano i colleghi</small></div>
-          <div class="flow-arrow g">&rarr;</div>
-          <div class="flow-node green">CSM eletto<small>togati 66,7%</small></div>
-          <div class="flow-arrow g">&rarr;</div>
-          <div class="flow-node green">Nomine<small>procuratori, giudici</small></div>
-        </div>
-        <div style="margin-top:6px;margin-bottom:4px;">
-          <div class="flow-chain">
-            <div class="flow-node blue">Parlamento<small>elegge laici</small></div>
-            <div class="flow-arrow g">&rarr;</div>
-            <div class="flow-node blue">Soglia 3/5<small>accordo bipartisan</small></div>
-            <div class="flow-arrow g">&rarr;</div>
-            <div class="flow-node green">CSM<small>garanzia compromesso</small></div>
+    <div class="legend-row reveal" style="margin-bottom:20px;">
+      <div class="leg-item"><div class="leg-dot" style="background:var(--pri);"></div> Magistratura</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--dpo);"></div> Parlamento / maggioranza</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--blu);"></div> Condiviso / bipartisan</div>
+    </div>
+
+    <div class="pshift reveal">
+
+      <!-- 1. Scelta togati -->
+      <div class="pshift-item">
+        <div class="pshift-lever">Scelta componenti togati</div>
+        <div class="pshift-pair">
+          <div class="pshift-row before">
+            <div class="pshift-tag">Prima</div>
+            <div class="pshift-bar">
+              <div class="seg mag" style="width:100%"><span>Eletti dai magistrati</span></div>
+            </div>
+          </div>
+          <div class="pshift-row after">
+            <div class="pshift-tag">Dopo</div>
+            <div class="pshift-bar">
+              <div class="seg parl" style="width:70%"><span>Requisiti fissati per legge ord.</span></div>
+              <div class="seg mag" style="width:30%"><span>Sorteggio</span></div>
+            </div>
           </div>
         </div>
-
-        <hr class="flow-divider"/>
-
-        <div class="flow-section-label" style="color:var(--dpo-l);background:var(--dpo-bg);border:1px solid var(--dpo);">DOPO &mdash; flusso con sorteggio da lista parlamentare</div>
-        <div class="flow-chain">
-          <div class="flow-node red">Parlamento<small>compila lista laici</small></div>
-          <div class="flow-arrow r">&rarr;</div>
-          <div class="flow-node red">Sorteggio<small>da lista senza soglia</small></div>
-          <div class="flow-arrow r">&rarr;</div>
-          <div class="flow-node red">VP laico<small>orienta i lavori</small></div>
-        </div>
-        <div style="margin-top:6px;">
-          <div class="flow-chain">
-            <div class="flow-node red">Legge ordinaria<small>fissa requisiti togati</small></div>
-            <div class="flow-arrow r">&rarr;</div>
-            <div class="flow-node red">Sorteggio togati<small>da bacino filtrato</small></div>
-            <div class="flow-arrow r">&rarr;</div>
-            <div class="flow-node red">Nomine PM<small>tramite CSM requirente</small></div>
-          </div>
-        </div>
-
-        <div class="flow-note danger">
-          Il Parlamento scrive le regole del sorteggio, compila la lista dei laici, e stabilisce i requisiti per i togati sorteggiabili. Tre leve, tutte in legge ordinaria.
-        </div>
+        <div class="pshift-detail">Oggi i magistrati eleggono direttamente i togati. Dopo, il Parlamento fissa i requisiti di chi pu&ograve; essere sorteggiato &mdash; chi scrive i requisiti decide il bacino.</div>
       </div>
+
+      <!-- 2. Scelta laici -->
+      <div class="pshift-item">
+        <div class="pshift-lever">Scelta componenti laici</div>
+        <div class="pshift-pair">
+          <div class="pshift-row before">
+            <div class="pshift-tag">Prima</div>
+            <div class="pshift-bar">
+              <div class="seg mix" style="width:100%"><span>Parlamento con soglia 3/5</span></div>
+            </div>
+          </div>
+          <div class="pshift-row after">
+            <div class="pshift-tag">Dopo</div>
+            <div class="pshift-bar">
+              <div class="seg parl" style="width:100%"><span>Lista parlamentare senza soglia</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pshift-detail">Oggi serve un accordo bipartisan (3/5). Dopo, la maggioranza semplice basta per compilare la lista da cui si sorteggia.</div>
+      </div>
+
+      <!-- 3. Vicepresidenza -->
+      <div class="pshift-item">
+        <div class="pshift-lever">Vicepresidenza CSM</div>
+        <div class="pshift-pair">
+          <div class="pshift-row before">
+            <div class="pshift-tag">Prima</div>
+            <div class="pshift-bar">
+              <div class="seg mix" style="width:100%"><span>Laico eletto con 3/5 &mdash; compromesso</span></div>
+            </div>
+          </div>
+          <div class="pshift-row after">
+            <div class="pshift-tag">Dopo</div>
+            <div class="pshift-bar">
+              <div class="seg parl" style="width:100%"><span>Sempre laico &mdash; da lista senza soglia</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pshift-detail">Il VP orienta i lavori del CSM. Oggi &egrave; espressione di un compromesso parlamentare. Dopo, proviene dalla lista della maggioranza.</div>
+      </div>
+
+      <!-- 4. Requisiti sorteggio -->
+      <div class="pshift-item">
+        <div class="pshift-lever">Requisiti per il sorteggio</div>
+        <div class="pshift-pair">
+          <div class="pshift-row before">
+            <div class="pshift-tag">Prima</div>
+            <div class="pshift-bar">
+              <div class="seg none" style="width:100%"><span>Non esiste &mdash; si vota, non si sorteggia</span></div>
+            </div>
+          </div>
+          <div class="pshift-row after">
+            <div class="pshift-tag">Dopo</div>
+            <div class="pshift-bar">
+              <div class="seg parl" style="width:100%"><span>Legge ordinaria &mdash; maggioranza semplice</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pshift-detail">Una leva nuova, interamente in mano al Parlamento. Chi fissa i requisiti del sorteggio decide chi pu&ograve; entrare nel CSM.</div>
+      </div>
+
+      <!-- 5. Disciplina -->
+      <div class="pshift-item">
+        <div class="pshift-lever">Disciplina dei magistrati</div>
+        <div class="pshift-pair">
+          <div class="pshift-row before">
+            <div class="pshift-tag">Prima</div>
+            <div class="pshift-bar">
+              <div class="seg mag" style="width:60%"><span>Sez. disciplinare CSM</span></div>
+              <div class="seg mix" style="width:40%"><span>Ricorso in Cassazione</span></div>
+            </div>
+          </div>
+          <div class="pshift-row after">
+            <div class="pshift-tag">Dopo</div>
+            <div class="pshift-bar">
+              <div class="seg parl" style="width:60%"><span>Alta Corte (40% laici)</span></div>
+              <div class="seg none" style="width:40%"><span>Nessun ricorso esterno</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pshift-detail">Oggi la sezione disciplinare &egrave; interna al CSM con ricorso in Cassazione. Dopo, l'Alta Corte ha il 40% di componenti laici e nessun controllo esterno.</div>
+      </div>
+
+    </div>
+
+    <div class="flow-note danger reveal">
+      La tendenza &egrave; uniforme: su cinque leve di potere, tutte e cinque si spostano verso il Parlamento e la maggioranza di turno. Il sorteggio non elimina l'influenza &mdash; la trasferisce.
     </div>
   </div>
 </section>

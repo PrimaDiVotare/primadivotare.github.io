@@ -161,7 +161,7 @@ nav {
   -webkit-overflow-scrolling: touch;
 }
 nav::-webkit-scrollbar { display: none; }
-.nav-inner { display:flex; padding:0 18px; gap:0; white-space:nowrap; }
+.nav-inner { display:flex; padding:0 18px; gap:0; flex-wrap:wrap; justify-content:center; }
 nav a {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 10px;

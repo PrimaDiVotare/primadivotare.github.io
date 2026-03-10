@@ -2,9 +2,46 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1e1e2e">
+<link rel="icon" type="image/svg+xml" href="referendum-magistratura-2026/assets/favicon.svg">
 <title>Prima di Votare — Capire cosa cambia, prima di decidere</title>
-<meta name="description" content="Guide visive e interattive per capire cosa c'è sulla scheda, prima di entrare in cabina. Dati verificati, entrambe le prospettive, nessuna posizione presa.">
+<meta name="description" content="Guide visive ai referendum e alle riforme italiane. Dati verificati, entrambe le prospettive, nessuna posizione presa. Il lettore conclude da solo.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://primadivotare.it/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://primadivotare.it/">
+<meta property="og:title" content="Prima di Votare — Capire cosa cambia, prima di decidere">
+<meta property="og:description" content="Guide visive ai referendum italiani. Dati verificati, entrambe le prospettive. Il lettore conclude da solo.">
+<meta property="og:image" content="https://primadivotare.it/referendum-magistratura-2026/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Prima di Votare">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prima di Votare — Capire cosa cambia, prima di decidere">
+<meta name="twitter:description" content="Guide visive ai referendum italiani. Dati verificati, entrambe le prospettive. Il lettore conclude da solo.">
+<meta name="twitter:image" content="https://primadivotare.it/referendum-magistratura-2026/assets/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Prima di Votare",
+  "url": "https://primadivotare.it/",
+  "description": "Guide visive e interattive per capire cosa c'è sulla scheda, prima di entrare in cabina.",
+  "inLanguage": "it",
+  "publisher": { "@type": "Organization", "name": "Prima di Votare" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="referendum-magistratura-2026/assets/style.css">
 <style>
@@ -13,7 +50,7 @@
   padding: 80px 0 60px;
   border-bottom: 1px solid var(--border);
   text-align: center;
-  background: radial-gradient(ellipse 80% 60% at 50% -10%, #200808 0%, transparent 70%);
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, #221530 0%, transparent 70%);
 }
 .site-name {
   font-family: 'Playfair Display', Georgia, serif;
@@ -35,7 +72,7 @@
 }
 .site-desc {
   font-size: 16px;
-  color: #b8b4ac;
+  color: #a6adc8;
   line-height: 1.7;
   max-width: 520px;
   margin: 0 auto;
@@ -161,7 +198,7 @@
   font-style: italic;
   font-size: 18px;
   line-height: 1.7;
-  color: #c0bcb4;
+  color: #bac2de;
   border-radius: 0 2px 2px 0;
 }
 .fellini cite {
@@ -204,16 +241,18 @@
 <body>
 
 <!-- HEADER -->
-<div class="site-header">
+<header class="site-header">
   <div class="wrap">
     <div class="site-tagline">Capire cosa cambia</div>
     <div class="site-name">Prima di <em>Votare</em></div>
     <p class="site-desc">Guide visive e interattive per capire cosa c'è sulla scheda. Dati verificati, entrambe le prospettive presentate con lo stesso rigore. Nessuna posizione presa. Il lettore conclude.</p>
   </div>
-</div>
+</header>
+
+<main>
 
 <!-- METODO -->
-<div class="metodo">
+<section class="metodo">
   <div class="wrap">
     <div class="metodo-grid reveal">
       <div class="metodo-item">
@@ -230,10 +269,10 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- TEMI -->
-<div class="temi">
+<section class="temi">
   <div class="wrap">
     <h2>I temi</h2>
     <p style="color:var(--muted);font-size:14px;">Ogni voto merita di essere capito. Qui trovi le guide disponibili.</p>
@@ -255,25 +294,27 @@
 
     </div>
   </div>
-</div>
+</section>
 
 <!-- FELLINI -->
-<div class="fellini">
+<section class="fellini">
   <div class="wrap">
     <blockquote class="reveal">
       "Non voglio dimostrare niente, voglio mostrare."
       <cite>&mdash; Federico Fellini</cite>
     </blockquote>
   </div>
-</div>
+</section>
+
+</main>
 
 <!-- FOOTER -->
-<div class="site-footer">
+<footer class="site-footer">
   <div class="wrap">
     <p>primadivotare.it &mdash; Un progetto indipendente. Nessuna affiliazione politica.</p>
   </div>
-</div>
+</footer>
 
-<script src="referendum-magistratura-2026/assets/reveal.js"></script>
+<script src="referendum-magistratura-2026/assets/reveal.js" defer></script>
 </body>
 </html>

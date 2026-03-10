@@ -2,41 +2,57 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Il confronto europeo — Referendum Giustizia 2026</title>
-<meta name="description" content="La separazione delle carriere esiste in Europa. Ma ogni sistema ha le sue garanzie. Cosa prende la riforma italiana e cosa lascia?">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1e1e2e">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<title>Magistratura: come in Europa, ma quale? | Referendum 2026</title>
+<meta name="description" content="Italia, Portogallo, Germania, Francia, Spagna: 5 sistemi a confronto su 6 dimensioni. La CGUE ha bocciato il modello tedesco. È quello verso cui andiamo?">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://primadivotare.github.io/referendum-magistratura-2026/06-europa.html">
+<link rel="canonical" href="https://primadivotare.it/referendum-magistratura-2026/06-europa.html">
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://primadivotare.github.io/referendum-magistratura-2026/06-europa.html">
-<meta property="og:title" content="Il confronto europeo — Referendum Giustizia 2026">
-<meta property="og:description" content="La separazione delle carriere esiste in Europa. Ma ogni sistema ha le sue garanzie. Cosa prende la riforma italiana e cosa lascia?">
-<meta property="og:image" content="https://primadivotare.github.io/referendum-magistratura-2026/assets/og-image.png">
+<meta property="og:url" content="https://primadivotare.it/referendum-magistratura-2026/06-europa.html">
+<meta property="og:title" content="&quot;Come in Europa&quot; — ma quale? Magistratura a confronto">
+<meta property="og:description" content="5 sistemi europei a confronto su 6 dimensioni. La CGUE ha bocciato il modello tedesco. È quello verso cui andiamo?">
+<meta property="og:image" content="https://primadivotare.it/referendum-magistratura-2026/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="it_IT">
 <meta property="og:site_name" content="Prima di Votare">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Il confronto europeo — Referendum Giustizia 2026">
-<meta name="twitter:description" content="'Come in Europa' — ma quale Europa? Cosa la riforma prende dai modelli europei e cosa lascia.">
-<meta name="twitter:image" content="https://primadivotare.github.io/referendum-magistratura-2026/assets/og-image.png">
+<meta name="twitter:title" content="&quot;Come in Europa&quot; — ma quale? Magistratura a confronto">
+<meta name="twitter:description" content="5 sistemi europei a confronto. La CGUE ha bocciato il modello tedesco. È quello verso cui andiamo?">
+<meta name="twitter:image" content="https://primadivotare.it/referendum-magistratura-2026/assets/og-image.png">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
-{
+[{
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Il confronto europeo — Referendum Giustizia 2026",
-  "description": "La separazione delle carriere esiste in Europa. Ma ogni sistema ha le sue garanzie. Cosa prende la riforma italiana e cosa lascia?",
-  "url": "https://primadivotare.github.io/referendum-magistratura-2026/06-europa.html",
+  "headline": "Come in Europa — ma quale? Magistratura italiana a confronto",
+  "description": "Italia, Portogallo, Germania, Francia, Spagna: 5 sistemi a confronto su 6 dimensioni. La CGUE ha bocciato il modello tedesco.",
+  "url": "https://primadivotare.it/referendum-magistratura-2026/06-europa.html",
   "inLanguage": "it",
-  "isPartOf": { "@type": "WebSite", "name": "Prima di Votare", "url": "https://primadivotare.github.io/referendum-magistratura-2026/" },
+  "datePublished": "2026-02-15",
+  "dateModified": "2026-03-10",
+  "isPartOf": { "@type": "WebSite", "name": "Prima di Votare", "url": "https://primadivotare.it/referendum-magistratura-2026/" },
   "publisher": { "@type": "Organization", "name": "Prima di Votare" }
-}
+},
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://primadivotare.it/referendum-magistratura-2026/" },
+    { "@type": "ListItem", "position": 2, "name": "Confronto europeo", "item": "https://primadivotare.it/referendum-magistratura-2026/06-europa.html" }
+  ]
+}]
 </script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
@@ -58,6 +74,8 @@
 </header>
 
 <!-- ═══ NAV ═══ -->
+
+<main>
 
 <!-- ═══ § 01 — PUNTO FOCALE ═══ -->
 <section id="punto">
@@ -323,7 +341,7 @@
     </div>
 
     <div style="position:relative;width:100%;max-width:800px;height:700px;margin:24px auto;">
-      <canvas id="radarEuropa"></canvas>
+      <canvas id="radarEuropa" role="img" aria-label="Radar chart: confronto Italia attuale, Italia dopo riforma, Portogallo, Germania, Francia e Spagna su 5 dimensioni di indipendenza della magistratura"></canvas>
     </div>
 
     <p class="chart-caption">Confronto qualitativo basato sulle fonti citate. L'Italia dopo la riforma si avvicina al modello tedesco (PM meno indipendente) allontanandosi da quello portoghese (garanzie costituzionali).</p>
@@ -497,7 +515,7 @@
 
     <div class="ba-split">
       <div class="ba-col b" data-label="Portogallo (CRP)">
-        <h4>Blindato in Costituzione</h4>
+        <h3>Blindato in Costituzione</h3>
         <p><strong>Art. 219 CRP:</strong> il PM &laquo;goza de estatuto proprio e de autonomia, nos termos da lei&raquo;.</p>
         <p><strong>Funzioni del PM</strong> elencate in Costituzione: rappresentanza dello Stato, azione penale, difesa della legalit&agrave; democratica.</p>
         <p><strong>Garanzie personali</strong> (art. 219.4): inamovibilit&agrave;, divieto di trasferimento arbitrario &mdash; blindate.</p>
@@ -505,7 +523,7 @@
         <p><strong>Disciplina dei PM:</strong> affidata al CSMP (organo interno).</p>
       </div>
       <div class="ba-col a" data-label="Italia (riforma)">
-        <h4>Rinviato a legge ordinaria</h4>
+        <h3>Rinviato a legge ordinaria</h3>
         <p><strong>Autonomia del PM:</strong> non definita. Nessun equivalente dell'art. 219 CRP.</p>
         <p><strong>Funzioni del PM:</strong> non menzionate nella riforma.</p>
         <p><strong>Garanzie personali:</strong> rinviate a legge ordinaria.</p>
@@ -532,27 +550,27 @@
     <div class="timeline">
       <div class="tl-item r">
         <div class="tl-lbl">2016</div>
-        <h4>Unificazione Ministro-Procuratore</h4>
+        <h3>Unificazione Ministro-Procuratore</h3>
         <p>Zbigniew Ziobro diventa sia Ministro della Giustizia che Procuratore Generale. La separazione tra potere politico e azione penale viene eliminata.</p>
       </div>
       <div class="tl-item r">
         <div class="tl-lbl">2017</div>
-        <h4>Riforma del KRS + Camera Disciplinare</h4>
+        <h3>Riforma del KRS + Camera Disciplinare</h3>
         <p>I 15 giudici-membri del Consiglio della Magistratura (KRS) vengono eletti dal Sejm anzich&eacute; dalla magistratura. Viene creata la Izba Dyscyplinarna (Camera Disciplinare) della Corte Suprema, composta da giudici nominati tramite il KRS politicizzato.</p>
       </div>
       <div class="tl-item r">
         <div class="tl-lbl">2019</div>
-        <h4>La "muzzle law"</h4>
+        <h3>La "muzzle law"</h3>
         <p>Approvata la legge bavaglio: consente alla Camera di punire i giudici per il contenuto delle loro decisioni e vieta i rinvii pregiudiziali alla CGUE. Utilizzata per sospendere giudici critici, come Igor Tuleya.</p>
       </div>
       <div class="tl-item y">
         <div class="tl-lbl">2019-2023</div>
-        <h4>Quattro condanne CGUE</h4>
+        <h3>Quattro condanne CGUE</h3>
         <p>C-619/18, C-585/18 e altri, C-791/19, C-204/21. Sanzione: 1 milione di euro al giorno. Totale accumulato: circa 534 milioni di euro detratti dai fondi UE.</p>
       </div>
       <div class="tl-item n">
         <div class="tl-lbl">2023-2025</div>
-        <h4>Il ripristino bloccato</h4>
+        <h3>Il ripristino bloccato</h3>
         <p>Il governo Tusk (dicembre 2023) avvia il ripristino. Ma la vittoria di Karol Nawrocki (sostenuto dal PiS) alle presidenziali del giugno 2025 &mdash; con il potere di veto &mdash; blocca le riforme. L'indipendenza giudiziaria polacca resta compromessa.</p>
       </div>
     </div>
@@ -694,7 +712,9 @@
   </div>
 </section>
 
-<script src="assets/nav.js"></script>
-<script src="assets/reveal.js"></script>
+</main>
+
+<script src="assets/nav.js" defer></script>
+<script src="assets/reveal.js" defer></script>
 </body>
 </html>

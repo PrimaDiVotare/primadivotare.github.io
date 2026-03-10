@@ -524,6 +524,23 @@ nav a:hover, nav a.active { color: var(--text); border-bottom-color: var(--red);
 .sc-card h4 { font-size:16px; margin-bottom:8px; padding-right:40px; }
 .sc-card p  { font-size:13px; }
 
+/* Scenario meta box (prerequisiti / strumento normativo) */
+.sc-meta { margin-top:14px; padding:12px; background:var(--bg4); border:1px solid var(--border); border-radius:2px; }
+.sc-meta-label { font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:var(--gld-l); margin-bottom:6px; }
+.sc-meta-label + .sc-meta-label { margin-top:10px; }
+.sc-meta p { font-size:12px; color:var(--muted); margin:0; }
+.sc-card p + p { margin-top:10px; }
+
+/* Step rows (flowchart detail) */
+.step-list { margin-top:20px; display:flex; flex-direction:column; gap:2px; }
+.step-row { display:grid; grid-template-columns:auto 1fr; gap:12px; padding:14px 16px; background:var(--bg3); border:1px solid var(--border); border-radius:2px; align-items:start; }
+.step-row-num { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--red-l); font-weight:600; white-space:nowrap; }
+.step-row p { font-size:13px; margin:0; }
+
+/* Tabella prima/dopo colonne colorate */
+.resp-table td:nth-child(2) { color:var(--grn-l); }
+.resp-table td:nth-child(3) { color:var(--red-l); }
+
 /* ── EU TABLE ── */
 .eu-list { margin:24px 0; display:flex; flex-direction:column; gap:2px; }
 .eu-row {

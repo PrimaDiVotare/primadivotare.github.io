@@ -11,10 +11,11 @@
     { href: '07-domande.html',     label: 'Domande' }
   ];
 
-  var page = location.pathname.split('/').pop() || 'index.html';
-
+  var path = decodeURIComponent(location.pathname);
+  var page = path.split('/').pop() || 'index.html';
   var inner = links.map(function(l) {
-    var cls = (l.href === page) ? ' class="active"' : '';
+    var match = l.href === page || path.endsWith('/' + l.href) || path.indexOf(l.href.replace('.html','')) !== -1;
+    var cls = (l.href !== '../' && match) ? ' class="active"' : '';
     var sty = l.style ? ' style="' + l.style + '"' : '';
     return '<a href="' + l.href + '"' + cls + sty + '>' + l.label + '</a>';
   }).join('');

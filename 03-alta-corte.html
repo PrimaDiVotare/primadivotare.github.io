@@ -191,6 +191,129 @@
   </div>
 </section>
 
+<!-- ═══ STEPPER PROCEDURA ═══ -->
+<section id="stepper-procedura">
+  <div class="wrap">
+    <div class="sec-label">Il percorso</div>
+    <h2>Cosa succede se un PM viene segnalato</h2>
+    <p>Dall'esposto alla sentenza definitiva: ogni fase del procedimento disciplinare dopo la riforma. Clicca su ogni fase per i dettagli.</p>
+
+    <style>
+    .stepper { margin: 24px 0; position: relative; padding-left: 36px; }
+    .stepper::before {
+      content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
+      width: 2px; background: var(--border);
+    }
+    .step {
+      position: relative; margin-bottom: 4px; cursor: pointer;
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 2px; transition: border-color .3s;
+    }
+    .step:hover { border-color: var(--muted); }
+    .step.active { border-color: var(--red); }
+    .step-dot {
+      position: absolute; left: -30px; top: 18px;
+      width: 12px; height: 12px; border-radius: 50%;
+      border: 2px solid; background: var(--bg);
+      transition: background .3s;
+    }
+    .step.active .step-dot { background: currentColor; }
+    .step.blue .step-dot { border-color: var(--blu); color: var(--blu); }
+    .step.gold .step-dot { border-color: var(--gld); color: var(--gld); }
+    .step.red .step-dot { border-color: var(--red); color: var(--red); }
+    .step.darkred .step-dot { border-color: #a02018; color: #a02018; }
+    .step-header {
+      padding: 14px 16px; display: flex; align-items: center; gap: 10px;
+    }
+    .step-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--muted);
+      flex-shrink: 0;
+    }
+    .step-title { font-size: 15px; font-weight: 600; color: var(--text); }
+    .step-body {
+      max-height: 0; overflow: hidden; transition: max-height .4s ease;
+    }
+    .step-body-inner {
+      padding: 0 16px 16px; font-size: 14px; color: #b8b4ac; line-height: 1.7;
+    }
+    .step.active .step-body { max-height: 300px; }
+    </style>
+
+    <div class="stepper" id="stepper">
+
+      <div class="step blue">
+        <div class="step-dot"></div>
+        <div class="step-header">
+          <span class="step-number">Fase 01</span>
+          <span class="step-title">Esposto o segnalazione</span>
+        </div>
+        <div class="step-body">
+          <div class="step-body-inner">Chi puo presentarlo: il Ministro della Giustizia (art. 107 Cost.), il Procuratore Generale presso la Cassazione, i cittadini, altri magistrati. Il Ministro ha il potere di promuovere l'azione disciplinare &#8212; un potere che acquista peso diverso con la nuova architettura.</div>
+        </div>
+      </div>
+
+      <div class="step gold">
+        <div class="step-dot"></div>
+        <div class="step-header">
+          <span class="step-number">Fase 02</span>
+          <span class="step-title">Apertura del procedimento</span>
+        </div>
+        <div class="step-body">
+          <div class="step-body-inner">Il procedimento viene aperto dal Procuratore Generale. Effetti immediati: il magistrato puo essere trasferito cautelarmente, sospeso dalle funzioni. La notizia stessa dell'apertura ha un effetto sulla carriera e sulla reputazione.</div>
+        </div>
+      </div>
+
+      <div class="step red">
+        <div class="step-dot"></div>
+        <div class="step-header">
+          <span class="step-number">Fase 03</span>
+          <span class="step-title">Udienza davanti all'Alta Corte</span>
+        </div>
+        <div class="step-body">
+          <div class="step-body-inner">15 giudici di cui 6 laici (40%). Il presidente e sempre un laico. I collegi giudicanti sono formati secondo regole che fissera una legge ordinaria futura &#8212; la composizione pratica del collegio puo influenzare l'esito.</div>
+        </div>
+      </div>
+
+      <div class="step red">
+        <div class="step-dot"></div>
+        <div class="step-header">
+          <span class="step-number">Fase 04</span>
+          <span class="step-title">Appello: stesso organo, composizione diversa</span>
+        </div>
+        <div class="step-body">
+          <div class="step-body-inner">L'impugnazione e ammessa "soltanto" davanti all'Alta Corte in diversa composizione. Nessun organo esterno verifica. E lo stesso ambiente istituzionale, con gli stessi laici provenienti dalla stessa lista parlamentare.</div>
+        </div>
+      </div>
+
+      <div class="step darkred">
+        <div class="step-dot"></div>
+        <div class="step-header">
+          <span class="step-number">Fase 05</span>
+          <span class="step-title">Sentenza definitiva</span>
+        </div>
+        <div class="step-body">
+          <div class="step-body-inner">Nessun ricorso in Cassazione (secondo la tesi prevalente in dottrina). La sentenza e definitiva. Per qualsiasi altro cittadino o professionista italiano, a questo punto ci sarebbe ancora la Cassazione &#8212; Sezioni Unite.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+    (function() {
+      document.querySelectorAll('#stepper .step').forEach(function(step) {
+        step.addEventListener('click', function() {
+          var wasActive = step.classList.contains('active');
+          document.querySelectorAll('#stepper .step').forEach(function(s) { s.classList.remove('active'); });
+          if (!wasActive) step.classList.add('active');
+        });
+      });
+    })();
+    </script>
+  </div>
+</section>
+
 <!-- ═══ HEATMAP ═══ -->
 <section>
   <div class="wrap wide">

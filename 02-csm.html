@@ -368,6 +368,101 @@
   </div>
 </section>
 
+<!-- ═══ SIMULAZIONE SORTEGGIO ═══ -->
+<section id="simulazione">
+  <style>
+.sim-controls { margin: 24px 0; }
+.sim-controls label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--muted);
+  display: block; margin-bottom: 10px;
+}
+.sim-controls input[type="range"] {
+  width: 100%; height: 6px; -webkit-appearance: none;
+  background: var(--bg4); border-radius: 3px; outline: none;
+}
+.sim-controls input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 20px; height: 20px;
+  border-radius: 50%; background: var(--red-l); cursor: pointer;
+  border: 2px solid var(--bg);
+}
+.sim-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px; font-weight: 900; color: var(--red-l);
+  margin-top: 8px;
+}
+.sim-output {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 20px 0;
+}
+.sim-stat {
+  background: var(--bg3); border: 1px solid var(--border);
+  padding: 18px 14px; text-align: center;
+}
+.sim-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 900; color: var(--text);
+  line-height: 1; transition: all .3s;
+}
+.sim-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--muted); margin-top: 6px;
+}
+.sim-bar-wrap {
+  height: 24px; background: var(--bg4); border-radius: 2px;
+  overflow: hidden; margin: 16px 0;
+}
+.sim-bar {
+  height: 100%; background: var(--grn);
+  transition: width .4s ease, background .4s ease;
+  border-radius: 2px;
+}
+.sim-note {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; color: var(--muted); line-height: 1.6;
+  min-height: 40px;
+}
+  </style>
+  <div class="wrap">
+    <div class="sec-label">&sect; Simulazione</div>
+    <h2>Chi puo' essere sorteggiato?</h2>
+    <p>I requisiti per partecipare al sorteggio li fissa una legge ordinaria futura. Questo simulatore mostra come il parametro &laquo;anzianita' minima&raquo; cambia la platea dei magistrati sorteggiabili.</p>
+
+    <!-- Slider -->
+    <div class="sim-controls">
+      <label>Anzianita' minima richiesta</label>
+      <input type="range" min="0" max="30" value="0" step="1" id="slider-anzianita">
+      <div class="sim-value" id="slider-value">0 anni</div>
+    </div>
+
+    <!-- Output visivo -->
+    <div class="sim-output">
+      <div class="sim-stat">
+        <div class="sim-num" id="sim-platea">8.800</div>
+        <div class="sim-label">Magistrati sorteggiabili</div>
+      </div>
+      <div class="sim-stat">
+        <div class="sim-num" id="sim-percent">100%</div>
+        <div class="sim-label">Della platea totale</div>
+      </div>
+    </div>
+
+    <!-- Barra visiva che si restringe -->
+    <div class="sim-bar-wrap">
+      <div class="sim-bar" id="sim-bar" style="width:100%"></div>
+    </div>
+
+    <!-- Nota -->
+    <div class="sim-note" id="sim-note">Platea ampia: la maggior parte dei magistrati e' sorteggiabile.</div>
+
+    <div class="alert warning" style="margin-top:20px;">
+      <div class="alert-title">Il punto</div>
+      <p>Chi scrive i requisiti del sorteggio &mdash; anzianita', sede, funzione &mdash; decide chi puo' essere estratto. E' una legge ordinaria: basta una maggioranza semplice per cambiarla.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ L'ALTRA PROSPETTIVA ═══ -->
 <section id="altra-prospettiva">
   <div class="wrap">
@@ -619,6 +714,66 @@ Chart.defaults.font.size = 11;
           }
         }
       }
+    }
+  });
+})();
+
+// ── SIMULAZIONE SORTEGGIO ──
+(function() {
+  var dataPoints = [
+    [0, 8800], [5, 7900], [10, 6400], [15, 4800],
+    [20, 3200], [25, 1600], [30, 400]
+  ];
+  var total = 8800;
+
+  function interpolate(anni) {
+    for (var i = 0; i < dataPoints.length - 1; i++) {
+      if (anni >= dataPoints[i][0] && anni <= dataPoints[i + 1][0]) {
+        var x0 = dataPoints[i][0], y0 = dataPoints[i][1];
+        var x1 = dataPoints[i + 1][0], y1 = dataPoints[i + 1][1];
+        var t = (anni - x0) / (x1 - x0);
+        return Math.round(y0 + t * (y1 - y0));
+      }
+    }
+    return dataPoints[dataPoints.length - 1][1];
+  }
+
+  function formatNum(n) {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
+
+  function getNote(anni) {
+    if (anni <= 5) return "Platea ampia: la maggior parte dei magistrati e' sorteggiabile.";
+    if (anni <= 15) return "La platea si restringe significativamente.";
+    if (anni <= 25) return "Solo i magistrati piu' anziani. Il sorteggio diventa prevedibile.";
+    return "Poche centinaia di magistrati. Il 'caso' ha poco spazio.";
+  }
+
+  var slider = document.getElementById('slider-anzianita');
+  var valEl = document.getElementById('slider-value');
+  var plateaEl = document.getElementById('sim-platea');
+  var percentEl = document.getElementById('sim-percent');
+  var barEl = document.getElementById('sim-bar');
+  var noteEl = document.getElementById('sim-note');
+
+  slider.addEventListener('input', function() {
+    var anni = parseInt(this.value, 10);
+    var platea = interpolate(anni);
+    var pct = (platea / total) * 100;
+
+    valEl.textContent = anni + (anni === 1 ? ' anno' : ' anni');
+    plateaEl.textContent = formatNum(platea);
+    percentEl.textContent = Math.round(pct) + '%';
+    barEl.style.width = pct + '%';
+    noteEl.textContent = getNote(anni);
+
+    // Colore barra
+    if (pct > 60) {
+      barEl.style.background = 'var(--grn)';
+    } else if (pct >= 30) {
+      barEl.style.background = 'var(--gld)';
+    } else {
+      barEl.style.background = 'var(--red)';
     }
   });
 })();

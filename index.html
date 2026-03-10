@@ -40,13 +40,14 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
-.wrap { max-width: 680px; margin: 0 auto; padding: 0 18px; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 18px; }
 
 /* Header */
 .site-header {
   padding: 80px 0 60px;
   border-bottom: 1px solid var(--border);
   text-align: center;
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, #200808 0%, transparent 70%);
 }
 .site-name {
   font-family: 'Playfair Display', Georgia, serif;
@@ -231,6 +232,15 @@ body {
   transform: translateY(0);
 }
 
+@media (min-width: 600px) {
+  .site-header { min-height: 280px; display:flex; align-items:center; }
+}
+@media (min-width: 900px) {
+  .site-header { padding: 100px 0 72px; }
+  .site-desc { max-width: 600px; }
+  .temi h2, .temi > .wrap > p, .fellini blockquote { max-width: 680px; }
+  .metodo-item { padding: 28px 20px; }
+}
 @media (max-width: 500px) {
   .metodo-grid { grid-template-columns: 1fr; }
 }
@@ -242,7 +252,7 @@ body {
 <div class="site-header">
   <div class="wrap">
     <div class="site-tagline">Capire cosa cambia</div>
-    <div class="site-name">Prima di<br><em>Votare</em></div>
+    <div class="site-name">Prima di <em>Votare</em></div>
     <p class="site-desc">Guide visive e interattive per capire cosa c'è sulla scheda. Dati verificati, entrambe le prospettive presentate con lo stesso rigore. Nessuna posizione presa. Il lettore conclude.</p>
   </div>
 </div>

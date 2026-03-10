@@ -241,20 +241,7 @@
 <!-- ═══ SCROLL ANIMATIONS ═══ -->
 <script>
 (function() {
-  // 1. Fade-in on scroll for .reveal elements
-  var revealObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        revealObserver.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(function(el) {
-    revealObserver.observe(el);
-  });
-
-  // 2. Power bar width animation
+  // 1. Power bar width animation
   var barObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
       if (e.isIntersecting) {
@@ -291,5 +278,6 @@
 </script>
 
 <script src="assets/nav.js"></script>
+<script src="assets/reveal.js"></script>
 </body>
 </html>

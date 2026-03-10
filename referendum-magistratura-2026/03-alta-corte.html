@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="assets/chart-defaults.js"></script>
 </head>
 <body>
 
@@ -185,49 +186,6 @@
     <div class="sec-label">Il percorso</div>
     <h2>Cosa succede se un PM viene segnalato</h2>
     <p>Dall'esposto alla sentenza definitiva: ogni fase del procedimento disciplinare dopo la riforma. Clicca su ogni fase per i dettagli.</p>
-
-    <style>
-    .stepper { margin: 24px 0; position: relative; padding-left: 36px; }
-    .stepper::before {
-      content: ''; position: absolute; left: 12px; top: 0; bottom: 0;
-      width: 2px; background: var(--border);
-    }
-    .step {
-      position: relative; margin-bottom: 4px; cursor: pointer;
-      background: var(--bg3); border: 1px solid var(--border);
-      border-radius: 2px; transition: border-color .3s;
-    }
-    .step:hover { border-color: var(--muted); }
-    .step.active { border-color: var(--red); }
-    .step-dot {
-      position: absolute; left: -30px; top: 18px;
-      width: 12px; height: 12px; border-radius: 50%;
-      border: 2px solid; background: var(--bg);
-      transition: background .3s;
-    }
-    .step.active .step-dot { background: currentColor; }
-    .step.blue .step-dot { border-color: var(--blu); color: var(--blu); }
-    .step.gold .step-dot { border-color: var(--gld); color: var(--gld); }
-    .step.red .step-dot { border-color: var(--red); color: var(--red); }
-    .step.darkred .step-dot { border-color: #a02018; color: #a02018; }
-    .step-header {
-      padding: 14px 16px; display: flex; align-items: center; gap: 10px;
-    }
-    .step-number {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 9px; letter-spacing: .14em;
-      text-transform: uppercase; color: var(--muted);
-      flex-shrink: 0;
-    }
-    .step-title { font-size: 15px; font-weight: 600; color: var(--text); }
-    .step-body {
-      max-height: 0; overflow: hidden; transition: max-height .4s ease;
-    }
-    .step-body-inner {
-      padding: 0 16px 16px; font-size: 14px; color: #b8b4ac; line-height: 1.7;
-    }
-    .step.active .step-body { max-height: 300px; }
-    </style>
 
     <div class="stepper" id="stepper">
 
@@ -568,10 +526,6 @@
 
     <script>
     (function() {
-      Chart.defaults.color = '#636070';
-      Chart.defaults.font.family = "'IBM Plex Mono', monospace";
-      Chart.defaults.font.size = 11;
-
       var ctx = document.getElementById('chartCassazione').getContext('2d');
 
       var categorie = [
@@ -698,19 +652,7 @@
   </div>
 </section>
 
-<script>
-(function() {
-  var revealObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        revealObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
-})();
-</script>
 <script src="assets/nav.js"></script>
+<script src="assets/reveal.js"></script>
 </body>
 </html>

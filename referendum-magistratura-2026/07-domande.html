@@ -262,23 +262,7 @@ document.querySelectorAll('.acc-trigger').forEach(function(btn) {
 });
 </script>
 
-<!-- ═══ SCROLL ANIMATIONS ═══ -->
-<script>
-(function() {
-  var revealObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        revealObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(function(el) {
-    revealObs.observe(el);
-  });
-})();
-</script>
-
 <script src="assets/nav.js"></script>
+<script src="assets/reveal.js"></script>
 </body>
 </html>

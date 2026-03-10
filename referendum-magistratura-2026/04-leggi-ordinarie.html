@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="assets/chart-defaults.js"></script>
 </head>
 <body>
 
@@ -278,61 +279,6 @@
   </div>
 </section>
 
-<style>
-.sim-counter {
-  text-align: center; margin: 24px 0 20px;
-}
-.sim-counter #sim-count {
-  font-family: 'Playfair Display', serif;
-  font-size: 56px; font-weight: 900; color: var(--grn-l);
-  line-height: 1; transition: color .3s;
-}
-.sim-count-total {
-  font-family: 'Playfair Display', serif;
-  font-size: 28px; font-weight: 700; color: var(--muted);
-}
-.sim-count-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; letter-spacing: .14em;
-  text-transform: uppercase; color: var(--muted); margin-top: 4px;
-}
-.sim-checks { display: flex; flex-direction: column; gap: 2px; margin: 20px 0; }
-.sim-check-item {
-  background: var(--bg3); border: 1px solid var(--border);
-  border-radius: 2px; overflow: hidden; transition: border-color .3s;
-}
-.sim-check-item.checked { border-color: var(--red); }
-.sim-check-header {
-  display: flex; align-items: center; gap: 12px;
-  padding: 14px 16px; cursor: pointer;
-  font-size: 15px; font-weight: 600; color: var(--text);
-}
-.sim-checkbox {
-  width: 18px; height: 18px; border: 2px solid var(--muted);
-  border-radius: 2px; flex-shrink: 0; display: flex;
-  align-items: center; justify-content: center;
-  transition: all .2s; font-size: 12px;
-}
-.sim-check-item.checked .sim-checkbox {
-  border-color: var(--red); background: var(--red); color: var(--bg);
-}
-.sim-check-risk {
-  max-height: 0; overflow: hidden; transition: max-height .4s ease;
-}
-.sim-check-item.checked .sim-check-risk { max-height: 200px; }
-.sim-check-risk-inner {
-  padding: 0 16px 14px 46px;
-  font-size: 13px; color: #c09898; line-height: 1.6;
-}
-.sim-scenario {
-  background: var(--bg4); border: 1px solid var(--border);
-  padding: 16px 18px; border-radius: 2px; margin-top: 16px;
-  font-size: 14px; color: var(--muted); line-height: 1.7;
-  min-height: 60px; transition: all .3s;
-}
-.sim-scenario.hot { border-color: var(--red); color: #c09898; }
-</style>
-
 <script>
 (function() {
   const items = document.querySelectorAll('.sim-check-item');
@@ -510,11 +456,6 @@ sections.forEach(s => obs.observe(s));
 </script>
 
 <script>
-/* Chart.js defaults — design system */
-Chart.defaults.color = '#636070';
-Chart.defaults.font.family = "'IBM Plex Mono', monospace";
-Chart.defaults.font.size = 11;
-
 /* Horizontal bar chart — Quanto ci vuole a cambiare una norma */
 (function() {
   const ctx = document.getElementById('chart-tempi-norma');
@@ -597,20 +538,7 @@ Chart.defaults.font.size = 11;
 })();
 </script>
 
-<script>
-(function() {
-  var revealObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        revealObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
-})();
-</script>
-
 <script src="assets/nav.js"></script>
+<script src="assets/reveal.js"></script>
 </body>
 </html>

@@ -3,304 +3,322 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Referendum Giustizia 2026 — Prima e Dopo la Riforma</title>
-<meta name="description" content="Guida visiva alla riforma costituzionale della magistratura. Cosa cambia, dove si sposta il potere. Referendum 22-23 marzo 2026.">
+<title>Prima di Votare — Capire cosa cambia, prima di decidere</title>
+<meta name="description" content="Guide visive e interattive per capire cosa c'è sulla scheda, prima di entrare in cabina. Dati verificati, entrambe le prospettive, nessuna posizione presa.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
 <style>
-/* Power bar segment animation (homepage-specific: bars animate on scroll) */
-.pbar-seg {
-  transition: width 0.8s ease;
+:root {
+  --bg:    #0b0b0d;
+  --bg2:   #111116;
+  --bg3:   #17171e;
+  --bg4:   #1e1e27;
+  --border:#252530;
+  --text:  #e6e2db;
+  --muted: #636070;
+  --dim:   #3a3848;
+  --red:   #d13020;
+  --red-l: #e85444;
+  --red-bg:#1a0a08;
+  --grn:   #27764a;
+  --grn-l: #38b368;
+  --grn-bg:#0a1810;
+  --blu:   #1e5ea0;
+  --blu-l: #4490e0;
+  --blu-bg:#0a1222;
+  --gld:   #c89c30;
+  --gld-l: #e0b848;
+  --gld-bg:#181408;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 680px; margin: 0 auto; padding: 0 18px; }
+
+/* Header */
+.site-header {
+  padding: 80px 0 60px;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+.site-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(36px, 10vw, 72px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.site-name em { font-style: italic; color: var(--gld-l); }
+.site-tagline {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+.site-desc {
+  font-size: 16px;
+  color: #b8b4ac;
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Metodo */
+.metodo {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border);
+}
+.metodo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 20px;
+}
+.metodo-item {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 20px 16px;
+  text-align: center;
+}
+.metodo-icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.metodo-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Temi */
+.temi {
+  padding: 52px 0;
+}
+.temi h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(22px, 6vw, 36px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.temi-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 24px;
+}
+.tema-card {
+  display: block;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-left: 4px solid;
+  padding: 24px 20px;
+  text-decoration: none;
+  transition: border-color .2s, background .2s, transform .2s;
+  border-radius: 2px;
+}
+.tema-card:hover {
+  background: var(--bg4);
+  transform: translateX(4px);
+}
+.tema-card-status {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tema-card-status::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+.tema-card h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+.tema-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+.tema-card .tema-date {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--gld-l);
+  margin-top: 10px;
+}
+.tema-card.active { border-left-color: var(--red); }
+.tema-card.active .tema-card-status { color: var(--red-l); }
+.tema-card.coming { border-left-color: var(--dim); }
+.tema-card.coming .tema-card-status { color: var(--dim); }
+.tema-card.coming h3 { color: var(--muted); }
+.tema-card.coming:hover { transform: none; cursor: default; }
+
+/* Fellini */
+.fellini {
+  padding: 40px 0 52px;
+  border-top: 1px solid var(--border);
+}
+.fellini blockquote {
+  border-left: 3px solid var(--gld);
+  padding: 16px 20px;
+  margin: 0;
+  background: var(--bg3);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #c0bcb4;
+  border-radius: 0 2px 2px 0;
+}
+.fellini cite {
+  display: block;
+  margin-top: 10px;
+  font-style: normal;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: .1em;
+}
+
+/* Footer */
+.site-footer {
+  padding: 24px 0 40px;
+  border-top: 1px solid var(--border);
+}
+.site-footer p {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--dim);
+  line-height: 1.8;
+  text-align: center;
+}
+
+/* Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 500px) {
+  .metodo-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
-<!-- ═══ HEADER ═══ -->
-<header>
+<!-- HEADER -->
+<div class="site-header">
   <div class="wrap">
-    <div class="kicker">Referendum Costituzionale</div>
-    <h1>Prima e<br>Dopo la<br><em>Riforma</em></h1>
-    <p style="margin-top:14px;font-size:15px;color:var(--muted);max-width:520px;">Sette articoli della Costituzione riscritti. Cosa cambia nell'architettura dei poteri, dove si sposta il controllo sulla magistratura. I fatti, articolo per articolo.</p>
-    <div class="date-pill">
-      <div class="d">22-23 MAR 2026</div>
-      <div class="l">Referendum confermativo<br>Nessun quorum</div>
-    </div>
+    <div class="site-tagline">Capire cosa cambia</div>
+    <div class="site-name">Prima di<br><em>Votare</em></div>
+    <p class="site-desc">Guide visive e interattive per capire cosa c'è sulla scheda. Dati verificati, entrambe le prospettive presentate con lo stesso rigore. Nessuna posizione presa. Il lettore conclude.</p>
+  </div>
+</div>
 
-    <!-- COUNTDOWN -->
-    <div class="countdown-row" id="countdown">
-      <div class="cd-unit">
-        <div class="cd-num" id="cd-days">--</div>
-        <div class="cd-label">Giorni</div>
+<!-- METODO -->
+<div class="metodo">
+  <div class="wrap">
+    <div class="metodo-grid reveal">
+      <div class="metodo-item">
+        <div class="metodo-icon">&#9878;</div>
+        <div class="metodo-label">Ogni dato<br>ha una fonte</div>
       </div>
-      <div class="cd-unit">
-        <div class="cd-num" id="cd-hours">--</div>
-        <div class="cd-label">Ore</div>
+      <div class="metodo-item">
+        <div class="metodo-icon">&#8644;</div>
+        <div class="metodo-label">Entrambe le<br>prospettive</div>
       </div>
-      <div class="cd-unit">
-        <div class="cd-num" id="cd-mins">--</div>
-        <div class="cd-label">Minuti</div>
-      </div>
-      <div class="cd-unit">
-        <div class="cd-num" id="cd-secs">--</div>
-        <div class="cd-label">Secondi</div>
+      <div class="metodo-item">
+        <div class="metodo-icon">&#10067;</div>
+        <div class="metodo-label">Il lettore<br>conclude</div>
       </div>
     </div>
   </div>
-</header>
+</div>
 
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="active">Home</a>
-    <a href="01-carriere.html">Carriere</a>
-    <a href="02-csm.html">CSM</a>
-    <a href="03-alta-corte.html">Alta Corte</a>
-    <a href="04-leggi-ordinarie.html">Leggi ord.</a>
-    <a href="05-scenari.html">Scenari</a>
-    <a href="06-europa.html">Europa</a>
-    <a href="07-domande.html">Domande</a>
-  </div>
-</nav>
-
-<!-- ═══ § 01 — TRE NUMERI ═══ -->
-<section id="numeri">
+<!-- TEMI -->
+<div class="temi">
   <div class="wrap">
-    <div class="sec-label">La riforma in 3 numeri</div>
-    <h2>Tre cambiamenti strutturali dietro un nome rassicurante</h2>
-    <p>La legge costituzionale n. 253 del 30 ottobre 2025 modifica <strong>sette articoli della Costituzione</strong>. Non solo la "separazione delle carriere".</p>
+    <h2>I temi</h2>
+    <p style="color:var(--muted);font-size:14px;">Ogni voto merita di essere capito. Qui trovi le guide disponibili.</p>
 
-    <div class="stat-row reveal">
-      <div class="stat-box">
-        <div class="stat-num" style="color:var(--red-l)">2</div>
-        <div class="stat-desc">CSM separati<br>al posto di uno</div>
+    <div class="temi-list">
+
+      <a href="referendum-magistratura-2026/" class="tema-card active reveal">
+        <div class="tema-card-status">Disponibile</div>
+        <h3>Riforma della magistratura</h3>
+        <p>Separazione delle carriere, due CSM, sorteggio, Alta Corte senza Cassazione, cinque leggi ordinarie da scrivere. Sette articoli della Costituzione che cambiano. Cosa c'era prima, cosa ci sarà dopo.</p>
+        <div class="tema-date">Referendum 22-23 marzo 2026 &mdash; 7 pagine, grafici interattivi</div>
+      </a>
+
+      <div class="tema-card coming reveal">
+        <div class="tema-card-status">In arrivo</div>
+        <h3>Prossimo tema</h3>
+        <p>Nuove guide verranno pubblicate quando ci saranno votazioni che meritano di essere capite.</p>
       </div>
-      <div class="stat-box">
-        <div class="stat-num" style="color:var(--gld-l)">0</div>
-        <div class="stat-desc">Ricorsi in Cassazione<br>sulla disciplina</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num" style="color:var(--blu-l)">5+</div>
-        <div class="stat-desc">Leggi ordinarie<br>ancora da scrivere</div>
-      </div>
-    </div>
 
-    <p style="font-size:13px;color:var(--muted);">Il nome ufficiale e la comunicazione politica parlano di "separazione delle carriere". La legge modifica anche l'autogoverno (art. 104), la disciplina (art. 105), le nomine presidenziali (art. 87) e l'organizzazione (artt. 102, 106, 107, 110). Ogni cambiamento sposta potere. La domanda e: verso chi?</p>
-  </div>
-</section>
-
-<!-- ═══ § 02 — MAPPA DI NAVIGAZIONE ═══ -->
-<section id="mappa">
-  <div class="wrap">
-    <div class="sec-label">I temi</div>
-    <h2>Cosa troverai in questo sito</h2>
-    <p>Sette analisi indipendenti. Per ognuna: cosa dice il testo, cosa cambia nella pratica, quali sono gli argomenti a favore e le obiezioni. Il lettore conclude.</p>
-
-    <div class="nav-cards">
-      <a href="01-carriere.html" class="nav-card reveal">
-        <div class="nav-card-num">01 — Carriere</div>
-        <h4>La separazione era gia risolta?</h4>
-        <p>La legge Cartabia (D.lgs. 44/2024) limitava i passaggi a uno nell'intera carriera. Perche toccare la Costituzione per un problema gia risolto per legge?</p>
-      </a>
-      <a href="02-csm.html" class="nav-card reveal">
-        <div class="nav-card-num">02 — CSM</div>
-        <h4>Da eletti a sorteggiati</h4>
-        <p>Il CSM si sdoppia. I togati non sono piu eletti dai colleghi: sono sorteggiati. I laici sorteggiati da una lista che compila il Parlamento. Chi controlla la lista?</p>
-      </a>
-      <a href="03-alta-corte.html" class="nav-card reveal">
-        <div class="nav-card-num">03 — Alta Corte</div>
-        <h4>Disciplina senza appello esterno</h4>
-        <p>Nasce un organo che giudica i magistrati e le cui sentenze sono appellabili solo al suo interno. Per la prima volta nella Repubblica, niente Cassazione.</p>
-      </a>
-      <a href="04-leggi-ordinarie.html" class="nav-card reveal">
-        <div class="nav-card-num">04 — Leggi ordinarie</div>
-        <h4>Cosa resta da scrivere</h4>
-        <p>Requisiti del sorteggio, composizione dei collegi, catalogo degli illeciti disciplinari: tutto rinviato a leggi ordinarie, modificabili a maggioranza semplice.</p>
-      </a>
-      <a href="05-scenari.html" class="nav-card reveal">
-        <div class="nav-card-num">05 — Scenari</div>
-        <h4>Cosa diventa possibile</h4>
-        <p>Nessuno di questi scenari richiede un governo malvagio. Richiedono solo una maggioranza, una norma che lo consente e nessuna resistenza strutturale.</p>
-      </a>
-      <a href="06-europa.html" class="nav-card reveal">
-        <div class="nav-card-num">06 — Europa</div>
-        <h4>Quale modello seguiamo?</h4>
-        <p>"Come in Europa" -- ma il Portogallo blinda le garanzie in Costituzione, la Germania ha PM non indipendenti. Quale Europa scegliamo?</p>
-      </a>
-      <a href="07-domande.html" class="nav-card reveal">
-        <div class="nav-card-num">07 — Domande</div>
-        <h4>Le domande che contano</h4>
-        <p>Le obiezioni piu forti a favore della riforma, presentate nella loro formulazione migliore. Poi i dati a confronto, le questioni aperte.</p>
-      </a>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ═══ § 03 — POWER BAR ═══ -->
-<section id="potere">
+<!-- FELLINI -->
+<div class="fellini">
   <div class="wrap">
-    <div class="sec-label">Il bilancio di potere</div>
-    <h2>Come cambia la composizione del CSM</h2>
-    <p>La proporzione 2/3 togati - 1/3 laici resta sulla carta. Cambia il modo in cui ci si arriva: da elezione tra pari a sorteggio da liste e platee definite per legge ordinaria.</p>
-
-    <div class="power-bar-wrap reveal">
-      <div class="pbar-label">CSM attuale — 30 componenti elettivi (L. 71/2022)</div>
-      <div class="pbar">
-        <div class="pbar-seg" data-width="66.7%" style="width:0;background:#1a3a20;color:var(--grn-l);"><span>Togati eletti 66,7%</span></div>
-        <div class="pbar-seg" data-width="33.3%" style="width:0;background:#1a2540;color:var(--blu-l);"><span>Laici eletti 33,3%</span></div>
-      </div>
-      <div class="pbar-note">20 togati eletti dai colleghi magistrati + 10 laici eletti dal Parlamento con maggioranza qualificata dei 3/5 dei votanti. I 3 membri di diritto (PdR, Primo Presidente e Procuratore Generale della Cassazione) non rientrano nella proporzione costituzionale.</div>
-    </div>
-
-    <div class="power-bar-wrap reveal">
-      <div class="pbar-label">Dopo la riforma — ciascun CSM</div>
-      <div class="pbar">
-        <div class="pbar-seg" data-width="67%" style="width:0;background:#2a1a10;color:#c87060;"><span>Togati sorteggiati 67%</span></div>
-        <div class="pbar-seg" data-width="33%" style="width:0;background:#1a2540;color:var(--blu-l);"><span>Laici da lista parl. 33%</span></div>
-      </div>
-      <div class="pbar-note">Stessa proporzione, meccanismo diverso. I togati non hanno mandato elettivo e non rispondono a nessuno. I laici sono sorteggiati da un elenco compilato dal Parlamento -- ma il testo riformato non fissa la maggioranza necessaria per compilarlo.</div>
-    </div>
-
-    <div class="soglia-grid">
-      <div class="soglia-cell old">
-        <div class="sc-lbl">Soglia attuale per i laici</div>
-        <div class="sc-val">3/5 dei votanti</div>
-        <div class="sc-desc">Il Parlamento in seduta comune elegge i laici con maggioranza qualificata. Serve il compromesso bipartisan.</div>
-      </div>
-      <div class="soglia-cell new">
-        <div class="sc-lbl">Soglia dopo la riforma</div>
-        <div class="sc-val">Non fissata</div>
-        <div class="sc-desc">Il testo riformato non indica la maggioranza richiesta per compilare la lista da cui si sorteggia. Una maggioranza semplice potrebbe bastare.</div>
-      </div>
-    </div>
-
-    <div class="legend-row" style="margin-top:16px;">
-      <div class="leg-item"><div class="leg-dot" style="background:var(--grn);"></div> Indipendente da mandato politico</div>
-      <div class="leg-item"><div class="leg-dot" style="background:var(--blu);"></div> Eletto con soglia qualificata</div>
-      <div class="leg-item"><div class="leg-dot" style="background:#c87060;"></div> Sorteggiato / regole da definire</div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ § 04 — DICHIARAZIONE DI METODO ═══ -->
-<section style="border-bottom:none;">
-  <div class="wrap">
-    <div class="sec-label">Metodo</div>
-    <h2>Come leggere questo sito</h2>
-
     <blockquote class="reveal">
-      "Non voglio dimostrare niente. Voglio mostrare."
-      <cite>-- Federico Fellini</cite>
+      "Non voglio dimostrare niente, voglio mostrare."
+      <cite>&mdash; Federico Fellini</cite>
     </blockquote>
-
-    <p>La Costituzione e il default. Chi la modifica ha l'onere della prova: deve dimostrare che il cambiamento risolve un problema reale e non ne crea di peggiori.</p>
-
-    <p>Questo sito non chiede di fidarsi. Per ogni cambiamento introdotto dalla riforma, pone tre domande: <strong>cosa cambia nel testo?</strong> <strong>Dove si sposta il potere?</strong> <strong>Cui prodest -- a chi giova?</strong></p>
-
-    <p>Ogni dato ha una fonte verificabile. Ogni tesi e accompagnata dalla contro-tesi piu forte. Il lettore ha tutti gli strumenti per concludere da solo.</p>
-
-    <div class="alert info" style="margin-top:24px;">
-      <div class="alert-title">Principi editoriali</div>
-      <p><strong>Ogni claim ha una fonte</strong> -- inline nella pagina o in nota a piede di sezione. Nessuna affermazione senza provenienza.<br><br>
-      <strong>Ogni tesi ha la contro-tesi</strong> -- gli argomenti a favore della riforma sono presentati nella loro formulazione piu forte, prima di essere esaminati.<br><br>
-      <strong>Il lettore conclude</strong> -- questo sito mostra l'architettura normativa, i dati, i precedenti. Le conclusioni sono di chi legge.</p>
-    </div>
-
-    <div class="source-note">
-      <strong style="color:var(--text);">Fonti principali:</strong> Legge costituzionale, G.U. n. 253 del 30/10/2025 (testo integrale della riforma) · L. 71/2022 (riforma Cartabia -- composizione CSM: 33 componenti, 20 togati eletti + 10 laici con soglia 3/5) · D.lgs. 44/2024 art. 12 (un solo passaggio di carriera nell'intera vita professionale) · Art. 105 Cost. riformato (Alta Corte disciplinare, 15 membri) · Art. 104 Cost. riformato (due CSM, sorteggio) · M. Cassano, Prima Presidente emerita Cassazione (Fondazione Bellisario, feb. 2026) · F. Biondi, A. Gatto (sistemapenale.it) · G. Santalucia, Presidente ANM (giustiziainsieme.it) · C. Pinelli (Rivista AIC, 1/2026) · S. Panizza (Questione Giustizia) · CGUE, cause riunite C-508/18 e C-82/19 PPU, 27/5/2019 · Costituzione portoghese artt. 219-220.
-    </div>
   </div>
-</section>
+</div>
 
-<!-- ═══ COUNTDOWN SCRIPT ═══ -->
+<!-- FOOTER -->
+<div class="site-footer">
+  <div class="wrap">
+    <p>primadivotare.it &mdash; Un progetto indipendente. Nessuna affiliazione politica.</p>
+  </div>
+</div>
+
 <script>
-(function() {
-  var target = new Date('2026-03-22T07:00:00+01:00').getTime();
-  var daysEl = document.getElementById('cd-days');
-  var hoursEl = document.getElementById('cd-hours');
-  var minsEl = document.getElementById('cd-mins');
-  var secsEl = document.getElementById('cd-secs');
-
-  function pad(n) { return n < 10 ? '0' + n : '' + n; }
-
-  function update() {
-    var now = Date.now();
-    var diff = target - now;
-
-    if (diff <= 0) {
-      daysEl.textContent = '0';
-      hoursEl.textContent = '00';
-      minsEl.textContent = '00';
-      secsEl.textContent = '00';
-      return;
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
     }
-
-    var d = Math.floor(diff / 86400000);
-    var h = Math.floor((diff % 86400000) / 3600000);
-    var m = Math.floor((diff % 3600000) / 60000);
-    var s = Math.floor((diff % 60000) / 1000);
-
-    daysEl.textContent = d;
-    hoursEl.textContent = pad(h);
-    minsEl.textContent = pad(m);
-    secsEl.textContent = pad(s);
-  }
-
-  update();
-  setInterval(update, 1000);
-})();
-</script>
-
-<!-- ═══ SCROLL ANIMATIONS ═══ -->
-<script>
-(function() {
-  // 1. Fade-in on scroll for .reveal elements
-  var revealObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        revealObserver.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(function(el) {
-    revealObserver.observe(el);
   });
-
-  // 2. Power bar width animation
-  var barObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        var segs = e.target.querySelectorAll('.pbar-seg[data-width]');
-        segs.forEach(function(seg) {
-          seg.style.width = seg.getAttribute('data-width');
-        });
-        barObserver.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.power-bar-wrap').forEach(function(el) {
-    barObserver.observe(el);
-  });
-
-  // 3. Nav active state on scroll
-  var sections = document.querySelectorAll('section[id]');
-  var navLinks = document.querySelectorAll('nav a[href^="#"], nav a[href="index.html"]');
-  if (sections.length > 0) {
-    var navObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) {
-          var id = e.target.getAttribute('id');
-          navLinks.forEach(function(link) { link.classList.remove('active'); });
-          // Keep Home active since these are all on the homepage
-          var homeLink = document.querySelector('nav a[href="index.html"]');
-          if (homeLink) homeLink.classList.add('active');
-        }
-      });
-    }, { threshold: 0.3 });
-    sections.forEach(function(sec) { navObserver.observe(sec); });
-  }
-})();
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 </script>
-
 </body>
 </html>

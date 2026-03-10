@@ -144,7 +144,7 @@
 
     <div class="flow-diagram reveal">
       <div class="flow-inner">
-        <div class="flow-section-label" style="color:var(--grn-l);background:var(--grn-bg);border:1px solid var(--grn);">Prima &#8212; un ponte possibile (D.lgs. 44/2024)</div>
+        <div class="flow-section-label" style="color:var(--pri-l);background:var(--pri-bg);border:1px solid var(--pri);">Prima &#8212; un ponte possibile (D.lgs. 44/2024)</div>
         <div class="flow-chain">
           <div class="flow-node green">Concorso unico</div>
           <div class="flow-arrow g">&#8594;</div>
@@ -153,7 +153,7 @@
           <div class="flow-node green">PM o Giudice<small>passaggio possibile</small></div>
         </div>
         <hr class="flow-divider"/>
-        <div class="flow-section-label" style="color:var(--red-l);background:var(--red-bg);border:1px solid var(--red);">Dopo &#8212; due binari separati (riforma 2025)</div>
+        <div class="flow-section-label" style="color:var(--dpo-l);background:var(--dpo-bg);border:1px solid var(--dpo);">Dopo &#8212; due binari separati (riforma 2025)</div>
         <div class="flow-chain">
           <div class="flow-node red">Concorso A<small>giudicante</small></div>
           <div class="flow-arrow r">&#8594;</div>
@@ -294,8 +294,8 @@
     .attr('height', cellSize)
     .attr('rx', 1.5)
     .attr('ry', 1.5)
-    .attr('fill', function(d) { return highlighted.has(d) ? '#d13020' : '#1e1e27'; })
-    .attr('stroke', function(d) { return highlighted.has(d) ? '#d13020' : '#252530'; })
+    .attr('fill', function(d) { return highlighted.has(d) ? '#fab387' : '#313244'; })
+    .attr('stroke', function(d) { return highlighted.has(d) ? '#c89570' : '#313244'; })
     .attr('stroke-width', 0.5);
 })();
 </script>
@@ -316,9 +316,9 @@
     .style('display', 'block');
 
   // Colors
-  var grn = '#38b368', grnBg = '#0a1810', grnBorder = '#27764a';
-  var red = '#e85444', redBg = '#1a0a08', redBorder = '#d13020';
-  var text = '#e6e2db', muted = '#636070', dim = '#3a3848';
+  var grn = '#94e2d5', grnBg = '#1a2a28', grnBorder = '#74b8ad';
+  var red = '#fab387', redBg = '#2a2018', redBorder = '#c89570';
+  var text = '#cdd6f4', muted = '#7f849c', dim = '#45475a';
   var font = "'IBM Plex Mono', monospace";
 
   // Helper: rounded rect node

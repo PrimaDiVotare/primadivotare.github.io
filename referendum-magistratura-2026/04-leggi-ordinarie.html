@@ -371,7 +371,7 @@
       labels: ['Norma costituzionale', 'Legge ordinaria', 'Circolare ministeriale'],
       datasets: [{
         data: [730, 30, 1],
-        backgroundColor: ['#38b368', '#e85444', '#d13020'],
+        backgroundColor: ['#94e2d5', '#fab387', '#fab387'],
         borderRadius: 4,
         barThickness: 28
       }]
@@ -397,10 +397,10 @@
           title: {
             display: true,
             text: 'Giorni (scala logaritmica)',
-            color: '#636070'
+            color: '#7f849c'
           },
           grid: {
-            color: '#252530'
+            color: '#313244'
           },
           ticks: {
             callback: function(value) {
@@ -417,7 +417,7 @@
             display: false
           },
           ticks: {
-            color: '#636070'
+            color: '#7f849c'
           }
         }
       }
@@ -434,7 +434,7 @@
         meta.data.forEach(function(bar, i) {
           const x = bar.x + 8;
           const y = bar.y;
-          ctx.fillStyle = '#e6e2db';
+          ctx.fillStyle = '#cdd6f4';
           ctx.fillText(labels[i], x, y);
         });
         ctx.restore();

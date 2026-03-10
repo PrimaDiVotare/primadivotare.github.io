@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 </head>
 <body>
 
@@ -61,6 +62,34 @@
         <div class="stat-num" style="color:var(--gld-l)">4</div>
         <div class="stat-desc">Condanne CGUE alla Polonia<br>per organi disciplinari politicizzati</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ § 01b — MAPPA EUROPA INTERATTIVA ═══ -->
+<section id="mappa">
+  <div class="wrap">
+    <div class="sec-label">I modelli a confronto</div>
+    <h2>La mappa dei sistemi europei</h2>
+    <p>Ogni paese citato nel dibattito sulla riforma rappresenta un modello diverso. Clicca su un paese per vedere il suo sistema e cosa lo distingue dalla riforma italiana.</p>
+
+    <div id="mappa-eu-container" style="max-width:600px;margin:28px auto 0;position:relative;"></div>
+
+    <!-- Tooltip sotto la mappa -->
+    <div id="mappa-tooltip" style="display:none;max-width:600px;margin:16px auto 0;padding:18px 20px;border:1px solid var(--border);border-radius:8px;background:var(--bg3);font-size:14px;line-height:1.6;">
+      <div id="mappa-tt-close" style="position:absolute;top:8px;right:12px;cursor:pointer;color:var(--muted);font-size:18px;line-height:1;" aria-label="Chiudi">&times;</div>
+      <div id="mappa-tt-name" style="font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--text);margin-bottom:6px;"></div>
+      <div id="mappa-tt-model" style="font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:8px;"></div>
+      <div id="mappa-tt-garanzia" style="margin-bottom:6px;"></div>
+      <div id="mappa-tt-nota" style="color:var(--muted);font-size:13px;"></div>
+    </div>
+
+    <!-- Legenda -->
+    <div style="max-width:600px;margin:20px auto 0;display:flex;flex-wrap:wrap;gap:16px 24px;font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);">
+      <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:50%;background:var(--grn);display:inline-block;"></span> Separazione + garanzie Cost.</span>
+      <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:50%;background:var(--blu);display:inline-block;"></span> Corpo unico</span>
+      <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:50%;background:var(--gld);display:inline-block;"></span> Sistema misto</span>
+      <span style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:50%;background:var(--red);display:inline-block;"></span> PM dipendente / problemi documentati</span>
     </div>
   </div>
 </section>
@@ -355,6 +384,222 @@
           }
         }
       }
+    }
+  });
+})();
+</script>
+
+<!-- ═══ MAPPA D3 ═══ -->
+<script>
+(function() {
+  var W = 600, H = 440;
+
+  var paesi = [
+    {
+      id: 'PT', sigla: 'PT', nome: 'Portogallo',
+      x: 0.10, y: 0.58,
+      colore: '#27764a',
+      modello: 'Carriere separate + PM autonomo in Costituzione',
+      garanzia: '<span style="color:var(--grn-l);">Si</span> &mdash; art. 219 CRP: il PM goza de autonomia. Garanzie personali blindate.',
+      nota: 'Unico Stato UE con separazione delle carriere e piena indipendenza costituzionale del PM. Il modello piu citato dai sostenitori della riforma, ma le garanzie non sono state replicate.'
+    },
+    {
+      id: 'ES', sigla: 'ES', nome: 'Spagna',
+      x: 0.16, y: 0.72,
+      colore: '#c89c30',
+      modello: 'Sistema misto — Fiscal General nominato dal governo',
+      garanzia: '<span style="color:var(--gld-l);">Parziale</span> &mdash; PM sottoposto a principio di legalita ma dipendente dal Fiscal General governativo.',
+      nota: 'Il GRECO ha ripetutamente espresso preoccupazioni sull\'indipendenza del ministerio fiscal spagnolo. Un equilibrio instabile e contestato.'
+    },
+    {
+      id: 'FR', sigla: 'FR', nome: 'Francia',
+      x: 0.30, y: 0.48,
+      colore: '#1e5ea0',
+      modello: 'Corpo unico di magistratura',
+      garanzia: '<span style="color:var(--blu-l);">Si</span> &mdash; CSM unico con due formazioni. Garanzie rafforzate dalla riforma costituzionale del 2008.',
+      nota: 'Ha l\'opposto della separazione proposta: un corpo unico. Dimostra che un ordinamento accusatorio funzionante non richiede la separazione delle carriere.'
+    },
+    {
+      id: 'DE', sigla: 'DE', nome: 'Germania',
+      x: 0.48, y: 0.35,
+      colore: '#d13020',
+      modello: 'PM separati — dipendenti dal Ministero della Giustizia',
+      garanzia: '<span style="color:var(--red-l);">No</span> &mdash; il &sect;147 GVG attribuisce al Ministro un diritto di supervisione e direzione (Weisungsrecht).',
+      nota: 'La CGUE (C-508/18, 2019) ha stabilito che i PM tedeschi non sono autorita giudiziaria indipendente. I loro MAE non sono validi. Questo e il modello verso cui la riforma rischia di avvicinarsi.'
+    },
+    {
+      id: 'PL', sigla: 'PL', nome: 'Polonia',
+      x: 0.62, y: 0.32,
+      colore: '#d13020',
+      modello: 'Camera Disciplinare politicizzata (2017-2022)',
+      garanzia: '<span style="color:var(--red-l);">Compromessa</span> &mdash; KRS eletto dal Sejm. Camera Disciplinare usata per sospendere giudici critici.',
+      nota: '4 condanne CGUE. Sanzione: 1 milione di euro al giorno (534 milioni totali). Il ripristino dell\'indipendenza resta bloccato dopo le presidenziali 2025.'
+    },
+    {
+      id: 'IT-oggi', sigla: 'IT', nome: 'Italia oggi',
+      x: 0.42, y: 0.60,
+      colore: '#27764a',
+      modello: 'Corpo unico — PM indipendente in Costituzione',
+      garanzia: '<span style="color:var(--grn-l);">Si</span> &mdash; art. 104 Cost.: la magistratura e un ordine autonomo e indipendente da ogni altro potere.',
+      nota: 'CSM unico con 33 componenti (20 togati eletti, 10 laici con soglia 3/5). Disciplina interna al CSM con ricorso in Cassazione.'
+    },
+    {
+      id: 'IT-dopo', sigla: 'IT*', nome: 'Italia dopo la riforma',
+      x: 0.52, y: 0.62,
+      colore: '#d13020',
+      modello: 'Carriere separate — garanzie PM in legge ordinaria',
+      garanzia: '<span style="color:var(--red-l);">Non definita</span> &mdash; indipendenza PM rinviata a legge ordinaria. Nessun equivalente dell\'art. 219 CRP portoghese.',
+      nota: 'Prende la struttura dal Portogallo (separazione, 2 CSM) ma non le garanzie. Alta Corte disciplinare esterna, senza ricorso in Cassazione (tesi prevalente). Composizione CSM e illeciti disciplinari rinviati a legge ordinaria.'
+    }
+  ];
+
+  var svg = d3.select('#mappa-eu-container')
+    .append('svg')
+    .attr('viewBox', '0 0 ' + W + ' ' + H)
+    .attr('width', '100%')
+    .style('display', 'block');
+
+  // Sfondo scuro leggero
+  svg.append('rect')
+    .attr('width', W)
+    .attr('height', H)
+    .attr('rx', 8)
+    .attr('fill', '#111116');
+
+  // Bordo sottile
+  svg.append('rect')
+    .attr('width', W)
+    .attr('height', H)
+    .attr('rx', 8)
+    .attr('fill', 'none')
+    .attr('stroke', '#252530')
+    .attr('stroke-width', 1);
+
+  // Linee di connessione Italia-oggi e Italia-dopo
+  var itOggi = paesi.find(function(p){ return p.id === 'IT-oggi'; });
+  var itDopo = paesi.find(function(p){ return p.id === 'IT-dopo'; });
+  svg.append('line')
+    .attr('x1', itOggi.x * W).attr('y1', itOggi.y * H)
+    .attr('x2', itDopo.x * W).attr('y2', itDopo.y * H)
+    .attr('stroke', '#252530')
+    .attr('stroke-width', 1.5)
+    .attr('stroke-dasharray', '4,3');
+
+  var R = 26;
+
+  // Gruppi per ogni paese
+  var g = svg.selectAll('.paese')
+    .data(paesi)
+    .enter()
+    .append('g')
+    .attr('class', 'paese')
+    .attr('transform', function(d) { return 'translate(' + (d.x * W) + ',' + (d.y * H) + ')'; })
+    .style('cursor', 'pointer');
+
+  // Cerchio glow (alone)
+  g.append('circle')
+    .attr('r', R + 4)
+    .attr('fill', 'none')
+    .attr('stroke', function(d) { return d.colore; })
+    .attr('stroke-width', 1.5)
+    .attr('stroke-opacity', 0.25);
+
+  // Cerchio principale
+  g.append('circle')
+    .attr('r', R)
+    .attr('fill', function(d) { return d.colore; })
+    .attr('fill-opacity', 0.18)
+    .attr('stroke', function(d) { return d.colore; })
+    .attr('stroke-width', 2);
+
+  // Sigla nel cerchio
+  g.append('text')
+    .attr('text-anchor', 'middle')
+    .attr('dy', '0.35em')
+    .attr('fill', function(d) {
+      if (d.colore === '#27764a') return '#38b368';
+      if (d.colore === '#d13020') return '#e85444';
+      if (d.colore === '#1e5ea0') return '#4490e0';
+      if (d.colore === '#c89c30') return '#e0b848';
+      return '#e6e2db';
+    })
+    .style('font-family', "'IBM Plex Mono', monospace")
+    .style('font-size', '13px')
+    .style('font-weight', '600')
+    .style('letter-spacing', '0.08em')
+    .text(function(d) { return d.sigla; });
+
+  // Nome sotto il cerchio
+  g.append('text')
+    .attr('text-anchor', 'middle')
+    .attr('dy', R + 16)
+    .attr('fill', '#636070')
+    .style('font-family', "'IBM Plex Mono', monospace")
+    .style('font-size', '9px')
+    .style('letter-spacing', '0.1em')
+    .style('text-transform', 'uppercase')
+    .text(function(d) {
+      if (d.id === 'IT-oggi') return 'IT OGGI';
+      if (d.id === 'IT-dopo') return 'IT DOPO';
+      return d.sigla;
+    });
+
+  // Tooltip container
+  var ttContainer = document.getElementById('mappa-tooltip');
+  var ttName = document.getElementById('mappa-tt-name');
+  var ttModel = document.getElementById('mappa-tt-model');
+  var ttGaranzia = document.getElementById('mappa-tt-garanzia');
+  var ttNota = document.getElementById('mappa-tt-nota');
+  var ttClose = document.getElementById('mappa-tt-close');
+
+  // Posizione relative per il close button
+  ttContainer.style.position = 'relative';
+
+  var selected = null;
+
+  function showTooltip(d) {
+    selected = d.id;
+    ttName.textContent = d.nome;
+    ttModel.textContent = d.modello;
+    ttModel.style.color = d.colore === '#27764a' ? '#38b368' :
+                          d.colore === '#d13020' ? '#e85444' :
+                          d.colore === '#1e5ea0' ? '#4490e0' :
+                          d.colore === '#c89c30' ? '#e0b848' : '#636070';
+    ttGaranzia.innerHTML = '<strong style="color:var(--text);">Indipendenza PM in Costituzione:</strong> ' + d.garanzia;
+    ttNota.textContent = d.nota;
+    ttContainer.style.display = 'block';
+
+    // Evidenzia cerchio selezionato
+    g.selectAll('circle:nth-child(2)')
+      .attr('fill-opacity', function(p) { return p.id === d.id ? 0.35 : 0.18; })
+      .attr('stroke-width', function(p) { return p.id === d.id ? 3 : 2; });
+  }
+
+  function hideTooltip() {
+    selected = null;
+    ttContainer.style.display = 'none';
+    g.selectAll('circle:nth-child(2)')
+      .attr('fill-opacity', 0.18)
+      .attr('stroke-width', 2);
+  }
+
+  g.on('click', function(event, d) {
+    event.stopPropagation();
+    if (selected === d.id) {
+      hideTooltip();
+    } else {
+      showTooltip(d);
+    }
+  });
+
+  ttClose.addEventListener('click', function() {
+    hideTooltip();
+  });
+
+  // Click fuori chiude
+  document.addEventListener('click', function(e) {
+    if (selected && !ttContainer.contains(e.target)) {
+      hideTooltip();
     }
   });
 })();

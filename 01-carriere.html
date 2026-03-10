@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 </head>
 <body>
 
@@ -187,6 +188,17 @@
   </div>
 </section>
 
+<!-- ════ BIFORCAZIONE CARRIERE (D3) ════ -->
+<section id="biforcazione">
+  <div class="wrap">
+    <div class="sec-label">Diagramma</div>
+    <h2>Due carriere: prima e dopo</h2>
+    <p>Prima della riforma, un concorso unico e un ponte residuale. Dopo, due binari separati fin dall'ingresso &#8212; senza alcuna possibilita&#768; di attraversamento.</p>
+    <div id="biforcazione-diagram" style="max-width:600px;margin:28px auto 0;"></div>
+    <p class="pbar-note" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin-top:16px;margin-bottom:0;text-align:center;">Guarda il ponte tratteggiato nel PRIMA e la X nel DOPO. La differenza strutturale e&#768; tutta li&#768;: da un passaggio residuale (0,31%/anno) a zero passaggi per Costituzione.</p>
+  </div>
+</section>
+
 <!-- ════ CUI PRODEST ════ -->
 <section id="cui-prodest">
   <div class="wrap">
@@ -354,6 +366,219 @@ Chart.defaults.font.size = 11;
       }
     }]
   });
+})();
+</script>
+
+<script>
+// D3.js — Diagramma biforcazione carriere
+(function() {
+  var container = d3.select('#biforcazione-diagram');
+  var totalW = 600, totalH = 520;
+  var primaH = 220, dopoH = 220, gapY = 40, labelH = 40;
+
+  var svg = container.append('svg')
+    .attr('viewBox', '0 0 ' + totalW + ' ' + totalH)
+    .attr('width', '100%')
+    .attr('preserveAspectRatio', 'xMidYMid meet')
+    .style('display', 'block');
+
+  // Colors
+  var grn = '#38b368', grnBg = '#0a1810', grnBorder = '#27764a';
+  var red = '#e85444', redBg = '#1a0a08', redBorder = '#d13020';
+  var text = '#e6e2db', muted = '#636070', dim = '#3a3848';
+  var font = "'IBM Plex Mono', monospace";
+
+  // Helper: rounded rect node
+  function drawNode(g, x, y, w, h, label, sub, fillColor, strokeColor) {
+    var node = g.append('g');
+    node.append('rect')
+      .attr('x', x - w/2).attr('y', y - h/2)
+      .attr('width', w).attr('height', h)
+      .attr('rx', 6).attr('ry', 6)
+      .attr('fill', fillColor)
+      .attr('stroke', strokeColor)
+      .attr('stroke-width', 1.5);
+    node.append('text')
+      .attr('x', x).attr('y', sub ? y - 4 : y + 4)
+      .attr('text-anchor', 'middle')
+      .attr('fill', text)
+      .attr('font-family', font)
+      .attr('font-size', 12)
+      .attr('font-weight', 600)
+      .text(label);
+    if (sub) {
+      node.append('text')
+        .attr('x', x).attr('y', y + 14)
+        .attr('text-anchor', 'middle')
+        .attr('fill', muted)
+        .attr('font-family', font)
+        .attr('font-size', 9)
+        .text(sub);
+    }
+    return node;
+  }
+
+  // ─── PRIMA ───
+  var primaG = svg.append('g');
+
+  // Section label
+  primaG.append('rect')
+    .attr('x', 80).attr('y', 0)
+    .attr('width', totalW - 160).attr('height', 28)
+    .attr('rx', 3)
+    .attr('fill', grnBg)
+    .attr('stroke', grnBorder)
+    .attr('stroke-width', 1);
+  primaG.append('text')
+    .attr('x', totalW / 2).attr('y', 18)
+    .attr('text-anchor', 'middle')
+    .attr('fill', grn)
+    .attr('font-family', font)
+    .attr('font-size', 11)
+    .attr('font-weight', 600)
+    .attr('letter-spacing', '0.15em')
+    .text('PRIMA \u2014 UN PONTE POSSIBILE');
+
+  var pTop = 60;
+  // Concorso unico
+  drawNode(primaG, totalW / 2, pTop, 160, 38, 'Concorso unico', null, grnBg, grnBorder);
+
+  // Lines down to Giudice and PM
+  var leftX = totalW / 2 - 100, rightX = totalW / 2 + 100;
+  var forkY = pTop + 19;
+  var branchY = pTop + 75;
+
+  // Path from concorso to giudice
+  primaG.append('path')
+    .attr('d', 'M' + (totalW/2) + ',' + forkY + ' C' + (totalW/2) + ',' + (forkY + 30) + ' ' + leftX + ',' + (branchY - 30) + ' ' + leftX + ',' + branchY)
+    .attr('fill', 'none').attr('stroke', grn).attr('stroke-width', 2);
+
+  // Path from concorso to PM
+  primaG.append('path')
+    .attr('d', 'M' + (totalW/2) + ',' + forkY + ' C' + (totalW/2) + ',' + (forkY + 30) + ' ' + rightX + ',' + (branchY - 30) + ' ' + rightX + ',' + branchY)
+    .attr('fill', 'none').attr('stroke', grn).attr('stroke-width', 2);
+
+  // Giudice and PM nodes
+  drawNode(primaG, leftX, branchY + 20, 120, 38, 'Giudice', null, grnBg, grnBorder);
+  drawNode(primaG, rightX, branchY + 20, 120, 38, 'PM', null, grnBg, grnBorder);
+
+  // Dashed bridge between Giudice and PM
+  var bridgeY = branchY + 20;
+  primaG.append('path')
+    .attr('d', 'M' + (leftX + 60) + ',' + bridgeY + ' C' + (totalW/2 - 20) + ',' + (bridgeY - 30) + ' ' + (totalW/2 + 20) + ',' + (bridgeY - 30) + ' ' + (rightX - 60) + ',' + bridgeY)
+    .attr('fill', 'none')
+    .attr('stroke', grn)
+    .attr('stroke-width', 1.5)
+    .attr('stroke-dasharray', '6,4');
+
+  // Bridge label
+  primaG.append('text')
+    .attr('x', totalW / 2).attr('y', bridgeY - 28)
+    .attr('text-anchor', 'middle')
+    .attr('fill', grn)
+    .attr('font-family', font)
+    .attr('font-size', 9)
+    .text('1 passaggio possibile (Cartabia)');
+
+  // Lines down to Cassazione
+  var cassY = branchY + 85;
+  primaG.append('path')
+    .attr('d', 'M' + leftX + ',' + (branchY + 39) + ' C' + leftX + ',' + (cassY - 20) + ' ' + (totalW/2) + ',' + (cassY - 20) + ' ' + (totalW/2) + ',' + cassY)
+    .attr('fill', 'none').attr('stroke', grn).attr('stroke-width', 2);
+  primaG.append('path')
+    .attr('d', 'M' + rightX + ',' + (branchY + 39) + ' C' + rightX + ',' + (cassY - 20) + ' ' + (totalW/2) + ',' + (cassY - 20) + ' ' + (totalW/2) + ',' + cassY)
+    .attr('fill', 'none').attr('stroke', grn).attr('stroke-width', 2);
+
+  // Cassazione node
+  drawNode(primaG, totalW / 2, cassY + 20, 200, 38, 'Cassazione', 'magistratura unica', grnBg, grnBorder);
+
+  // ─── DOPO ───
+  var dopoOffset = 280;
+  var dopoG = svg.append('g');
+
+  // Section label
+  dopoG.append('rect')
+    .attr('x', 80).attr('y', dopoOffset)
+    .attr('width', totalW - 160).attr('height', 28)
+    .attr('rx', 3)
+    .attr('fill', redBg)
+    .attr('stroke', redBorder)
+    .attr('stroke-width', 1);
+  dopoG.append('text')
+    .attr('x', totalW / 2).attr('y', dopoOffset + 18)
+    .attr('text-anchor', 'middle')
+    .attr('fill', red)
+    .attr('font-family', font)
+    .attr('font-size', 11)
+    .attr('font-weight', 600)
+    .attr('letter-spacing', '0.15em')
+    .text('DOPO \u2014 DUE BINARI SEPARATI');
+
+  var dTop = dopoOffset + 55;
+
+  // Two separate entry nodes
+  drawNode(dopoG, leftX, dTop, 150, 38, 'Concorso A', 'giudicante', redBg, redBorder);
+  drawNode(dopoG, rightX, dTop, 150, 38, 'Concorso B', 'requirente', redBg, redBorder);
+
+  // Lines down
+  var dBranchY = dTop + 70;
+  dopoG.append('line')
+    .attr('x1', leftX).attr('y1', dTop + 19)
+    .attr('x2', leftX).attr('y2', dBranchY - 19)
+    .attr('stroke', red).attr('stroke-width', 2);
+  dopoG.append('line')
+    .attr('x1', rightX).attr('y1', dTop + 19)
+    .attr('x2', rightX).attr('y2', dBranchY - 19)
+    .attr('stroke', red).attr('stroke-width', 2);
+
+  // Giudice and PM final nodes
+  drawNode(dopoG, leftX, dBranchY, 120, 38, 'Giudice', 'per sempre', redBg, redBorder);
+  drawNode(dopoG, rightX, dBranchY, 120, 38, 'PM', 'per sempre', redBg, redBorder);
+
+  // X where bridge would be
+  var xBridgeY = dBranchY;
+  // Faded dashed line
+  dopoG.append('path')
+    .attr('d', 'M' + (leftX + 60) + ',' + xBridgeY + ' C' + (totalW/2 - 20) + ',' + (xBridgeY - 25) + ' ' + (totalW/2 + 20) + ',' + (xBridgeY - 25) + ' ' + (rightX - 60) + ',' + xBridgeY)
+    .attr('fill', 'none')
+    .attr('stroke', dim)
+    .attr('stroke-width', 1)
+    .attr('stroke-dasharray', '4,4')
+    .attr('opacity', 0.4);
+
+  // Red X
+  var xSize = 12;
+  dopoG.append('line')
+    .attr('x1', totalW/2 - xSize).attr('y1', xBridgeY - 25 - xSize)
+    .attr('x2', totalW/2 + xSize).attr('y2', xBridgeY - 25 + xSize)
+    .attr('stroke', red).attr('stroke-width', 3).attr('stroke-linecap', 'round');
+  dopoG.append('line')
+    .attr('x1', totalW/2 + xSize).attr('y1', xBridgeY - 25 - xSize)
+    .attr('x2', totalW/2 - xSize).attr('y2', xBridgeY - 25 + xSize)
+    .attr('stroke', red).attr('stroke-width', 3).attr('stroke-linecap', 'round');
+
+  // "Nessun passaggio" label
+  dopoG.append('text')
+    .attr('x', totalW / 2).attr('y', xBridgeY - 45)
+    .attr('text-anchor', 'middle')
+    .attr('fill', red)
+    .attr('font-family', font)
+    .attr('font-size', 9)
+    .text('Nessun passaggio');
+
+  // Two separate bottom nodes (no convergence)
+  var dBottomY = dBranchY + 70;
+  dopoG.append('line')
+    .attr('x1', leftX).attr('y1', dBranchY + 19)
+    .attr('x2', leftX).attr('y2', dBottomY - 19)
+    .attr('stroke', red).attr('stroke-width', 2);
+  dopoG.append('line')
+    .attr('x1', rightX).attr('y1', dBranchY + 19)
+    .attr('x2', rightX).attr('y2', dBottomY - 19)
+    .attr('stroke', red).attr('stroke-width', 2);
+
+  drawNode(dopoG, leftX, dBottomY, 120, 38, 'CSM Giudici', 'separato', redBg, redBorder);
+  drawNode(dopoG, rightX, dBottomY, 120, 38, 'CSM PM', 'separato', redBg, redBorder);
 })();
 </script>
 </body>

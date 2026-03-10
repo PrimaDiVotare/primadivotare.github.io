@@ -115,7 +115,7 @@
     </div>
 
     <div class="ba-split reveal">
-      <div class="ba-col b">
+      <div class="ba-col b" data-label="Prima (D.lgs. 44/2024)">
         <h4>Concorso unico, un ponte possibile</h4>
         <p>Il magistrato entra con un concorso unico e sceglie tra funzione giudicante o requirente.</p>
         <p>Una sola volta nell'intera carriera, pu&ograve; chiedere il passaggio all'altra funzione &#8212; con cambio di sede obbligatorio e valutazione di idoneit&agrave;.</p>
@@ -126,7 +126,7 @@
           <span class="badge b">Legge ordinaria</span>
         </div>
       </div>
-      <div class="ba-col a">
+      <div class="ba-col a" data-label="Dopo (riforma 2025)">
         <h4>Due percorsi separati, nessun ponte</h4>
         <p>La Costituzione riformata prevede due carriere distinte. Le «norme sull'ordinamento giudiziario» disciplinano le «distinte carriere» (art. 102 Cost. riformato).</p>
         <p>Il concorso di accesso, i percorsi formativi, la progressione: tutto sar&agrave; separato. La scelta &egrave; irreversibile.</p>
@@ -179,7 +179,7 @@
     <div class="sec-label">Struttura istituzionale</div>
     <h2>Da un concorso unico a due mondi istituzionali</h2>
     <p>Il diagramma mostra come la separazione delle carriere si riflette sull'intera struttura istituzionale: non solo due percorsi diversi, ma due organi di autogoverno distinti.</p>
-    <div id="biforcazione-diagram" style="max-width:600px;margin:28px auto 0;"></div>
+    <div id="biforcazione-diagram" style="margin:28px 0 0;"></div>
     <p class="pbar-note" style="text-align:center;">Guarda il ponte tratteggiato nel PRIMA e la X nel DOPO. La differenza strutturale &egrave; tutta l&igrave;: da un passaggio residuale (0,31%/anno) a zero passaggi per Costituzione.</p>
   </div>
 </section>
@@ -304,7 +304,7 @@
 // D3.js — Diagramma biforcazione carriere
 (function() {
   var container = d3.select('#biforcazione-diagram');
-  var totalW = 600, totalH = 520;
+  var totalW = 600, totalH = 580;
   var primaH = 220, dopoH = 220, gapY = 40, labelH = 40;
 
   var svg = container.append('svg')
@@ -356,8 +356,8 @@
 
   // Section label
   primaG.append('rect')
-    .attr('x', 80).attr('y', 0)
-    .attr('width', totalW - 160).attr('height', 28)
+    .attr('x', 20).attr('y', 0)
+    .attr('width', totalW - 40).attr('height', 28)
     .attr('rx', 3)
     .attr('fill', grnBg)
     .attr('stroke', grnBorder)
@@ -377,7 +377,7 @@
   drawNode(primaG, totalW / 2, pTop, 160, 38, 'Concorso unico', null, grnBg, grnBorder);
 
   // Lines down to Giudice and PM
-  var leftX = totalW / 2 - 100, rightX = totalW / 2 + 100;
+  var leftX = totalW / 2 - 150, rightX = totalW / 2 + 150;
   var forkY = pTop + 19;
   var branchY = pTop + 75;
 
@@ -426,13 +426,13 @@
   drawNode(primaG, totalW / 2, cassY + 20, 200, 38, 'Cassazione', 'magistratura unica', grnBg, grnBorder);
 
   // ─── DOPO ───
-  var dopoOffset = 280;
+  var dopoOffset = 340;
   var dopoG = svg.append('g');
 
   // Section label
   dopoG.append('rect')
-    .attr('x', 80).attr('y', dopoOffset)
-    .attr('width', totalW - 160).attr('height', 28)
+    .attr('x', 20).attr('y', dopoOffset)
+    .attr('width', totalW - 40).attr('height', 28)
     .attr('rx', 3)
     .attr('fill', redBg)
     .attr('stroke', redBorder)

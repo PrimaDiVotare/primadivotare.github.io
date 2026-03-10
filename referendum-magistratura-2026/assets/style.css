@@ -489,6 +489,8 @@ nav a:hover, nav a.active { color: var(--text); border-bottom-color: var(--red);
 .disc-cell.blue .disc-num { color:var(--blu-l); }
 .disc-cell.red  { border-color:var(--red); background:var(--red-bg); }
 .disc-cell.red  .disc-num { color:var(--red-l); }
+.disc-cell.total { border-color:var(--border); background:var(--bg4); }
+.disc-cell.total .disc-num { font-size:20px; color:var(--muted); }
 .pres-star {
   font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--red-l);
   text-align:center; padding:10px;

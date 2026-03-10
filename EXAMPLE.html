@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Referendum Giustizia — 22/23 Marzo 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:    #0b0b0d;
+  --bg2:   #111116;
+  --bg3:   #17171e;
+  --bg4:   #1e1e27;
+  --border:#252530;
+  --text:  #e6e2db;
+  --muted: #636070;
+  --dim:   #3a3848;
+  --red:   #d13020;
+  --red-l: #e85444;
+  --red-bg:#1a0a08;
+  --grn:   #27764a;
+  --grn-l: #38b368;
+  --grn-bg:#0a1810;
+  --blu:   #1e5ea0;
+  --blu-l: #4490e0;
+  --blu-bg:#0a1222;
+  --gld:   #c89c30;
+  --gld-l: #e0b848;
+  --gld-bg:#181408;
+  --pur:   #7c3aed;
+  --pur-l: #c084fc;
+  --pur-bg:#13081a;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.serif { font-family: 'Playfair Display', Georgia, serif; }
+.mono  { font-family: 'IBM Plex Mono', monospace; }
+
+.kicker {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--red-l);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.kicker::before { content:''; width:18px; height:1px; background:var(--red-l); flex-shrink:0; }
+
+h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(34px, 9vw, 64px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  color: var(--text);
+}
+h1 em { font-style: italic; color: var(--red-l); }
+
+h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(22px, 6vw, 36px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+p { color: #b8b4ac; line-height: 1.7; margin-bottom: 12px; }
+p:last-child { margin-bottom: 0; }
+strong { color: var(--text); font-weight: 600; }
+mark   { background: transparent; color: var(--gld-l); font-weight: 600; }
+
+.wrap   { max-width: 680px; margin: 0 auto; padding: 0 18px; }
+section { padding: 52px 0; border-bottom: 1px solid var(--border); }
+section .wrap > *:first-child { margin-top: 0; }
+
+.sec-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 10px;
+}
+
+/* ── HEADER ── */
+header {
+  padding: 48px 0 36px;
+  border-bottom: 1px solid var(--border);
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, #200808 0%, transparent 70%);
+}
+
+.date-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 10px 18px;
+  margin-top: 24px;
+  border-radius: 2px;
+}
+.date-pill .d { font-family:'IBM Plex Mono',monospace; font-size:18px; font-weight:600; color:var(--gld-l); }
+.date-pill .l { font-size:11px; color:var(--muted); line-height:1.4; }
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+nav::-webkit-scrollbar { display: none; }
+.nav-inner { display:flex; padding:0 18px; gap:0; white-space:nowrap; }
+nav a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 13px 14px;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  flex-shrink: 0;
+}
+nav a:hover, nav a.active { color: var(--text); border-bottom-color: var(--red); }
+
+/* ── STAT ROW ── */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2px;
+  margin: 28px 0;
+}
+.stat-box {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 18px 12px;
+  text-align: center;
+}
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-desc {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── CARDS / FLIP ── */
+.flip-stack { margin:24px 0; display:flex; flex-direction:column; gap:2px; }
+.flip-row { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+
+.card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 18px 16px;
+  border-radius: 2px;
+}
+.card.before { background: var(--grn-bg); border-color: var(--grn); }
+.card.after  { background: var(--red-bg); border-color: var(--red); }
+
+.card-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.card-label::before { content:''; width:6px; height:6px; border-radius:50%; background:currentColor; flex-shrink:0; }
+.card.before .card-label { color: var(--grn-l); }
+.card.after  .card-label { color: var(--red-l); }
+.card p { font-size: 13px; }
+.card h4 { font-size: 14px; }
+
+/* ── TABLE ── */
+.scroll-hint {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .1em;
+  color: var(--muted);
+  text-align: right;
+  margin-bottom: 6px;
+}
+.resp-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; margin:24px 0; }
+.resp-table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.resp-table th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.resp-table th:nth-child(2) { color:var(--grn-l); background:var(--grn-bg); }
+.resp-table th:nth-child(3) { color:var(--red-l);  background:var(--red-bg); }
+.resp-table th:first-child  { color:var(--muted); }
+.resp-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.resp-table td:first-child  { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
+.resp-table td:nth-child(2) { color:#a0d0b0; background:#0a181040; }
+.resp-table td:nth-child(3) { color:#e0a098; background:#1a0a0840; }
+.resp-table tr:last-child td { border-bottom:none; }
+
+/* ── ORG TREE ── */
+.org-tree { margin:20px 0; }
+.tree-node {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  border: 1px solid;
+  padding: 9px 13px;
+  text-align: center;
+  border-radius: 2px;
+  line-height: 1.4;
+}
+.tree-node small { display:block; font-size:9px; opacity:.7; margin-top:2px; }
+.tree-node.pres  { border-color:var(--gld); background:var(--gld-bg); color:var(--gld-l); max-width:220px; margin:0 auto; }
+.tree-node.green { border-color:var(--grn); background:var(--grn-bg); color:var(--grn-l); }
+.tree-node.red   { border-color:var(--red); background:var(--red-bg); color:var(--red-l); }
+.tree-node.blue  { border-color:var(--blu); background:var(--blu-bg); color:var(--blu-l); }
+.tree-node.grey  { border-color:var(--border); background:var(--bg4); color:var(--muted); }
+.tree-node.gold  { border-color:var(--gld); background:var(--gld-bg); color:var(--gld-l); }
+.tree-line { width:1px; background:var(--border); height:20px; margin:0 auto; }
+.tree-row { display:flex; gap:8px; justify-content:center; }
+.tree-row > * { flex:1; min-width:0; }
+.branch-pair { display:flex; gap:8px; }
+.branch-col { flex:1; display:flex; flex-direction:column; align-items:stretch; }
+
+/* ── BADGE ── */
+.badges { display:flex; gap:6px; flex-wrap:wrap; margin-top:12px; }
+.badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  border: 1px solid;
+}
+.badge.g { color:var(--grn-l); border-color:var(--grn); background:var(--grn-bg); }
+.badge.r { color:var(--red-l); border-color:var(--red); background:var(--red-bg); }
+.badge.b { color:var(--blu-l); border-color:var(--blu); background:var(--blu-bg); }
+.badge.y { color:var(--gld-l); border-color:var(--gld); background:var(--gld-bg); }
+
+/* ── POWER BARS ── */
+.power-bar-wrap { margin:24px 0; }
+.pbar-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.pbar { height:36px; display:flex; overflow:hidden; border-radius:2px; margin-bottom:6px; }
+.pbar-seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  overflow: hidden;
+}
+.pbar-seg span { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding:0 6px; }
+.pbar-note { font-size:12px; color:var(--muted); line-height:1.5; margin-top:4px; }
+.legend-row { display:flex; gap:16px; flex-wrap:wrap; margin-top:10px; }
+.leg-item { display:flex; align-items:center; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted); }
+.leg-dot { width:8px; height:8px; border-radius:1px; flex-shrink:0; }
+
+/* ── ALERT ── */
+.alert {
+  border-left: 3px solid;
+  padding: 16px 18px;
+  margin: 20px 0;
+  background: var(--bg3);
+  border-radius: 0 2px 2px 0;
+}
+.alert.danger  { border-color:var(--red); }
+.alert.warning { border-color:var(--gld); }
+.alert.info    { border-color:var(--blu-l); }
+.alert.corr    { border-color:var(--pur); background:var(--pur-bg); }
+.alert-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.alert.danger  .alert-title { color:var(--red-l); }
+.alert.warning .alert-title { color:var(--gld-l); }
+.alert.info    .alert-title { color:var(--blu-l); }
+.alert.corr    .alert-title { color:var(--pur-l); }
+.alert p { font-size: 14px; }
+
+/* ── CORR CHIP ── */
+.corr-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  background: var(--pur-bg);
+  border: 1px solid var(--pur);
+  color: var(--pur-l);
+  padding: 3px 9px;
+  border-radius: 2px;
+  margin-bottom: 8px;
+}
+.corr-chip::before { content:'✎'; font-size:10px; }
+
+/* ── SOGLIA GRIGLIA ── */
+.soglia-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin:14px 0 6px; }
+.soglia-cell { padding:12px; border-radius:2px; border:1px solid; }
+.soglia-cell.old { background:var(--grn-bg); border-color:rgba(39,118,74,.35); }
+.soglia-cell.new { background:var(--red-bg); border-color:rgba(209,48,32,.35); }
+.sc-lbl { font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; margin-bottom:6px; }
+.soglia-cell.old .sc-lbl { color:var(--grn-l); }
+.soglia-cell.new .sc-lbl { color:var(--red-l); }
+.sc-val { font-family:'IBM Plex Mono',monospace; font-size:1rem; font-weight:600; line-height:1.2; margin-bottom:4px; }
+.soglia-cell.old .sc-val { color:var(--grn-l); }
+.soglia-cell.new .sc-val { color:var(--red-l); }
+.sc-desc { font-size:11px; color:var(--muted); line-height:1.4; }
+
+/* ── FLOW DIAGRAM ── */
+.flow-diagram { margin:24px 0; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.flow-inner { min-width:340px; display:flex; flex-direction:column; gap:0; }
+.flow-section-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  margin-bottom: 2px;
+}
+.flow-chain { display:flex; align-items:stretch; gap:0; margin-bottom:8px; }
+.flow-node {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  border: 1px solid;
+  padding: 10px;
+  text-align: center;
+  flex: 1;
+  min-width: 80px;
+  line-height: 1.4;
+}
+.flow-node small { display:block; font-size:8px; opacity:.65; margin-top:2px; }
+.flow-node.green { border-color:var(--grn); background:var(--grn-bg); color:var(--grn-l); }
+.flow-node.red   { border-color:var(--red); background:var(--red-bg); color:var(--red-l); }
+.flow-node.blue  { border-color:var(--blu); background:var(--blu-bg); color:var(--blu-l); }
+.flow-node.grey  { border-color:var(--border); background:var(--bg4); color:var(--muted); }
+.flow-arrow { display:flex; align-items:center; padding:0 4px; font-size:14px; flex-shrink:0; }
+.flow-arrow.g { color:var(--grn); }
+.flow-arrow.r { color:var(--red); }
+.flow-divider { border:none; border-top:1px dashed var(--border); margin:12px 0; }
+
+/* ── DISCIPLINE FUNNEL ── */
+.funnel { margin:24px 0; display:flex; flex-direction:column; gap:2px; }
+.funnel-step { display:flex; align-items:center; gap:10px; padding:12px 14px; border:1px solid; border-radius:2px; font-size:13px; }
+.funnel-icon { font-size:18px; flex-shrink:0; width:28px; text-align:center; }
+.funnel-step.blue  { border-color:var(--blu); background:var(--blu-bg); color:var(--blu-l); }
+.funnel-step.green { border-color:var(--grn); background:var(--grn-bg); color:var(--grn-l); }
+.funnel-step.red   { border-color:var(--red); background:var(--red-bg); color:var(--red-l); }
+.funnel-step.gold  { border-color:var(--gld); background:var(--gld-bg); color:var(--gld-l); }
+.funnel-step.grey  { border-color:var(--border); background:var(--bg4); color:var(--muted); }
+.funnel-connector  { text-align:center; color:var(--border); font-size:16px; line-height:1; padding:2px 0; }
+.funnel-text strong { color:var(--text); }
+.funnel-text small  { display:block; font-size:11px; opacity:.7; margin-top:2px; font-family:'IBM Plex Mono',monospace; }
+
+/* ── DISC CHART ── */
+.disc-chart { display:grid; grid-template-columns:repeat(5,1fr); gap:4px; margin:20px 0; }
+.disc-cell {
+  aspect-ratio: 1;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 4px;
+  text-align: center;
+  border-radius: 2px;
+}
+.disc-num { font-family:'Playfair Display',serif; font-size:28px; font-weight:900; line-height:1; }
+.disc-lbl { font-family:'IBM Plex Mono',monospace; font-size:8px; opacity:.7; margin-top:4px; line-height:1.3; }
+.disc-cell.gold { border-color:var(--gld); background:var(--gld-bg); }
+.disc-cell.gold .disc-num { color:var(--gld-l); }
+.disc-cell.blue { border-color:var(--blu); background:var(--blu-bg); }
+.disc-cell.blue .disc-num { color:var(--blu-l); }
+.disc-cell.red  { border-color:var(--red); background:var(--red-bg); }
+.disc-cell.red  .disc-num { color:var(--red-l); }
+.pres-star {
+  font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--red-l);
+  text-align:center; padding:10px;
+  background:var(--red-bg); border:1px solid var(--red); border-top:none; margin-top:-2px;
+}
+
+/* ── TIMELINE ── */
+.timeline { margin:24px 0; padding-left:28px; position:relative; }
+.timeline::before { content:''; position:absolute; left:8px; top:0; bottom:0; width:1px; background:var(--border); }
+.tl-item { position:relative; margin-bottom:28px; }
+.tl-item:last-child { margin-bottom:0; }
+.tl-item::before { content:''; position:absolute; left:-24px; top:5px; width:8px; height:8px; border-radius:50%; border:1px solid; }
+.tl-item.r::before { border-color:var(--red); background:var(--red); }
+.tl-item.y::before { border-color:var(--gld); background:var(--gld); }
+.tl-item.n::before { border-color:var(--muted); background:transparent; }
+.tl-lbl { font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+.tl-item h4 { font-size:15px; margin-bottom:5px; }
+.tl-item p  { font-size:13px; }
+
+/* ── SCENARIOS ── */
+.scenarios { display:flex; flex-direction:column; gap:2px; margin:24px 0; }
+.sc-card {
+  background:var(--bg3); border:1px solid var(--border);
+  border-top:2px solid var(--red);
+  padding:20px 18px; position:relative; overflow:hidden;
+}
+.sc-num { position:absolute; top:8px; right:14px; font-family:'Playfair Display',serif; font-size:56px; font-weight:900; color:#1e0e0e; line-height:1; pointer-events:none; user-select:none; }
+.sc-tag { font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--red-l); margin-bottom:8px; }
+.sc-card h4 { font-size:16px; margin-bottom:8px; padding-right:40px; }
+.sc-card p  { font-size:13px; }
+
+/* ── EU TABLE ── */
+.eu-list { margin:24px 0; display:flex; flex-direction:column; gap:2px; }
+.eu-row {
+  background:var(--bg3); border:1px solid var(--border); padding:16px;
+  display:grid; grid-template-columns:auto 1fr 1fr; gap:12px;
+  align-items:start; font-size:13px;
+}
+.eu-flag { font-size:22px; line-height:1; }
+.eu-col-label { font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:4px; }
+.eu-pos .eu-col-label { color:var(--grn-l); }
+.eu-neg .eu-col-label { color:var(--red-l); }
+.eu-pos p { color:#90c8a8; font-size:12px; }
+.eu-neg p { color:#c89090; font-size:12px; }
+
+/* ── BLOCKQUOTE ── */
+blockquote {
+  border-left:3px solid var(--gld); padding:16px 20px; margin:24px 0;
+  background:var(--bg3); font-style:italic; font-size:16px; line-height:1.7;
+  color:#c0bcb4; border-radius:0 2px 2px 0;
+}
+blockquote cite { display:block; margin-top:10px; font-style:normal; font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted); letter-spacing:.1em; }
+
+/* ── PRIMA/DOPO ── */
+.ba-header { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-bottom:2px; }
+.ba-h {
+  font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.18em; text-transform:uppercase;
+  padding:8px 12px; display:flex; align-items:center; gap:6px;
+}
+.ba-h::before { content:''; width:6px; height:6px; border-radius:50%; background:currentColor; }
+.ba-h.b { color:var(--grn-l); background:var(--grn-bg); border:1px solid var(--grn); }
+.ba-h.a { color:var(--red-l); background:var(--red-bg); border:1px solid var(--red); }
+.ba-split { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-bottom:16px; }
+.ba-col { padding:16px; font-size:13px; }
+.ba-col.b { background:var(--grn-bg); border:1px solid var(--grn); }
+.ba-col.a { background:var(--red-bg); border:1px solid var(--red); }
+.ba-col p { color:#98bcaa; margin-bottom:8px; }
+.ba-col.a p { color:#c09898; }
+.ba-col h4 { margin-bottom:10px; }
+
+/* ── FOOTER ── */
+.final-box { border:2px solid var(--red); padding:24px 20px; text-align:center; margin:28px 0; background:#120808; }
+.final-box .vote-label { font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+.final-box .vote-big   { font-family:'Playfair Display',serif; font-size:72px; font-weight:900; color:var(--red-l); line-height:1; }
+.final-box .vote-sub   { font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin-top:6px; }
+.source-note { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted); line-height:1.8; padding:20px 0 40px; border-top:1px solid var(--border); margin-top:24px; }
+
+@media (max-width: 400px) {
+  .stat-num { font-size:32px; }
+  .eu-row { grid-template-columns:auto 1fr; }
+  .eu-neg { display:none; }
+  .ba-split, .ba-header { grid-template-columns:1fr; }
+  .soglia-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="wrap">
+    <div class="kicker">Referendum costituzionale</div>
+    <h1>Prima e<br>Dopo la<br><em>Riforma</em></h1>
+    <p style="margin-top:14px;font-size:15px;color:var(--muted);">Chi controlla cosa, dove va il potere. Una guida visiva alla riforma Nordio.</p>
+    <div class="date-pill">
+      <div class="d">22–23 MAR 2026</div>
+      <div class="l">Data del voto<br>Nessun quorum</div>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#sintesi">Sintesi</a>
+    <a href="#csm">CSM</a>
+    <a href="#disciplina">Disciplina</a>
+    <a href="#potere">Potere</a>
+    <a href="#leggi">Leggi</a>
+    <a href="#scenari">Scenari</a>
+    <a href="#europa">Europa</a>
+  </div>
+</nav>
+
+<!-- ═══ § 01 SINTESI ═══ -->
+<section id="sintesi">
+  <div class="wrap">
+    <div class="sec-label">§ 01 — La riforma in 3 numeri</div>
+    <h2>Tre cambiamenti enormi dietro un nome rassicurante</h2>
+    <p>La legge costituzionale n. 253 del 30 ottobre 2025 modifica <strong>sette articoli della Costituzione</strong> e introduce tre rivoluzioni strutturali — non solo la "separazione delle carriere".</p>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--red-l)">2</div>
+        <div class="stat-desc">CSM separati al posto di uno solo</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--gld-l)">0</div>
+        <div class="stat-desc">Ricorsi in Cassazione sulle sentenze disciplinari</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blu-l)">∞</div>
+        <div class="stat-desc">Norme attuative lasciate a leggi ordinarie future</div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">← scorri →</div>
+    <div class="resp-table-wrap">
+      <table class="resp-table">
+        <thead>
+          <tr>
+            <th>Elemento</th>
+            <th>✦ Prima</th>
+            <th>✕ Dopo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Carriere</td>
+            <td>Passaggio possibile <strong>una sola volta nell'intera carriera</strong> (D.lgs. 44/2024, attuativo legge Cartabia)</td>
+            <td>Separazione in Costituzione: scelta irreversibile</td>
+          </tr>
+          <tr>
+            <!-- ★ CORREZIONE 1: 59% → 66,7%, 27 → 33 componenti -->
+            <td>Autogoverno</td>
+            <td>CSM unico 33 componenti — togati eletti dai colleghi (<strong>66,7%</strong> dei 30 elettivi)</td>
+            <td>Due CSM — tutti componenti scelti per sorteggio</td>
+          </tr>
+          <tr>
+            <td>Disciplina</td>
+            <td>Sezione disciplinare CSM → ricorso Cassazione (Sezioni Unite)</td>
+            <td>Alta Corte separata → appello solo interno</td>
+          </tr>
+          <tr>
+            <td>Garanzie</td>
+            <td>Blindate in Costituzione</td>
+            <td>Molti dettagli → legge ordinaria modificabile</td>
+          </tr>
+          <tr>
+            <!-- ★ CORREZIONE 1: il VP del CSM è già un laico oggi -->
+            <td>Vicepresidenti</td>
+            <td>Eletti tra i laici del CSM unico</td>
+            <td>Eletti tra i laici di ciascun CSM (da lista parlamentare)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ § 02 CSM ═══ -->
+<section id="csm">
+  <div class="wrap">
+    <div class="sec-label">§ 02 — Il cuore dell'autogoverno</div>
+    <h2>Il CSM: da eletto a sorteggiato</h2>
+    <p>Il CSM decide chi diventa Procuratore di Milano, chi viene trasferito, chi avanza. È lo scudo dell'indipendenza dei magistrati dalla politica.</p>
+
+    <div class="ba-header">
+      <div class="ba-h b">Prima</div>
+      <div class="ba-h a">Dopo</div>
+    </div>
+
+    <div class="ba-split">
+
+      <!-- CSM PRIMA — ★ CORREZIONE 1: 27→33, 16→20, 8→10, VP laico -->
+      <div class="ba-col b">
+        <h4>Un CSM unico</h4>
+        <div class="org-tree">
+          <div class="tree-node pres">🏛 Presidente Rep.<small>Presiede</small></div>
+          <div class="tree-line"></div>
+          <div class="tree-node green">CSM UNICO<small>33 componenti totali</small></div>
+          <div class="tree-line"></div>
+          <div class="tree-row">
+            <div class="tree-node green" style="font-size:9px;">20 Togati<small>eletti dai colleghi</small><small style="color:var(--grn-l)">✦ 66,7%</small></div>
+            <div class="tree-node blue"  style="font-size:9px;">10 Laici<small>eletti Parlamento</small><small>maggioranza 3/5</small></div>
+          </div>
+          <div class="tree-line"></div>
+          <div class="tree-node green" style="font-size:9px;">Vicepresidente: eletto tra i <strong style="color:var(--blu-l)">laici</strong><small style="color:var(--muted)">+ 3 di diritto (PdR, PP, PG)</small></div>
+        </div>
+        <div class="badges">
+          <span class="badge g">Togati eletti</span>
+          <span class="badge g">Maggioranza indip.</span>
+          <span class="badge b">Laici con soglia 3/5</span>
+        </div>
+      </div>
+
+      <!-- CSM DOPO -->
+      <div class="ba-col a">
+        <h4>Due CSM + Alta Corte</h4>
+        <div class="org-tree">
+          <div class="tree-node pres">🏛 Presidente Rep.<small>Presiede entrambi</small></div>
+          <div class="tree-line"></div>
+          <div class="branch-pair">
+            <div class="branch-col">
+              <div class="tree-node blue" style="font-size:9px;">CSM Giudici</div>
+              <div class="tree-line"></div>
+              <div class="tree-node grey" style="font-size:8px;">⅓ Laici<small>lista parlamentare</small></div>
+              <div class="tree-node grey" style="font-size:8px; margin-top:2px;">⅔ Togati<small>sorteggio</small></div>
+              <div class="tree-line"></div>
+              <div class="tree-node red" style="font-size:8px;">VP: <strong style="color:var(--red-l)">laico</strong></div>
+            </div>
+            <div class="branch-col">
+              <div class="tree-node red" style="font-size:9px;">CSM PM</div>
+              <div class="tree-line"></div>
+              <div class="tree-node grey" style="font-size:8px;">⅓ Laici<small>lista parlamentare</small></div>
+              <div class="tree-node grey" style="font-size:8px; margin-top:2px;">⅔ Togati<small>sorteggio</small></div>
+              <div class="tree-line"></div>
+              <div class="tree-node red" style="font-size:8px;">VP: <strong style="color:var(--red-l)">laico</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="badges">
+          <span class="badge r">Togati a caso</span>
+          <span class="badge r">VP = politica</span>
+          <span class="badge r">Requisiti → legge</span>
+        </div>
+      </div>
+    </div><!-- / ba-split -->
+
+    <!-- ★ INTEGRAZIONE 2: soglia parlamentare sparisce -->
+    <div class="corr-chip">Integrazione tecnica</div>
+    <div class="alert corr">
+      <div class="alert-title">✎ La soglia per i laici: da 3/5 a… non fissata</div>
+      <p>Oggi la legge (art. 22, L. 195/1958 mod. L. 71/2022) richiede i <strong>3/5 dei votanti</strong> del Parlamento in seduta comune per eleggere i laici del CSM — soglia che forza il compromesso bipartisan. Il testo riformato prevede che il Parlamento «compili mediante elezione» la lista dei candidati al sorteggio, ma <mark>non fissa nessuna maggioranza</mark>. Una maggioranza semplice potrebbe costruire una lista ristretta di profili politicamente graditi, da cui il sorteggio estrae poi i componenti di entrambi i CSM e dell'Alta Corte.</p>
+    </div>
+
+    <div class="soglia-grid">
+      <div class="soglia-cell old">
+        <div class="sc-lbl">Sistema attuale</div>
+        <div class="sc-val">3/5 dei votanti</div>
+        <div class="sc-desc">Maggioranza qualificata del Parlamento in seduta comune per eleggere i laici del CSM</div>
+      </div>
+      <div class="soglia-cell new">
+        <div class="sc-lbl">Dopo la riforma</div>
+        <div class="sc-val">Non fissata</div>
+        <div class="sc-desc">Il testo riformato tace sulla maggioranza richiesta per compilare la lista da cui si sorteggia</div>
+      </div>
+    </div>
+
+    <!-- POWER BARS — ★ CORREZIONE 1 aggiornata -->
+    <h3 style="margin-top:32px;">Bilancio di potere nei componenti elettivi del CSM</h3>
+
+    <div class="power-bar-wrap">
+      <div class="pbar-label">CSM attuale — 30 componenti elettivi (L. 71/2022)</div>
+      <div class="pbar">
+        <div class="pbar-seg" style="width:66.7%;background:#1a3a20;color:var(--grn-l);"><span>Togati eletti (66,7%)</span></div>
+        <div class="pbar-seg" style="width:33.3%;background:#1a2540;color:var(--blu-l);"><span>Laici eletti (33,3%)</span></div>
+      </div>
+      <div class="pbar-note">20 togati eletti dai colleghi magistrati + 10 laici eletti dal Parlamento con maggioranza qualificata (3/5). I 3 membri di diritto (PdR, Primo Pres. e Proc. Gen. Cassazione) non rientrano nella proporzione costituzionale e non si computano.</div>
+    </div>
+
+    <div class="power-bar-wrap">
+      <div class="pbar-label">Dopo la riforma — ciascun CSM</div>
+      <div class="pbar">
+        <div class="pbar-seg" style="width:67%;background:#2a1a10;color:#c87060;"><span>Togati sorteggiati (67%)</span></div>
+        <div class="pbar-seg" style="width:33%;background:#1a2540;color:var(--blu-l);"><span>Laici lista parl. (33%)</span></div>
+      </div>
+      <div class="pbar-note">Proporzione 2/3–1/3 invariata sulla carta. Cambia tutto il resto: togati senza mandato elettivo, laici sorteggiati da lista parlamentare senza soglia garantita, Vicepresidente sempre laico.</div>
+    </div>
+
+    <div class="alert warning">
+      <div class="alert-title">⚠ Il punto chiave sul sorteggio</div>
+      <p>I togati sorteggiati non rispondono a nessuno. I laici vengono estratti da <strong>una lista compilata dal Parlamento senza soglia di maggioranza garantita</strong>. I requisiti per chi può essere sorteggiato tra i togati li fissa <mark>una legge ordinaria futura</mark>. Chi governa scrive le regole del sorteggio.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ § 03 ALTA CORTE ═══ -->
+<section id="disciplina">
+  <div class="wrap">
+    <div class="sec-label">§ 03 — La garanzia rimossa</div>
+    <h2>L'Alta Corte Disciplinare: un tribunale senza appello esterno</h2>
+    <p>Oggi un magistrato condannato disciplinarmente può ricorrere in Cassazione — Sezioni Unite civili. La stessa garanzia dell'art. 111 Cost. che ha qualsiasi cittadino italiano.</p>
+    <p>La riforma usa l'avverbio <strong>"soltanto"</strong>: impugnazione ammessa soltanto all'interno della stessa Alta Corte.</p>
+
+    <div class="ba-header">
+      <div class="ba-h b">Prima — iter disciplinare</div>
+      <div class="ba-h a">Dopo — Alta Corte</div>
+    </div>
+
+    <div class="ba-split">
+      <div class="ba-col b">
+        <div class="funnel">
+          <div class="funnel-step blue"><div class="funnel-icon">📋</div><div class="funnel-text"><strong>Illecito contestato</strong></div></div>
+          <div class="funnel-connector">↓</div>
+          <div class="funnel-step green"><div class="funnel-icon">⚖️</div><div class="funnel-text"><strong>Sez. disciplinare CSM</strong><small>4 togati + 2 laici = 6 tot.</small></div></div>
+          <div class="funnel-connector">↓</div>
+          <div class="funnel-step gold"><div class="funnel-icon">📄</div><div class="funnel-text"><strong>Sentenza 1° grado</strong></div></div>
+          <div class="funnel-connector">↓</div>
+          <div class="funnel-step green"><div class="funnel-icon">🏛</div><div class="funnel-text"><strong>Cassazione</strong><small>Sezioni Unite — organo esterno indipendente</small></div></div>
+          <div class="funnel-connector">↓</div>
+          <div class="funnel-step green"><div class="funnel-icon">✅</div><div class="funnel-text"><strong>Definitivo</strong><small>con controllo legittimità (art. 111)</small></div></div>
+        </div>
+        <div class="badges">
+          <span class="badge g">Organo esterno</span>
+          <span class="badge g">Art. 111 garantito</span>
+        </div>
+      </div>
+
+      <div class="ba-col a">
+        <div class="funnel">
+          <div class="funnel-step blue"><div class="funnel-icon">📋</div><div class="funnel-text"><strong>Illecito contestato</strong></div></div>
+          <div class="funnel-connector">↓</div>
+          <div class="funnel-step red"><div class="funnel-icon">⚖️</div><div class="funnel-text"><strong>Alta Corte Disciplinare</strong><small>15 membri — presidente laico</small></div></div>
+          <div class="funnel-connector">↓</div>
+          <div class="funnel-step gold"><div class="funnel-icon">📄</div><div class="funnel-text"><strong>Sentenza 1° grado</strong></div></div>
+          <div class="funnel-connector">↓</div>
+          <div class="funnel-step red"><div class="funnel-icon">🔄</div><div class="funnel-text"><strong>Appello: stessa Corte</strong><small>composizione diversa, nessun organo esterno</small></div></div>
+          <div class="funnel-connector">↓</div>
+          <div class="funnel-step red"><div class="funnel-icon">⛔</div><div class="funnel-text"><strong>Definitivo</strong><small>nessun controllo esterno</small></div></div>
+        </div>
+        <div class="badges">
+          <span class="badge r">Solo appello interno</span>
+          <span class="badge r">Art. 111 rimosso</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Composizione Alta Corte -->
+    <h3 style="margin-top:8px;">Composizione Alta Corte Disciplinare (15 membri)</h3>
+    <div class="disc-chart">
+      <div class="disc-cell gold">
+        <div class="disc-num">3</div>
+        <div class="disc-lbl">Nomina<br>PdR</div>
+      </div>
+      <div class="disc-cell blue">
+        <div class="disc-num">3</div>
+        <div class="disc-lbl">Lista<br>Parla.</div>
+      </div>
+      <div class="disc-cell red">
+        <div class="disc-num">6</div>
+        <div class="disc-lbl">Togati<br>giud.</div>
+      </div>
+      <div class="disc-cell red">
+        <div class="disc-num">3</div>
+        <div class="disc-lbl">Togati<br>req.</div>
+      </div>
+      <div class="disc-cell" style="border-color:var(--border);background:var(--bg4);">
+        <div class="disc-num" style="font-size:20px;color:var(--muted);">=15</div>
+        <div class="disc-lbl">totale</div>
+      </div>
+    </div>
+    <div class="pres-star">★ Il PRESIDENTE viene sempre eletto tra i laici (6 su 15 = 40%)</div>
+
+    <!-- ★ INTEGRAZIONE 3: componente laica cresce, power bar comparativo -->
+    <div class="corr-chip" style="margin-top:20px;">Integrazione tecnica</div>
+    <div class="alert corr">
+      <div class="alert-title">✎ La componente laica cresce, non scende</div>
+      <p>La sezione disciplinare attuale ha <strong>4 togati su 6 componenti = 66,7%</strong>. L'Alta Corte avrà <strong>9 togati su 15 = 60%</strong>. La componente laica passa dal 33,3% al 40% — e il Presidente è sempre un laico. La riforma non raffina la rappresentanza togata: la riduce, e porta fuori dall'autogoverno tutta la funzione disciplinare verso un organo a composizione più politicamente esposta.</p>
+    </div>
+
+    <div class="power-bar-wrap">
+      <div class="pbar-label">Sezione disciplinare CSM (oggi) — 6 componenti</div>
+      <div class="pbar">
+        <div class="pbar-seg" style="width:66.7%;background:#1a3a20;color:var(--grn-l);"><span>Togati (66,7%)</span></div>
+        <div class="pbar-seg" style="width:33.3%;background:#1a2540;color:var(--blu-l);"><span>Laici (33,3%)</span></div>
+      </div>
+      <div class="pbar-note">4 togati (3 giudicanti + 1 requirente) + 2 laici. Presiede il Vicepresidente del CSM (laico). Appello: Cassazione Sezioni Unite.</div>
+    </div>
+
+    <div class="power-bar-wrap">
+      <div class="pbar-label">Alta Corte Disciplinare (dopo) — 15 componenti</div>
+      <div class="pbar">
+        <div class="pbar-seg" style="width:60%;background:#2a1a10;color:#c87060;"><span>Togati (60%)</span></div>
+        <div class="pbar-seg" style="width:40%;background:#1a2540;color:var(--blu-l);"><span>Laici (40%)</span></div>
+      </div>
+      <div class="pbar-note">9 togati sorteggiati (6 giudicanti + 3 requirenti) + 6 laici (3 nomina PdR + 3 lista parlamentare). Presidente: sempre laico. Appello: solo interno, nessuna Cassazione.</div>
+    </div>
+
+    <div class="alert danger" style="margin-top:20px;">
+      <div class="alert-title">🔴 La deroga ai principi fondamentali</div>
+      <p>L'art. 111 Cost. garantisce il ricorso in Cassazione contro qualsiasi sentenza di qualsiasi organo. Le sole eccezioni: tribunali militari in guerra e Corte Costituzionale. La riforma aggiunge una terza: <strong>i magistrati ordinari</strong>. Solo loro, tra tutti i cittadini, perderanno questa garanzia.</p>
+    </div>
+
+    <div class="alert info">
+      <div class="alert-title">ℹ La contro-tesi del Sì</div>
+      <p>Alcuni giuristi (Gustapane, Santalucia) sostengono che l'art. 111 — non modificato — garantirebbe comunque il ricorso in Cassazione. La tesi prevalente (Cassano, Biondi, Gatto) esclude il ricorso in base all'avverbio "soltanto". Il punto non contestato: la riforma <strong>non lo dice esplicitamente</strong>, lasciando la questione aperta e irrisolta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ § 04 SPOSTAMENTO POTERE ═══ -->
+<section id="potere">
+  <div class="wrap">
+    <div class="sec-label">§ 04 — Dove va il potere</div>
+    <h2>La traiettoria: da indipendente a politicamente influenzabile</h2>
+    <p>Non è una questione di governi malvagi. È una questione di <em>architettura</em>. La riforma abbassa la soglia strutturale di resistenza all'interferenza politica.</p>
+
+    <div class="flow-diagram">
+      <div class="flow-inner">
+        <!-- ★ CORREZIONE 1: 59% → 66,7% nel flow -->
+        <div class="flow-section-label" style="color:var(--grn-l);background:var(--grn-bg);border:1px solid var(--grn);">PRIMA — flusso indipendente</div>
+        <div class="flow-chain">
+          <div class="flow-node green">Magistrati<small>votano i colleghi</small></div>
+          <div class="flow-arrow g">→</div>
+          <div class="flow-node green">CSM eletto<small>togati 66,7%</small></div>
+          <div class="flow-arrow g">→</div>
+          <div class="flow-node green">Nomine PM<small>indipendenti</small></div>
+          <div class="flow-arrow g">→</div>
+          <div class="flow-node green">PM indaga<small>senza leve</small></div>
+        </div>
+        <hr class="flow-divider"/>
+        <div class="flow-section-label" style="color:var(--red-l);background:var(--red-bg);border:1px solid var(--red);">DOPO — flusso influenzabile</div>
+        <div class="flow-chain">
+          <div class="flow-node red">Parlamento<small>lista, requisiti, soglia</small></div>
+          <div class="flow-arrow r">→</div>
+          <div class="flow-node red">Sorteggio CSM<small>VP = laico</small></div>
+          <div class="flow-arrow r">→</div>
+          <div class="flow-node red">Nomine PM<small>più esposte</small></div>
+          <div class="flow-arrow r">→</div>
+          <div class="flow-node red">PM più vulnerabile<small>disciplina senza Cassaz.</small></div>
+        </div>
+        <div style="margin-top:10px;background:var(--red-bg);border:1px dashed var(--red);padding:12px;font-size:12px;color:#c09090;border-radius:2px;font-family:'IBM Plex Mono',monospace;">
+          ↑ Leva aggiuntiva: il Parlamento scrive le regole degli illeciti disciplinari. Aprire un procedimento basta a rallentare un PM scomodo — senza condannarlo.
+        </div>
+      </div>
+    </div>
+
+    <div class="alert danger">
+      <div class="alert-title">🔴 Interferenza strutturale, non diretta</div>
+      <p>Non servono ordini telefonici. Basta <strong>controllare la lista dei laici senza soglia qualificata</strong>, scrivere i requisiti del sorteggio, aprire un procedimento disciplinare. Nessun singolo atto è scandaloso. L'effetto complessivo è una magistratura requirente strutturalmente meno libera.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ § 05 LEGGI ORDINARIE ═══ -->
+<section id="leggi">
+  <div class="wrap">
+    <div class="sec-label">§ 05 — Il contratto in bianco</div>
+    <h2>Cosa non è scritto nella nuova Costituzione</h2>
+    <p>La riforma costituzionalizza la struttura. Ma i dettagli che determinano chi comanda davvero restano a leggi ordinarie. Una legge ordinaria si cambia con una <strong>maggioranza semplice in un pomeriggio</strong>.</p>
+
+    <div class="timeline">
+      <div class="tl-item r">
+        <div class="tl-lbl">Legge ord. 1</div>
+        <h4>Requisiti del sorteggio dei togati</h4>
+        <p>Chi può essere sorteggiato — anzianità, categorie, esclusioni — lo decide il Parlamento. Cambia governo, cambiano le regole, cambia la platea.</p>
+      </div>
+      <div class="tl-item r">
+        <div class="tl-lbl">Legge ord. 2</div>
+        <h4>Composizione dei collegi dell'Alta Corte</h4>
+        <p>Come si formano i collegi giudicanti? Quanti per ogni caso? Chi presiede? La composizione pratica determina chi vince i procedimenti disciplinari.</p>
+      </div>
+      <div class="tl-item r">
+        <div class="tl-lbl">Legge ord. 3</div>
+        <h4>Catalogo degli illeciti disciplinari</h4>
+        <p>Cosa costituisce illecito? Chi scrive le fattispecie decide chi è vulnerabile. "Fuga di notizie" può essere definita in modi molto diversi.</p>
+      </div>
+      <div class="tl-item y">
+        <div class="tl-lbl">Legge ord. 4</div>
+        <h4>Criteri di priorità nell'azione penale</h4>
+        <p>L'obbligatorietà (art. 112) rimane. Ma chi fissa l'ordine di priorità orienta le procure — senza violare formalmente nulla.</p>
+      </div>
+      <div class="tl-item y">
+        <div class="tl-lbl">Legge ord. 5</div>
+        <h4>Garanzie di indipendenza dei PM dall'esecutivo</h4>
+        <p>Il Portogallo le ha in Costituzione. Noi le avremmo in una legge ordinaria — se e quando un governo vorrà scriverle.</p>
+      </div>
+      <div class="tl-item n">
+        <div class="tl-lbl">Deadline</div>
+        <h4>Entro un anno dal referendum — termine ordinatorio</h4>
+        <p>L'art. 8, comma 2 della legge cost. prevede che fino all'approvazione delle leggi attuative rimangano in vigore le norme vigenti. Nessuna conseguenza giuridica per il ritardo: le leggi attuative le scrive il governo che ci sarà allora — e può aspettare quanto vuole.</p>
+      </div>
+    </div>
+
+    <blockquote>
+      "Oggi queste garanzie stanno in Costituzione — servono anni e maggioranze enormi per toccarle. Domani staranno in una legge ordinaria — basta un pomeriggio."
+      <cite>— Sintesi dell'argomento principale del NO</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ═══ § 06 SCENARI ═══ -->
+<section id="scenari">
+  <div class="wrap">
+    <div class="sec-label">§ 06 — Non fantascienza</div>
+    <h2>Quattro scenari concreti dopo la riforma</h2>
+    <p>Non servono governi malvagi né complotti. Questi scenari derivano dall'architettura della riforma applicata a situazioni ordinarie della politica italiana.</p>
+
+    <div class="scenarios">
+      <div class="sc-card">
+        <span class="sc-num">01</span>
+        <div class="sc-tag">Rischio sorteggio</div>
+        <h4>Il Parlamento scrive i requisiti. Il Parlamento sceglie la platea.</h4>
+        <p>Una coalizione stabilisce che al sorteggio partecipano solo magistrati con 25+ anni di carriera in sedi specifiche. Il bacino si restringe. Il sorteggio avviene tra chi rimane. Formalmente casuale. Sostanzialmente filtrato. La mancanza di una soglia qualificata per la lista laici amplifica ulteriormente questo rischio.</p>
+      </div>
+
+      <div class="sc-card">
+        <span class="sc-num">02</span>
+        <div class="sc-tag">Rischio disciplina</div>
+        <h4>Un PM indaga un ministro. Poi arriva una segnalazione.</h4>
+        <p>L'Alta Corte apre un procedimento per "fuga di notizie" — reale, presunta, o costruita. Non serve condannare: il procedimento rallenta, spaventa, invia un messaggio silenzioso agli altri PM. Nessun appello esterno. La componente laica al 40%, con presidente laico, abbassa le garanzie rispetto all'odierna Sezione disciplinare.</p>
+      </div>
+
+      <div class="sc-card">
+        <span class="sc-num">03</span>
+        <div class="sc-tag">Rischio nomine</div>
+        <h4>Il CSM dei PM nomina il Procuratore di Roma.</h4>
+        <p>Con VP laici che orientano i lavori e togati senza mandato elettivo, nelle procure sensibili — Milano, Roma, Palermo — si favoriscono profili "meno scomodi" quando ci sono indagini su figure politiche.</p>
+      </div>
+
+      <div class="sc-card">
+        <span class="sc-num">04</span>
+        <div class="sc-tag">Precedente europeo</div>
+        <h4>Polonia 2017: lo stesso manuale, esiti certificati dalla CGUE.</h4>
+        <p>Il PiS non abolì l'indipendenza giudiziaria. Creò una Camera Disciplinare con legge ordinaria, la usò per sospendere giudici scomodi. Condannata quattro volte dalla CGUE (C-619/18, C-791/19, C-204/21 e altre). Strumento: organo disciplinare senza controllo esterno adeguato. Struttura analoga all'Alta Corte italiana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ § 07 EUROPA ═══ -->
+<section id="europa">
+  <div class="wrap">
+    <div class="sec-label">§ 07 — Il confronto europeo</div>
+    <h2>"Come in Europa": una mezza verità</h2>
+    <p>La separazione delle carriere esiste in Europa. Non è vero che la nostra riforma replica i dettagli che fanno funzionare quei sistemi.</p>
+
+    <div class="eu-list">
+      <div class="eu-row">
+        <div class="eu-flag">🇵🇹</div>
+        <div class="eu-pos">
+          <div class="eu-col-label">Funziona perché...</div>
+          <p>Separazione carriere + due consigli separati. Il modello "buono".</p>
+        </div>
+        <div class="eu-neg">
+          <div class="eu-col-label">Cosa la riforma italiana non fa</div>
+          <p>L'autonomia del PM è <strong>blindata in Costituzione</strong> (artt. 219-220 CRP). Noi la lasciamo a legge ordinaria. Nessun emendamento accolto su questo punto in tutte le letture parlamentari.</p>
+        </div>
+      </div>
+
+      <div class="eu-row">
+        <div class="eu-flag">🇩🇪</div>
+        <div class="eu-pos">
+          <div class="eu-col-label">Il modello citato</div>
+          <p>PM separati dai giudici.</p>
+        </div>
+        <div class="eu-neg">
+          <div class="eu-col-label">La realtà CGUE</div>
+          <p>I PM tedeschi dipendono dal Ministero (§147 GVG). La CGUE (C-508/18 e C-82/19 PPU, 27/5/2019): non sono "autorità giudiziaria indipendente". Non possono emettere mandati d'arresto europei validi.</p>
+        </div>
+      </div>
+
+      <div class="eu-row">
+        <div class="eu-flag">🇫🇷</div>
+        <div class="eu-pos">
+          <div class="eu-col-label">Il sistema reale</div>
+          <p>Sistema accusatorio con garanzie forti.</p>
+        </div>
+        <div class="eu-neg">
+          <div class="eu-col-label">Il paradosso</div>
+          <p>La Francia ha un <em>corpo unico</em> di magistratura. È l'opposto della separazione proposta.</p>
+        </div>
+      </div>
+
+      <div class="eu-row">
+        <div class="eu-flag">🇵🇱</div>
+        <div class="eu-pos">
+          <div class="eu-col-label">—</div>
+          <p>—</p>
+        </div>
+        <div class="eu-neg">
+          <div class="eu-col-label">Il precedente</div>
+          <p>Ha usato organi disciplinari speciali per rimuovere giudici scomodi. Condannata 4 volte dalla CGUE. Strumenti analoghi a quelli della riforma italiana.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert warning">
+      <div class="alert-title">⚠ La domanda senza risposta</div>
+      <p>Se volete fare "come il Portogallo" — l'unico paese con separazione che funziona bene — perché il testo è rimasto invariato in tutte le letture parlamentari, senza accogliere nessun emendamento per blindare in Costituzione l'indipendenza dei PM dall'esecutivo?</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONCLUSIONE ═══ -->
+<section style="border-bottom:none;">
+  <div class="wrap">
+    <div class="sec-label">§ Conclusione</div>
+    <h2>La domanda che non ha una risposta buona</h2>
+
+    <blockquote>
+      "Se l'indipendenza dei PM è così importante da riformare la Costituzione, perché non la scrivete nella Costituzione? Perché la lasciate a una legge che qualsiasi governo futuro può riscrivere in un pomeriggio?"
+      <cite>— Argomento centrale del NO</cite>
+    </blockquote>
+
+    <p>Non firmare contratti in bianco. Non riscrivere la Costituzione sulla fiducia.</p>
+
+    <div class="final-box">
+      <div class="vote-label">La posizione di questo documento</div>
+      <div class="vote-big">NO</div>
+      <div class="vote-sub">vota no al referendum</div>
+    </div>
+
+    <div class="source-note">
+      Fonti: legge costituzionale n. 253 del 30 ottobre 2025 (G.U. n. 253) · L. 24 marzo 2022, n. 71 (riforma Cartabia — CSM 33 componenti) · D.lgs. 44/2024 art. 12 (un solo passaggio nell'intera carriera) · Sistema Penale (Biondi, Gatto) · Giustizia Insieme (Santalucia) · Rivista AIC (Pinelli, 1/2026) · Prima Presidente emerita Corte di Cassazione Margherita Cassano (Fondazione Bellisario, febbraio 2026) · Questione Giustizia (Panizza) · Pagella Politica · CGUE, cause riunite C-508/18 e C-82/19 PPU, 27 maggio 2019 (PM tedeschi) · Costituzione portoghese artt. 219-220.<br><br>
+      Note: (1) La separazione delle carriere era già limitata a un solo passaggio nell'intera carriera dal D.lgs. 44/2024 — non "in dieci anni". (2) La ricorribilità in Cassazione contro le sentenze dell'Alta Corte è oggetto di dibattito aperto: tesi prevalente la esclude (Cassano, Biondi, Gatto); tesi minoritaria la ammette ex art. 111 Cost. non modificato (Gustapane, Santalucia). (3) Composizione CSM vigente (L. 71/2022): 33 componenti totali — 20 togati eletti + 10 laici eletti con maggioranza 3/5 (= 66,7% togati su 30 elettivi) + 3 di diritto. Dato aggiornato rispetto alla versione pre-Cartabia (27 componenti, 59% togati). (4) Alta Corte disciplinare: 9 togati su 15 = 60%, componente laica 40% — superiore al 33,3% dell'attuale Sezione disciplinare. (5) Il testo riformato non fissa la maggioranza richiesta per compilare la lista dei candidati al sorteggio tra i laici, a differenza dei 3/5 dei votanti oggi richiesti per l'elezione diretta (art. 22 L. 195/1958 mod. L. 71/2022).
+    </div>
+  </div>
+</section>
+
+<script>
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+      const active = document.querySelector('nav a.active');
+      if (active) active.scrollIntoView({ block:'nearest', inline:'center', behavior:'smooth' });
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>

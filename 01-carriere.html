@@ -6,6 +6,17 @@
 <title>Separazione delle carriere — Referendum Giustizia 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<style>
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 </head>
@@ -56,7 +67,7 @@
     <h2>Quarant'anni di interventi sulle carriere</h2>
     <p>La storia dei passaggi tra carriere e&#768; una storia di restringimento progressivo. Ogni riforma ha stretto la porta. L'ultima l'ha chiusa in Costituzione.</p>
 
-    <div class="timeline">
+    <div class="timeline reveal">
       <div class="tl-item n">
         <div class="tl-lbl">Pre-2007</div>
         <h4>Passaggi illimitati</h4>
@@ -88,7 +99,7 @@
     <h2>Quanto era grande il problema?</h2>
     <p>Nei dati reali, i passaggi di carriera erano gia&#768; un fenomeno residuale prima dell'intervento costituzionale.</p>
 
-    <div class="stat-row">
+    <div class="stat-row reveal">
       <div class="stat-box">
         <div class="stat-num" style="color:var(--gld-l)">~28</div>
         <div class="stat-desc">Passaggi PM&#8596;giudice per anno (media 2019&#8211;2023)</div>
@@ -111,7 +122,7 @@
 
     <p>Circa 28 magistrati su 8.800 cambiavano funzione ogni anno &#8212; lo 0,31% del corpo. Dopo l'entrata in vigore del D.lgs. 44/2024, questo numero sarebbe sceso ulteriormente, perche&#769; il passaggio era limitato a una sola volta nell'intera carriera.</p>
 
-    <div class="alert info">
+    <div class="alert info reveal">
       <div class="alert-title">Nota metodologica</div>
       <p>I dati sui passaggi provengono dalle audizioni parlamentari del CSM (2023&#8211;2024) e dai riscontri giornalistici di Pagella Politica. Il dato di ~28/anno si riferisce alla media degli anni pre-Cartabia.</p>
     </div>
@@ -124,12 +135,12 @@
     <div class="sec-label">Prima e dopo</div>
     <h2>Cosa cambia nel percorso di un magistrato</h2>
 
-    <div class="ba-header">
+    <div class="ba-header reveal">
       <div class="ba-h b">Prima (D.lgs. 44/2024)</div>
       <div class="ba-h a">Dopo (riforma 2025)</div>
     </div>
 
-    <div class="ba-split">
+    <div class="ba-split reveal">
       <div class="ba-col b">
         <h4>Concorso unico, un ponte possibile</h4>
         <p>Il magistrato entra con un concorso unico e sceglie tra funzione giudicante o requirente.</p>
@@ -157,7 +168,7 @@
     <!-- Diagramma visuale percorso -->
     <h3 style="margin-top:24px;">Il percorso a confronto</h3>
 
-    <div class="flow-diagram">
+    <div class="flow-diagram reveal">
       <div class="flow-inner">
         <div class="flow-section-label" style="color:var(--grn-l);background:var(--grn-bg);border:1px solid var(--grn);">Prima &#8212; un ponte possibile (D.lgs. 44/2024)</div>
         <div class="flow-chain">
@@ -205,7 +216,7 @@
     <div class="sec-label">Cui prodest</div>
     <h2>Se il problema era risolto, perche&#769; toccare la Costituzione?</h2>
 
-    <div class="alert warning">
+    <div class="alert warning reveal">
       <div class="alert-title">La domanda strutturale</div>
       <p>La separazione delle carriere, presa da sola, aveva una giustificazione. Ma la legge Cartabia l'aveva gia&#768; affrontata con un intervento proporzionato &#8212; un solo passaggio nell'intera carriera.</p>
       <p>Costituzionalizzare la separazione ha un effetto collaterale che non e&#768; collaterale: <strong>richiede due CSM separati</strong> (art. 104 riformato). Due CSM significano una nuova composizione, un nuovo meccanismo di selezione (il sorteggio), e l'estrazione della funzione disciplinare verso un nuovo organo (l'Alta Corte).</p>
@@ -234,22 +245,22 @@
     <h2>Gli argomenti a favore della separazione</h2>
     <p>Questi argomenti meritano di essere considerati nel merito. Sono sostenuti da giuristi seri e hanno una storia lunga nella cultura giuridica italiana.</p>
 
-    <div class="alert info">
+    <div class="alert info reveal">
       <div class="alert-title">Imparzialita&#768; percepita</div>
       <p>Anche un solo passaggio possibile &#8212; dicono i sostenitori della separazione &#8212; mina la <strong>percezione di imparzialita&#768;</strong> del giudice. Se il magistrato sa che potrebbe un giorno fare il PM, o l'ha fatto in passato, la sua terziet&#224; puo&#768; essere messa in discussione. La percezione conta quanto la realta&#768;, soprattutto nei processi con forte esposizione mediatica.</p>
     </div>
 
-    <div class="alert info">
+    <div class="alert info reveal">
       <div class="alert-title">Coerenza con il modello accusatorio</div>
       <p>Il sistema processuale penale italiano, dal 1989, e&#768; fondato sul modello accusatorio: accusa e giudizio sono funzioni strutturalmente diverse. La separazione delle carriere &#8212; si argomenta &#8212; porta la Costituzione in linea con il codice di procedura, completando una transizione iniziata trentacinque anni fa.</p>
     </div>
 
-    <div class="alert info">
+    <div class="alert info reveal">
       <div class="alert-title">Responsabilizzazione del PM</div>
       <p>Un PM che appartiene a una carriera autonoma, con un proprio CSM, potrebbe sviluppare una identita&#768; professionale piu&#768; definita e una cultura interna di responsabilita&#768;. Il modello portoghese, con la separazione e un consiglio dedicato ai PM, viene citato come esempio funzionante.</p>
     </div>
 
-    <div class="alert warning">
+    <div class="alert warning reveal">
       <div class="alert-title">Il punto che resta aperto</div>
       <p>Questi argomenti riguardano la separazione delle carriere in se&#769;. <strong>Nessuno di essi richiede</strong> di sostituire l'elezione dei togati con il sorteggio, di eliminare il ricorso in Cassazione sulle sentenze disciplinari, o di lasciare le garanzie di indipendenza del PM a leggi ordinarie. La riforma fa tutte e tre le cose insieme, dentro lo stesso pacchetto costituzionale. Il quesito referendario e&#768; unitario: accetta o rifiuta l'intero testo della legge costituzionale.</p>
     </div>
@@ -260,7 +271,7 @@
 <section style="border-bottom:none;">
   <div class="wrap">
 
-    <blockquote>
+    <blockquote class="reveal">
       Se la separazione delle carriere era il problema, la legge Cartabia era la risposta proporzionata. Se il problema e&#768; un altro, conviene chiedersi quale &#8212; e guardare cosa viaggia nello stesso pacchetto.
       <cite>&#8212; La domanda che apre le pagine successive</cite>
     </blockquote>
@@ -579,6 +590,20 @@ Chart.defaults.font.size = 11;
 
   drawNode(dopoG, leftX, dBottomY, 120, 38, 'CSM Giudici', 'separato', redBg, redBorder);
   drawNode(dopoG, rightX, dBottomY, 120, 38, 'CSM PM', 'separato', redBg, redBorder);
+})();
+</script>
+
+<script>
+(function() {
+  var revealObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
 })();
 </script>
 </body>

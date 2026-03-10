@@ -6,6 +6,18 @@
 <title>Scenari concreti — Referendum Giustizia 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<style>
+/* Scroll reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 </head>
 <body>
 
@@ -44,7 +56,7 @@
     <p>Richiedono solo tre cose: una <strong>maggioranza parlamentare</strong> con un interesse, una <strong>norma che lo consente</strong>, e <strong>nessuna resistenza strutturale</strong> che lo impedisca. Non servono complotti. Servono leggi ordinarie.</p>
     <p>Questa pagina non prevede il futuro. Mostra cosa diventa <em>possibile</em> dopo la riforma e cosa era <em>impossibile</em> prima. Il lettore valuta la probabilita.</p>
 
-    <div class="alert warning">
+    <div class="alert warning reveal">
       <div class="alert-title">Metodo</div>
       <p>Ogni scenario indica lo <strong>strumento normativo</strong> che lo rende possibile e i <strong>prerequisiti</strong> necessari. Nessuno richiede atti illegali. La domanda non e "succederà?" ma <mark>"chi lo impedisce?"</mark></p>
     </div>
@@ -59,7 +71,7 @@
     <p>Quattro azioni concrete e la differenza tra il livello di protezione attuale e quello dopo la riforma.</p>
 
     <div class="scroll-hint">SCORRI →</div>
-    <div class="resp-table-wrap">
+    <div class="resp-table-wrap reveal">
       <table class="resp-table">
         <thead>
           <tr>
@@ -93,7 +105,7 @@
       </table>
     </div>
 
-    <div class="alert info">
+    <div class="alert info reveal">
       <div class="alert-title">Nota tecnica</div>
       <p>Il Portogallo — unico paese europeo con carriere completamente separate e PM autonomo — <strong>blinda in Costituzione</strong> l'autonomia del PM (art. 219 CRP). La riforma italiana prende la struttura portoghese senza prendere le garanzie. Fonte: L. Marafioti, «Viaggio in Portogallo», Sistema Penale, 2026.</p>
     </div>
@@ -107,7 +119,7 @@
     <h2>Cosa diventa possibile</h2>
     <p>Non servono governi malvagi ne complotti. Questi scenari derivano dall'architettura della riforma applicata a situazioni ordinarie della politica italiana.</p>
 
-    <div class="scenarios">
+    <div class="scenarios reveal">
 
       <!-- SCENARIO 01 -->
       <div class="sc-card">
@@ -184,7 +196,7 @@
     <h2>Come si indebolisce un PM senza violare nulla</h2>
     <p>Ogni passo e una legge ordinaria. Nessuno e illegale. Il lettore valuta se l'effetto complessivo configuri un cambiamento nel grado di indipendenza della magistratura requirente.</p>
 
-    <div class="flow-diagram">
+    <div class="flow-diagram reveal">
       <div class="flow-inner">
         <div class="flow-section-label" style="color:var(--red-l);background:var(--red-bg);border:1px solid var(--red);">5 leggi ordinarie — nessun atto illegale</div>
 
@@ -249,7 +261,7 @@
       </div>
     </div>
 
-    <div class="alert warning" style="margin-top:24px;">
+    <div class="alert warning reveal" style="margin-top:24px;">
       <div class="alert-title">Il punto</div>
       <p>Nessuno di questi passaggi richiede un atto illegale. Ciascuno e una legge ordinaria a maggioranza semplice. La domanda e: <strong>quali meccanismi strutturali impediscono che vengano combinati?</strong></p>
     </div>
@@ -263,7 +275,7 @@
     <h2>Non e la prima volta</h2>
     <p>Quattro paesi europei hanno sperimentato — o tentato — interventi strutturali sull'indipendenza della magistratura. In tutti i casi, lo strumento e stato lo stesso: organi disciplinari, requisiti di nomina, controllo delle liste.</p>
 
-    <div class="eu-list">
+    <div class="eu-list reveal">
 
       <div class="eu-row">
         <div class="eu-flag">&#x1F1F5;&#x1F1F1;</div>
@@ -315,7 +327,7 @@
 
     </div>
 
-    <div class="alert warning">
+    <div class="alert warning reveal">
       <div class="alert-title">Il pattern comune</div>
       <p>In tutti e quattro i casi, lo strumento non e stato l'abolizione diretta dell'indipendenza. E stato il <strong>cambiamento delle regole di selezione, disciplina e composizione</strong> degli organi di autogoverno. L'Alta Corte disciplinare e il sorteggio del CSM operano sugli stessi meccanismi.</p>
     </div>
@@ -325,7 +337,7 @@
 <!-- ═══ DOMANDA APERTA ═══ -->
 <section>
   <div class="wrap">
-    <blockquote>
+    <blockquote class="reveal">
       Se questa architettura rende possibile agire senza violare alcuna legge, quali meccanismi — formali o politici — funzionano come resistenza strutturale? <strong>Esistono, e sono sufficienti?</strong>
       <cite>La domanda che resta aperta</cite>
     </blockquote>
@@ -351,6 +363,23 @@
     </div>
   </div>
 </section>
+
+<!-- ═══ SCROLL ANIMATIONS ═══ -->
+<script>
+(function() {
+  var revealObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    revealObs.observe(el);
+  });
+})();
+</script>
 
 </body>
 </html>

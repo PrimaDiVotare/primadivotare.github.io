@@ -6,6 +6,17 @@
 <title>Alta Corte Disciplinare — Referendum Giustizia 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<style>
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 </head>
 <body>
@@ -46,7 +57,7 @@
     <p>La riforma istituisce un nuovo organo &#8212; l'<strong>Alta Corte Disciplinare</strong> &#8212; e introduce un avverbio che cambia tutto: le sentenze sono impugnabili <strong>"soltanto"</strong> davanti alla stessa Alta Corte, in composizione diversa.</p>
     <p>L'effetto strutturale: il procedimento disciplinare nasce e si chiude all'interno dello stesso organo. La Cassazione &#8212; garante di legittimita per qualsiasi cittadino, avvocato, notaio, medico &#8212; e potenzialmente esclusa. Solo per i magistrati ordinari.</p>
 
-    <div class="stat-row" style="margin-top:28px;">
+    <div class="stat-row reveal" style="margin-top:28px;">
       <div class="stat-box">
         <div class="stat-num" style="color:var(--red-l);">194</div>
         <div class="stat-desc">Sentenze disciplinari<br>2023&#8211;2025</div>
@@ -70,12 +81,12 @@
     <div class="sec-label">Percorso disciplinare a confronto</div>
     <h2>Prima e dopo: dove finisce il controllo esterno</h2>
 
-    <div class="ba-header">
+    <div class="ba-header reveal">
       <div class="ba-h b">Prima &#8212; iter disciplinare</div>
       <div class="ba-h a">Dopo &#8212; Alta Corte</div>
     </div>
 
-    <div class="ba-split">
+    <div class="ba-split reveal">
       <div class="ba-col b">
         <div class="funnel">
           <div class="funnel-step blue"><div class="funnel-icon">&#128203;</div><div class="funnel-text"><strong>Illecito contestato</strong><small>Esposto o iniziativa PG Cassazione / Ministro Giustizia</small></div></div>
@@ -148,7 +159,7 @@
     <div class="pres-star">&#9733; Il PRESIDENTE viene sempre eletto tra i laici (6 su 15 = 40%)</div>
 
     <!-- Dettaglio requisiti -->
-    <div class="alert info" style="margin-top:20px;">
+    <div class="alert info reveal" style="margin-top:20px;">
       <div class="alert-title">Requisiti dei componenti</div>
       <p><strong>Laici</strong> (6): professori ordinari di universita in materie giuridiche o avvocati con almeno 20 anni di esercizio. 3 nominati dal PdR, 3 sorteggiati da elenco compilato dal Parlamento in seduta comune.</p>
       <p style="margin-top:8px;"><strong>Togati</strong> (9): magistrati con almeno 20 anni di funzioni giudiziarie che svolgano o abbiano svolto funzioni di legittimita. 6 giudicanti + 3 requirenti, tutti sorteggiati.</p>
@@ -165,7 +176,7 @@
     <h2>Prima e dopo: togati e laici nel disciplinare</h2>
     <p>La sezione disciplinare attuale ha <strong>4 togati su 6 componenti (66,7%)</strong>. L'Alta Corte avra <strong>9 togati su 15 (60%)</strong>. La componente laica passa dal 33,3% al 40%. Il presidente e sempre un laico. La funzione disciplinare esce dall'autogoverno e va verso un organo con una componente laica crescente (dal 33,3% al 40%) e presidente sempre laico, i cui membri laici provengono da lista parlamentare.</p>
 
-    <div class="power-bar-wrap">
+    <div class="power-bar-wrap reveal">
       <div class="pbar-label">Sezione disciplinare CSM (oggi) &#8212; 6 componenti</div>
       <div class="pbar">
         <div class="pbar-seg" style="width:66.7%;background:#1a3a20;color:var(--grn-l);"><span>Togati (66,7%)</span></div>
@@ -174,7 +185,7 @@
       <div class="pbar-note">4 togati (3 giudicanti + 1 requirente) + 2 laici. Presiede il Vicepresidente del CSM (laico). Appello: Cassazione Sezioni Unite.</div>
     </div>
 
-    <div class="power-bar-wrap">
+    <div class="power-bar-wrap reveal">
       <div class="pbar-label">Alta Corte Disciplinare (dopo) &#8212; 15 componenti</div>
       <div class="pbar">
         <div class="pbar-seg" style="width:60%;background:#2a1a10;color:#c87060;"><span>Togati (60%)</span></div>
@@ -437,21 +448,21 @@
     <h2>Il ricorso in Cassazione: escluso o no?</h2>
     <p>Questo e il punto giuridico piu controverso dell'intera riforma. Due norme costituzionali sembrano dire cose diverse. L'art. 111, comma 7 &#8212; <em>non modificato</em> &#8212; garantisce "sempre" il ricorso in Cassazione per violazione di legge. Il nuovo art. 105 ammette l'impugnazione <strong>"soltanto"</strong> davanti alla stessa Alta Corte.</p>
 
-    <div class="alert danger" style="margin-top:20px;">
+    <div class="alert danger reveal" style="margin-top:20px;">
       <div class="alert-title">Tesi A &#8212; Cassazione esclusa (dottrina prevalente)</div>
       <p><strong>Margherita Cassano</strong>, Prima Presidente emerita della Cassazione: <em>"Il tenore letterale dell'intera disposizione e, in particolare, l'uso dell'avverbio 'soltanto', non consentono di ritenere che avverso le sentenze dell'Alta Corte sara consentito il ricorso in cassazione."</em></p>
       <p style="margin-top:8px;"><strong>Francesca Biondi</strong>, prof.ssa di diritto costituzionale: <em>"La formulazione contiene due avverbi &#8212; 'anche per motivi di merito' e 'soltanto dinanzi alla stessa Alta Corte' &#8212; che mostrano la chiara volonta del legislatore costituzionale di chiudere il procedimento disciplinare all'interno di questo organo."</em></p>
       <p style="margin-top:8px;"><strong>Antonio Gatto</strong>, magistrato: prospetta un'antinomia tra il nuovo art. 105 e l'art. 111, comma 7, da risolvere tramite criterio di specialita (favorevole all'esclusione) oppure criterio gerarchico.</p>
     </div>
 
-    <div class="alert info" style="margin-top:16px;">
+    <div class="alert info reveal" style="margin-top:16px;">
       <div class="alert-title">Tesi B &#8212; Cassazione sopravvive</div>
       <p><strong>Antonello Gustapane</strong>, Procuratore della Repubblica: <em>"Si puo ritenere che, ai sensi dell'art. 111, co. VII, Cost., contro la sentenza definitiva dell'Alta Corte 'e sempre ammesso ricorso in Cassazione per violazione di legge'."</em></p>
       <p style="margin-top:8px;"><strong>Giuseppe Santalucia</strong>, Presidente ANM: <em>"Resta il rilievo non facilmente superabile che, per previsione costituzionale, tutte le sentenze sono passibili di ricorso per cassazione e quelle che emanera l'Alta Corte non potranno sottrarsi a questo regime."</em></p>
       <p style="margin-top:8px;"><strong>Cesare Pinelli</strong>, prof. di diritto costituzionale: individua tre possibili esiti e offre una lettura per cui "soltanto" escluda il ricorso ad <em>altre</em> giurisdizioni (ordinaria, amministrativa, contabile), non alla Cassazione.</p>
     </div>
 
-    <div class="alert warning" style="margin-top:16px;">
+    <div class="alert warning reveal" style="margin-top:16px;">
       <div class="alert-title">Il dato: l'incertezza stessa e un problema</div>
       <p>Nei precedenti progetti di riforma (AC 4275/2011, Bicamerale D'Alema) il ricorso in Cassazione era stato espressamente previsto. Il silenzio attuale e, secondo Biondi, <em>"eloquente"</em>. Ma la questione resta <strong>aperta e irrisolta</strong>. Potrebbe finire davanti alla Corte Costituzionale come conflitto tra principi supremi. In entrambi i casi, il cittadino deve decidere al referendum <em>prima</em> di sapere come sara interpretata la norma.</p>
     </div>
@@ -467,7 +478,7 @@
     <h2>Dove si sposta il potere disciplinare</h2>
     <p>La domanda non e se la riforma sia pensata con cattive intenzioni. La domanda e: <strong>chi guadagna potere</strong> e chi perde un controllo.</p>
 
-    <div class="flip-stack" style="margin-top:20px;">
+    <div class="flip-stack reveal" style="margin-top:20px;">
       <div class="flip-row">
         <div class="card before">
           <div class="card-label">Prima</div>
@@ -482,7 +493,7 @@
       </div>
     </div>
 
-    <div class="flip-stack">
+    <div class="flip-stack reveal">
       <div class="flip-row">
         <div class="card before">
           <div class="card-label">Prima</div>
@@ -497,7 +508,7 @@
       </div>
     </div>
 
-    <div class="flip-stack">
+    <div class="flip-stack reveal">
       <div class="flip-row">
         <div class="card before">
           <div class="card-label">Prima</div>
@@ -512,7 +523,7 @@
       </div>
     </div>
 
-    <div class="alert warning" style="margin-top:20px;">
+    <div class="alert warning reveal" style="margin-top:20px;">
       <div class="alert-title">Il punto strutturale</div>
       <p>La riforma sposta la funzione disciplinare fuori dall'autogoverno, verso un organo con maggiore esposizione politica, e rimuove (nella lettura prevalente) il controllo esterno della Cassazione. Chi detiene il potere di compilare la lista parlamentare, di definire gli illeciti con legge ordinaria e di promuovere l'azione disciplinare dispone di strumenti normativi che il sistema attuale non prevede. Non serve un governo malvagio: basta una maggioranza con un interesse.</p>
     </div>
@@ -682,7 +693,7 @@
 <!-- ═══ DOMANDA APERTA ═══ -->
 <section>
   <div class="wrap">
-    <blockquote>
+    <blockquote class="reveal">
       Se la riforma voleva solo rendere piu efficiente il procedimento disciplinare, perche ha creato l'unico organo della Repubblica italiana le cui sentenze non sono sindacabili dalla Cassazione?
       <cite>&#8212; La domanda che resta aperta</cite>
     </blockquote>
@@ -710,5 +721,18 @@
   </div>
 </section>
 
+<script>
+(function() {
+  var revealObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
+})();
+</script>
 </body>
 </html>

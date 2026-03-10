@@ -6,6 +6,17 @@
 <title>Il CSM: da eletto a sorteggiato — Referendum Giustizia 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<style>
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 </head>
 <body>
@@ -45,7 +56,7 @@
     <p>Il Consiglio Superiore della Magistratura decide chi diventa Procuratore di Milano, chi viene trasferito a Catanzaro, chi avanza nella carriera. Non e' un organo tecnico secondario: e' lo <strong>scudo dell'indipendenza</strong> della magistratura dalla politica.</p>
     <p>La riforma interviene su tre assi: <strong>sdoppia</strong> l'organo in due CSM separati, <strong>sostituisce l'elezione con il sorteggio</strong> per la scelta dei componenti, e <strong>elimina la soglia qualificata</strong> per la selezione dei laici.</p>
 
-    <div class="stat-row">
+    <div class="stat-row reveal">
       <div class="stat-box">
         <div class="stat-num" style="color:var(--gld-l)">33</div>
         <div class="stat-desc">Componenti CSM attuale<br>(L. 71/2022)</div>
@@ -68,12 +79,12 @@
     <div class="sec-label">&sect; Struttura</div>
     <h2>Da un CSM a due: l'organigramma</h2>
 
-    <div class="ba-header">
+    <div class="ba-header reveal">
       <div class="ba-h b">Prima</div>
       <div class="ba-h a">Dopo</div>
     </div>
 
-    <div class="ba-split">
+    <div class="ba-split reveal">
 
       <!-- CSM PRIMA -->
       <div class="ba-col b">
@@ -203,7 +214,7 @@
     <p>Oggi i laici del CSM sono eletti dal Parlamento in seduta comune con una <strong>maggioranza qualificata dei 3/5 dei votanti</strong> (art. 22 L. 195/1958, modificato dalla L. 71/2022). Questa soglia obbliga le forze politiche al compromesso: nessuna coalizione puo' imporre unilateralmente i propri candidati.</p>
     <p>Il testo riformato prevede che il Parlamento &laquo;compili mediante elezione&raquo; un elenco di candidati da cui i laici vengono poi sorteggiati. Ma <mark>non fissa nessuna maggioranza</mark> per la compilazione di questo elenco.</p>
 
-    <div class="soglia-grid">
+    <div class="soglia-grid reveal">
       <div class="soglia-cell old">
         <div class="sc-lbl">Sistema attuale</div>
         <div class="sc-val">3/5 dei votanti</div>
@@ -216,7 +227,7 @@
       </div>
     </div>
 
-    <div class="alert warning">
+    <div class="alert warning reveal">
       <div class="alert-title">Cosa implica l'assenza di soglia</div>
       <p>Senza soglia qualificata, una coalizione con la maggioranza semplice potrebbe compilare una lista ristretta di profili selezionati. Il sorteggio avverrebbe tra quei nomi. Il risultato formale sarebbe &laquo;casuale&raquo;. Il bacino da cui si pesca, no.</p>
     </div>
@@ -230,7 +241,7 @@
     <h2>Bilancio di potere: prima e dopo</h2>
     <p>La proporzione 2/3 togati &ndash; 1/3 laici resta invariata sulla carta. Cambia il meccanismo con cui vengono scelti &mdash; e chi orienta quel meccanismo.</p>
 
-    <div class="power-bar-wrap">
+    <div class="power-bar-wrap reveal">
       <div class="pbar-label">CSM attuale &mdash; 30 componenti elettivi (L. 71/2022)</div>
       <div class="pbar">
         <div class="pbar-seg" style="width:66.7%;background:#1a3a20;color:var(--grn-l);"><span>Togati eletti (66,7%)</span></div>
@@ -239,7 +250,7 @@
       <div class="pbar-note">20 togati eletti dai colleghi magistrati + 10 laici eletti dal Parlamento con maggioranza qualificata dei 3/5 dei votanti. I 3 membri di diritto (PdR, Primo Pres. e Proc. Gen. Cassazione) non rientrano nella proporzione e non si computano.</div>
     </div>
 
-    <div class="power-bar-wrap">
+    <div class="power-bar-wrap reveal">
       <div class="pbar-label">Dopo la riforma &mdash; ciascun CSM</div>
       <div class="pbar">
         <div class="pbar-seg" style="width:67%;background:#2a1a10;color:#c87060;"><span>Togati sorteggiati (67%)</span></div>
@@ -287,7 +298,7 @@
     <h3 style="margin-top:24px;">Sorteggio dei togati</h3>
     <p>Il sorteggio avviene tra tutti i magistrati della rispettiva carriera (giudicante o requirente). La Costituzione riformata <strong>non fissa alcun requisito</strong> di anzianita', funzione o merito: la formula e' &laquo;nel numero e secondo le procedure previsti dalla legge&raquo;. Ogni eventuale filtro e' rimesso interamente alla <mark>legge ordinaria</mark>.</p>
 
-    <div class="alert warning">
+    <div class="alert warning reveal">
       <div class="alert-title">Chi scrive i requisiti decide la platea</div>
       <p>Se la legge ordinaria stabilisce che possono essere sorteggiati solo magistrati con 25+ anni di carriera e funzioni di legittimita', il bacino si restringe drasticamente. Se richiede solo 10 anni, si allarga. La Costituzione non pone limiti: la discrezionalita' e' totale.</p>
     </div>
@@ -320,7 +331,7 @@
     <h2>Il flusso del potere: prima e dopo</h2>
     <p>Non una questione di intenzioni, ma di architettura. Dove si sposta il potere decisionale sull'autogoverno della magistratura?</p>
 
-    <div class="flow-diagram">
+    <div class="flow-diagram reveal">
       <div class="flow-inner">
         <div class="flow-section-label" style="color:var(--grn-l);background:var(--grn-bg);border:1px solid var(--grn);">PRIMA &mdash; flusso indipendente</div>
         <div class="flow-chain">
@@ -456,7 +467,7 @@
     <!-- Nota -->
     <div class="sim-note" id="sim-note">Platea ampia: la maggior parte dei magistrati e' sorteggiabile.</div>
 
-    <div class="alert warning" style="margin-top:20px;">
+    <div class="alert warning reveal" style="margin-top:20px;">
       <div class="alert-title">Il punto</div>
       <p>Chi scrive i requisiti del sorteggio &mdash; anzianita', sede, funzione &mdash; decide chi puo' essere estratto. E' una legge ordinaria: basta una maggioranza semplice per cambiarla.</p>
     </div>
@@ -469,12 +480,12 @@
     <div class="sec-label">&sect; L'altra prospettiva</div>
     <h2>Il problema che il sorteggio vuole risolvere</h2>
 
-    <div class="alert info">
+    <div class="alert info reveal">
       <div class="alert-title">Le correnti hanno lottizzato il CSM</div>
       <p>Lo <strong>scandalo Palamara</strong> (maggio 2019) ha documentato un sistema di nomine negoziate tra correnti (Magistratura Indipendente, Unicost, Area) e rappresentanti politici. Le intercettazioni all'Hotel Champagne hanno mostrato un meccanismo di spartizione delle cariche direttive. Tutti i Presidenti della Repubblica &mdash; da Ciampi a Mattarella &mdash; hanno denunciato il condizionamento correntizio sulle nomine. Nel 2025 il TAR Lazio (sent. 23352/2025) ha dichiarato <em>contra legem</em> i parametri del Testo Unico sulla Dirigenza del CSM.</p>
     </div>
 
-    <div class="alert info">
+    <div class="alert info reveal">
       <div class="alert-title">L'argomento per il sorteggio</div>
       <p>Il sorteggio elimina alla radice la logica elettorale correntista. Nessun candidato da sostenere, nessuna campagna, nessuno scambio di favori. I sostenitori della riforma sottolineano che il sistema elettivo ha prodotto decenni di lottizzazione &mdash; e che il sorteggio rompe questo meccanismo.</p>
     </div>
@@ -495,7 +506,7 @@
       </div>
     </div>
 
-    <div class="alert warning">
+    <div class="alert warning reveal">
       <div class="alert-title">La domanda che resta</div>
       <p>Il sorteggio risolve il problema delle correnti o lo sostituisce con un altro? I togati sorteggiati non hanno mandato elettorale e non sono selezionati dai colleghi: non hanno un programma, non hanno un elettorato di riferimento. I laici vengono estratti da una lista che il Parlamento compila senza garanzie di pluralismo.</p>
     </div>
@@ -529,7 +540,7 @@
 <!-- ═══ DOMANDA APERTA ═══ -->
 <section id="conclusione" style="border-bottom:none;">
   <div class="wrap">
-    <blockquote>
+    <blockquote class="reveal">
       &laquo;Se il problema era il correntismo nelle nomine, la soluzione e' eliminare il voto dei magistrati &mdash; oppure riformare il sistema elettorale del CSM, come gia' fatto con la legge Cartabia nel 2022? Lo sdoppiamento in due organi, il sorteggio senza criteri costituzionali, e l'eliminazione della soglia dei 3/5 sono strumenti proporzionati al problema dichiarato?&raquo;
     </blockquote>
 
@@ -776,6 +787,20 @@ Chart.defaults.font.size = 11;
       barEl.style.background = 'var(--red)';
     }
   });
+})();
+</script>
+
+<script>
+(function() {
+  var revealObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
 })();
 </script>
 </body>

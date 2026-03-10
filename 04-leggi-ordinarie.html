@@ -6,6 +6,17 @@
 <title>§ 04 — Il contratto in bianco — Referendum Giustizia 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<style>
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 </head>
 <body>
@@ -54,7 +65,7 @@
     <h2>La differenza tra rigidita e flessibilita</h2>
     <p>Non tutte le norme hanno la stessa resistenza al cambiamento. Piu una garanzia e collocata in alto nella gerarchia delle fonti, piu e difficile modificarla. Lo spostamento verso il basso e lo spostamento del potere.</p>
 
-    <div class="stat-row">
+    <div class="stat-row reveal">
       <div class="stat-box">
         <div class="stat-num" style="color:var(--grn-l);">2–4</div>
         <div class="stat-desc">anni per cambiare<br>una norma costituzionale</div>
@@ -85,7 +96,7 @@
     <h2>Cosa manca nel testo approvato</h2>
     <p>La legge costituzionale rinvia a <strong>almeno sei ambiti normativi</strong> che dovranno essere disciplinati con legge ordinaria. Nessuna bozza e stata depositata. L'art. 8, comma 1 della legge cost. prevede un termine di un anno — ma il termine e <strong>ordinatorio</strong>: nessuna conseguenza giuridica se non viene rispettato.</p>
 
-    <div class="timeline">
+    <div class="timeline reveal">
       <div class="tl-item r">
         <div class="tl-lbl">Rinvio 1 — Art. 104, co. 4</div>
         <h4>Requisiti del sorteggio dei togati</h4>
@@ -133,13 +144,13 @@
     <h2>Dove stanno le garanzie: prima e dopo</h2>
     <p>Per ogni garanzia chiave, il livello normativo in cui si trova oggi e quello in cui si trovera dopo la riforma. Lo spostamento da Costituzione a legge ordinaria e lo spostamento del potere: dalla rigidita che protegge alla flessibilita che espone.</p>
 
-    <div class="ba-header">
+    <div class="ba-header reveal">
       <div class="ba-h b">Prima</div>
       <div class="ba-h a">Dopo</div>
     </div>
 
     <!-- Garanzia 1 -->
-    <div class="ba-split">
+    <div class="ba-split reveal">
       <div class="ba-col b">
         <h4>Composizione CSM</h4>
         <p>33 componenti fissati per legge. 20 togati <strong>eletti</strong> dai magistrati. Maggioranza 3/5 per i laici. Tutto definito.</p>
@@ -157,11 +168,11 @@
     </div>
 
     <!-- Garanzia 2 -->
-    <div class="ba-header">
+    <div class="ba-header reveal">
       <div class="ba-h b">Prima</div>
       <div class="ba-h a">Dopo</div>
     </div>
-    <div class="ba-split">
+    <div class="ba-split reveal">
       <div class="ba-col b">
         <h4>Disciplina magistrati</h4>
         <p>Sezione disciplinare del CSM (4 togati su 6 = 66,7%). Impugnazione davanti alle <strong>Sezioni Unite della Cassazione</strong> ex art. 111.</p>
@@ -179,11 +190,11 @@
     </div>
 
     <!-- Garanzia 3 -->
-    <div class="ba-header">
+    <div class="ba-header reveal">
       <div class="ba-h b">Prima</div>
       <div class="ba-h a">Dopo</div>
     </div>
-    <div class="ba-split">
+    <div class="ba-split reveal">
       <div class="ba-col b">
         <h4>Indipendenza del PM</h4>
         <p>Magistratura = ordine <strong>unico</strong>. PM e giudice nello stesso CSM. Garanzia di indipendenza dall'esecutivo implicita nella struttura costituzionale.</p>
@@ -201,11 +212,11 @@
     </div>
 
     <!-- Garanzia 4 -->
-    <div class="ba-header">
+    <div class="ba-header reveal">
       <div class="ba-h b">Prima</div>
       <div class="ba-h a">Dopo</div>
     </div>
-    <div class="ba-split">
+    <div class="ba-split reveal">
       <div class="ba-col b">
         <h4>Soglia per i laici del CSM</h4>
         <p>Eletti dal Parlamento con maggioranza dei <strong>3/5 dei votanti</strong> (art. 22 L. 195/1958, mod. L. 71/2022). Maggioranza qualificata che impone accordo bipartisan.</p>
@@ -475,7 +486,7 @@
     <div class="sec-label">La domanda strutturale</div>
     <h2>Cui prodest?</h2>
 
-    <div class="alert warning">
+    <div class="alert warning reveal">
       <div class="alert-title">Chi beneficia dello spostamento</div>
       <p>Il trasferimento di garanzie dalla Costituzione alla legge ordinaria non e neutro. Sposta il potere da una soglia alta (2/3 del Parlamento + eventuale referendum) a una soglia bassa (maggioranza semplice della Camera + Senato). Chi governa puo riscrivere queste regole senza modificare la Costituzione. Non serve un governo con intenzioni ostili: basta una maggioranza che voglia modificare quelle norme.</p>
     </div>
@@ -483,7 +494,7 @@
     <p>Il problema non e ipotetico. La riforma crea una <strong>asimmetria strutturale</strong>: la struttura (CSM sdoppiato, Alta Corte, carriere separate) e blindata al livello costituzionale — difficilissima da cambiare. I contenuti (chi viene sorteggiato, come si giudica, cosa e illecito, quali garanzie ha il PM) sono esposti al ciclo elettorale.</p>
     <p>La struttura — due CSM, Alta Corte, carriere separate — restera stabile perche ancorata alla Costituzione. Ma le regole operative che determinano chi accede a quegli organi, come si svolge il giudizio disciplinare e quali garanzie ha il PM saranno esposte al ciclo elettorale: quello che i sostenitori della riforma considerano flessibilita adattiva, i critici considerano vulnerabilita strutturale.</p>
 
-    <div class="alert info" style="margin-top:20px;">
+    <div class="alert info reveal" style="margin-top:20px;">
       <div class="alert-title">La prospettiva dei sostenitori della riforma</div>
       <p>I sostenitori della riforma osservano che molte Costituzioni europee demandano i dettagli alla legge ordinaria, e che la Costituzione italiana gia oggi rinvia ampiamente alla legislazione ordinaria per il funzionamento del CSM. Il rinvio — sostengono — non e un difetto ma una tecnica legislativa che consente flessibilita e adattamento nel tempo.</p>
       <p style="margin-top:8px;">La differenza e che le Costituzioni citate come modello (Portogallo, Spagna) blindano i principi fondamentali di indipendenza al livello costituzionale prima di rinviare i dettagli. La riforma italiana rinvia i dettagli <strong>senza blindare i principi</strong>.</p>
@@ -494,7 +505,7 @@
 <!-- ═══ DOMANDA APERTA ═══ -->
 <section id="domanda" style="border-bottom:none;">
   <div class="wrap">
-    <blockquote>
+    <blockquote class="reveal">
       "Se l'indipendenza della magistratura e cosi importante da riformare la Costituzione, perche le garanzie che la rendono reale non sono scritte nella Costituzione? Perche sono lasciate a leggi che qualsiasi maggioranza futura puo riscrivere?"
       <cite>— Domanda senza risposta esaustiva in nessuna delle audizioni parlamentari</cite>
     </blockquote>
@@ -606,6 +617,20 @@ Chart.defaults.font.size = 11;
       }
     }]
   });
+})();
+</script>
+
+<script>
+(function() {
+  var revealObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
 })();
 </script>
 

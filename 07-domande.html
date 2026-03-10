@@ -7,6 +7,18 @@
 <meta name="description" content="Gli argomenti pi&ugrave; forti a favore della riforma, esaminati con i dati disponibili. Dati, contro-argomenti, questioni aperte.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<style>
+/* Scroll reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 </head>
 <body>
 
@@ -40,7 +52,7 @@
     <h2>Otto domande, nessuna risposta facile</h2>
     <p>Chi sostiene la riforma ha argomenti. Alcuni sono forti. Ignorarli o liquidarli non serve a nessuno. Ogni domanda qui sotto &egrave; presentata nella formulazione pi&ugrave; solida possibile per il S&igrave;, poi esaminata con i dati disponibili. La terza voce &mdash; la domanda aperta &mdash; &egrave; quella che il lettore porta con s&eacute;.</p>
 
-    <div class="alert info" style="margin-top:24px;">
+    <div class="alert info reveal" style="margin-top:24px;">
       <div class="alert-title">Struttura di ogni risposta</div>
       <p><strong style="color:var(--grn-l);">La forza dell'argomento</strong> &mdash; perch&eacute; questa obiezione ha peso e non va sottovalutata.<br><br>
       <strong style="color:var(--red-l);">Il punto critico</strong> &mdash; dove l'argomento incontra un limite nei dati, nel testo o nella logica.<br><br>
@@ -55,7 +67,7 @@
     <div class="sec-label">Le 8 domande</div>
     <h2>Otto domande, esaminate da entrambe le prospettive</h2>
 
-    <div class="accordion">
+    <div class="accordion reveal">
 
       <!-- ── Q1 ── -->
       <div class="acc-item">
@@ -241,7 +253,7 @@
 <!-- ═══ DICHIARAZIONE FINALE ═══ -->
 <section style="border-bottom:none;">
   <div class="wrap">
-    <blockquote>
+    <blockquote class="reveal">
       "Non voglio dimostrare niente. Voglio mostrare."
       <cite>— Federico Fellini</cite>
     </blockquote>
@@ -272,6 +284,23 @@ document.querySelectorAll('.acc-trigger').forEach(function(btn) {
     }
   });
 });
+</script>
+
+<!-- ═══ SCROLL ANIMATIONS ═══ -->
+<script>
+(function() {
+  var revealObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    revealObs.observe(el);
+  });
+})();
 </script>
 
 </body>

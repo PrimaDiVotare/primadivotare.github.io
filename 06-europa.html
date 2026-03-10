@@ -7,6 +7,18 @@
 <meta name="description" content="La separazione delle carriere esiste in Europa. Ma ogni sistema ha le sue garanzie. Cosa prende la riforma italiana e cosa lascia?">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<style>
+/* Scroll reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 </head>
 <body>
@@ -48,7 +60,7 @@
 
     <p>Ma ogni sistema che funziona ha costruito le proprie <strong>garanzie di indipendenza</strong> &mdash; spesso blindandole al massimo livello normativo. La domanda non e <em>se</em> la separazione esiste altrove, ma <em>con quali protezioni</em>. E quante di queste protezioni la riforma italiana replica.</p>
 
-    <div class="stat-row">
+    <div class="stat-row reveal">
       <div class="stat-box">
         <div class="stat-num" style="color:var(--grn-l)">1</div>
         <div class="stat-desc">Paese UE con separazione<br>+ PM indipendente in Costituzione</div>
@@ -111,7 +123,7 @@
       @media (max-width:500px) { .eu-cards { grid-template-columns:1fr; } }
     </style>
 
-    <div class="eu-cards">
+    <div class="eu-cards reveal">
       <div class="eu-card green">
         <div class="eu-card-flag">&#x1F1F5;&#x1F1F9;</div>
         <div class="eu-card-name">Portogallo</div>
@@ -173,7 +185,7 @@
     <h2>Cosa dicono davvero i sistemi europei</h2>
     <p>Per ogni paese: il modello reale e cosa la riforma italiana non replica di quel modello.</p>
 
-    <div class="eu-list">
+    <div class="eu-list reveal">
 
       <!-- PORTOGALLO -->
       <div class="eu-row">
@@ -252,7 +264,7 @@
     <p>Le dimensioni che contano per valutare l'indipendenza della magistratura. Per ogni riga: dove si colloca l'Italia dopo la riforma rispetto ai modelli citati.</p>
 
     <div class="scroll-hint">&larr; scorri &rarr;</div>
-    <div class="resp-table-wrap">
+    <div class="resp-table-wrap reveal">
       <table class="resp-table" style="min-width:700px;">
         <thead>
           <tr>
@@ -317,7 +329,7 @@
       </table>
     </div>
 
-    <div class="alert info">
+    <div class="alert info reveal">
       <div class="alert-title">Come leggere la tabella</div>
       <p>La tabella mostra dove la colonna "IT dopo" si differenzia dagli altri ordinamenti. Il lettore valuta la direzione del cambiamento.</p>
     </div>
@@ -468,7 +480,7 @@
     <div class="sec-label">Il test europeo di indipendenza</div>
     <h2>La CGUE sulla Germania: quando il PM non e abbastanza indipendente</h2>
 
-    <div class="alert info">
+    <div class="alert info reveal">
       <div class="alert-title">Sentenza CGUE &mdash; Cause riunite C-508/18 e C-82/19 PPU (27 maggio 2019)</div>
       <p>La Grande Sezione della Corte di Giustizia dell'UE ha stabilito che le procure tedesche (<em>Staatsanwaltschaften</em>) non possono essere considerate &laquo;autorita giudiziaria emittente&raquo; ai sensi della Decisione Quadro 2002/584/JHA sul mandato d'arresto europeo, perche <strong>prive di sufficiente indipendenza dal potere esecutivo</strong>.</p>
     </div>
@@ -479,7 +491,7 @@
 
     <h3 style="margin-top:28px;">Conseguenza pratica: il mandato d'arresto europeo</h3>
 
-    <div class="soglia-grid">
+    <div class="soglia-grid reveal">
       <div class="soglia-cell old">
         <div class="sc-lbl">Italia oggi</div>
         <div class="sc-val">PM indipendente</div>
@@ -528,7 +540,7 @@
       </div>
     </div>
 
-    <div class="alert warning">
+    <div class="alert warning reveal">
       <div class="alert-title">Il punto di Marafioti (Sistema Penale, 2026)</div>
       <p>Il prof. Luca Marafioti ha osservato che il modello portoghese dimostra la compatibilita tra separazione delle carriere e indipendenza del PM &mdash; <strong>ma solo perche le garanzie sono al livello costituzionale</strong>. La riforma Nordio lascia tutto alla legge ordinaria approvabile a maggioranza semplice. Questo e un fatto unico nel panorama europeo dei Paesi a carriere separate.</p>
     </div>
@@ -574,7 +586,7 @@
     <h3 style="margin-top:28px;">Analogie e differenze con l'Alta Corte italiana</h3>
 
     <div class="scroll-hint">&larr; scorri &rarr;</div>
-    <div class="resp-table-wrap">
+    <div class="resp-table-wrap reveal">
       <table class="resp-table" style="min-width:500px;">
         <thead>
           <tr>
@@ -625,7 +637,7 @@
 
     <p>I dati nella tabella comparativa mostrano una direzione. Non serve interpretarla: basta leggerla.</p>
 
-    <div class="flow-diagram">
+    <div class="flow-diagram reveal">
       <div class="flow-inner">
         <div class="flow-section-label" style="color:var(--grn-l);">Dove la riforma si avvicina</div>
         <div class="flow-chain">
@@ -661,7 +673,7 @@
   <div class="wrap">
     <div class="sec-label">La domanda</div>
 
-    <blockquote>
+    <blockquote class="reveal">
       "Se volete fare 'come il Portogallo' &mdash; l'unico paese europeo con separazione delle carriere e PM pienamente indipendente &mdash; perche il testo e rimasto invariato in tutte le letture parlamentari, senza blindare in Costituzione l'indipendenza dei PM dall'esecutivo?"
     </blockquote>
 
@@ -674,6 +686,23 @@
     </div>
   </div>
 </section>
+
+<!-- ═══ SCROLL ANIMATIONS ═══ -->
+<script>
+(function() {
+  var revealObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    revealObs.observe(el);
+  });
+})();
+</script>
 
 </body>
 </html>

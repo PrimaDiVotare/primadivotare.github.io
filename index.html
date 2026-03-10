@@ -7,6 +7,22 @@
 <meta name="description" content="Guida visiva alla riforma costituzionale della magistratura. Cosa cambia, dove si sposta il potere. Referendum 22-23 marzo 2026.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<style>
+/* Scroll reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Power bar segment animation */
+.pbar-seg {
+  transition: width 0.8s ease;
+}
+</style>
 </head>
 <body>
 
@@ -63,7 +79,7 @@
     <h2>Tre cambiamenti strutturali dietro un nome rassicurante</h2>
     <p>La legge costituzionale n. 253 del 30 ottobre 2025 modifica <strong>sette articoli della Costituzione</strong>. Non solo la "separazione delle carriere".</p>
 
-    <div class="stat-row">
+    <div class="stat-row reveal">
       <div class="stat-box">
         <div class="stat-num" style="color:var(--red-l)">2</div>
         <div class="stat-desc">CSM separati<br>al posto di uno</div>
@@ -90,37 +106,37 @@
     <p>Sette analisi indipendenti. Per ognuna: cosa dice il testo, cosa cambia nella pratica, quali sono gli argomenti a favore e le obiezioni. Il lettore conclude.</p>
 
     <div class="nav-cards">
-      <a href="01-carriere.html" class="nav-card">
+      <a href="01-carriere.html" class="nav-card reveal">
         <div class="nav-card-num">01 — Carriere</div>
         <h4>La separazione era gia risolta?</h4>
         <p>La legge Cartabia (D.lgs. 44/2024) limitava i passaggi a uno nell'intera carriera. Perche toccare la Costituzione per un problema gia risolto per legge?</p>
       </a>
-      <a href="02-csm.html" class="nav-card">
+      <a href="02-csm.html" class="nav-card reveal">
         <div class="nav-card-num">02 — CSM</div>
         <h4>Da eletti a sorteggiati</h4>
         <p>Il CSM si sdoppia. I togati non sono piu eletti dai colleghi: sono sorteggiati. I laici sorteggiati da una lista che compila il Parlamento. Chi controlla la lista?</p>
       </a>
-      <a href="03-alta-corte.html" class="nav-card">
+      <a href="03-alta-corte.html" class="nav-card reveal">
         <div class="nav-card-num">03 — Alta Corte</div>
         <h4>Disciplina senza appello esterno</h4>
         <p>Nasce un organo che giudica i magistrati e le cui sentenze sono appellabili solo al suo interno. Per la prima volta nella Repubblica, niente Cassazione.</p>
       </a>
-      <a href="04-leggi-ordinarie.html" class="nav-card">
+      <a href="04-leggi-ordinarie.html" class="nav-card reveal">
         <div class="nav-card-num">04 — Leggi ordinarie</div>
         <h4>Cosa resta da scrivere</h4>
         <p>Requisiti del sorteggio, composizione dei collegi, catalogo degli illeciti disciplinari: tutto rinviato a leggi ordinarie, modificabili a maggioranza semplice.</p>
       </a>
-      <a href="05-scenari.html" class="nav-card">
+      <a href="05-scenari.html" class="nav-card reveal">
         <div class="nav-card-num">05 — Scenari</div>
         <h4>Cosa diventa possibile</h4>
         <p>Nessuno di questi scenari richiede un governo malvagio. Richiedono solo una maggioranza, una norma che lo consente e nessuna resistenza strutturale.</p>
       </a>
-      <a href="06-europa.html" class="nav-card">
+      <a href="06-europa.html" class="nav-card reveal">
         <div class="nav-card-num">06 — Europa</div>
         <h4>Quale modello seguiamo?</h4>
         <p>"Come in Europa" -- ma il Portogallo blinda le garanzie in Costituzione, la Germania ha PM non indipendenti. Quale Europa scegliamo?</p>
       </a>
-      <a href="07-domande.html" class="nav-card">
+      <a href="07-domande.html" class="nav-card reveal">
         <div class="nav-card-num">07 — Domande</div>
         <h4>Le domande che contano</h4>
         <p>Le obiezioni piu forti a favore della riforma, presentate nella loro formulazione migliore. Poi i dati a confronto, le questioni aperte.</p>
@@ -136,20 +152,20 @@
     <h2>Come cambia la composizione del CSM</h2>
     <p>La proporzione 2/3 togati - 1/3 laici resta sulla carta. Cambia il modo in cui ci si arriva: da elezione tra pari a sorteggio da liste e platee definite per legge ordinaria.</p>
 
-    <div class="power-bar-wrap">
+    <div class="power-bar-wrap reveal">
       <div class="pbar-label">CSM attuale — 30 componenti elettivi (L. 71/2022)</div>
       <div class="pbar">
-        <div class="pbar-seg" style="width:66.7%;background:#1a3a20;color:var(--grn-l);"><span>Togati eletti 66,7%</span></div>
-        <div class="pbar-seg" style="width:33.3%;background:#1a2540;color:var(--blu-l);"><span>Laici eletti 33,3%</span></div>
+        <div class="pbar-seg" data-width="66.7%" style="width:0;background:#1a3a20;color:var(--grn-l);"><span>Togati eletti 66,7%</span></div>
+        <div class="pbar-seg" data-width="33.3%" style="width:0;background:#1a2540;color:var(--blu-l);"><span>Laici eletti 33,3%</span></div>
       </div>
       <div class="pbar-note">20 togati eletti dai colleghi magistrati + 10 laici eletti dal Parlamento con maggioranza qualificata dei 3/5 dei votanti. I 3 membri di diritto (PdR, Primo Presidente e Procuratore Generale della Cassazione) non rientrano nella proporzione costituzionale.</div>
     </div>
 
-    <div class="power-bar-wrap">
+    <div class="power-bar-wrap reveal">
       <div class="pbar-label">Dopo la riforma — ciascun CSM</div>
       <div class="pbar">
-        <div class="pbar-seg" style="width:67%;background:#2a1a10;color:#c87060;"><span>Togati sorteggiati 67%</span></div>
-        <div class="pbar-seg" style="width:33%;background:#1a2540;color:var(--blu-l);"><span>Laici da lista parl. 33%</span></div>
+        <div class="pbar-seg" data-width="67%" style="width:0;background:#2a1a10;color:#c87060;"><span>Togati sorteggiati 67%</span></div>
+        <div class="pbar-seg" data-width="33%" style="width:0;background:#1a2540;color:var(--blu-l);"><span>Laici da lista parl. 33%</span></div>
       </div>
       <div class="pbar-note">Stessa proporzione, meccanismo diverso. I togati non hanno mandato elettivo e non rispondono a nessuno. I laici sono sorteggiati da un elenco compilato dal Parlamento -- ma il testo riformato non fissa la maggioranza necessaria per compilarlo.</div>
     </div>
@@ -181,7 +197,7 @@
     <div class="sec-label">Metodo</div>
     <h2>Come leggere questo sito</h2>
 
-    <blockquote>
+    <blockquote class="reveal">
       "Non voglio dimostrare niente. Voglio mostrare."
       <cite>-- Federico Fellini</cite>
     </blockquote>
@@ -241,6 +257,58 @@
 
   update();
   setInterval(update, 1000);
+})();
+</script>
+
+<!-- ═══ SCROLL ANIMATIONS ═══ -->
+<script>
+(function() {
+  // 1. Fade-in on scroll for .reveal elements
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    revealObserver.observe(el);
+  });
+
+  // 2. Power bar width animation
+  var barObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        var segs = e.target.querySelectorAll('.pbar-seg[data-width]');
+        segs.forEach(function(seg) {
+          seg.style.width = seg.getAttribute('data-width');
+        });
+        barObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.power-bar-wrap').forEach(function(el) {
+    barObserver.observe(el);
+  });
+
+  // 3. Nav active state on scroll
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('nav a[href^="#"], nav a[href="index.html"]');
+  if (sections.length > 0) {
+    var navObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          var id = e.target.getAttribute('id');
+          navLinks.forEach(function(link) { link.classList.remove('active'); });
+          // Keep Home active since these are all on the homepage
+          var homeLink = document.querySelector('nav a[href="index.html"]');
+          if (homeLink) homeLink.classList.add('active');
+        }
+      });
+    }, { threshold: 0.3 });
+    sections.forEach(function(sec) { navObserver.observe(sec); });
+  }
 })();
 </script>
 

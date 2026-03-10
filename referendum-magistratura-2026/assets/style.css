@@ -97,8 +97,8 @@ p:last-child { margin-bottom: 0; }
 strong { color: var(--text); font-weight: 600; }
 mark   { background: transparent; color: var(--gld-l); font-weight: 600; }
 
-.wrap   { max-width: 680px; margin: 0 auto; padding: 0 18px; }
-.wrap.wide { max-width: 1100px; }
+.wrap   { max-width: 1100px; margin: 0 auto; padding: 0 18px; }
+.wrap.narrow { max-width: 680px; }
 section { padding: 52px 0; border-bottom: 1px solid var(--border); }
 section .wrap > *:first-child { margin-top: 0; }
 
@@ -634,6 +634,11 @@ blockquote cite { display:block; margin-top:10px; font-style:normal; font-family
   .nav-cards { grid-template-columns: 1fr 1fr; }
 }
 @media (min-width:900px) {
+  /* Text elements stay readable at 680px inside the 1100px wrap */
+  .wrap > p, .wrap > h2, .wrap > h3,
+  .wrap > blockquote, .wrap > .alert,
+  .wrap > .pbar-note { max-width: 680px; }
+
   .nav-cards { grid-template-columns: 1fr 1fr 1fr; }
   .stat-box { padding: 28px 20px; }
   .stat-num { font-size: 52px; }

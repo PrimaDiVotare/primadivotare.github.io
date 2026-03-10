@@ -560,35 +560,27 @@
       .attr('fill', config.titleColor)
       .text(config.title);
 
-    // Category labels above arc
-    var catMidpoints = {
-      togati:  Math.floor(9),
-      laici:   Math.floor(24),
-      diritto: Math.floor(31)
+    // Category labels above arc — staggered to avoid overlap
+    var catPositions = {
+      togati:  { idx: 9,  anchor: 'middle', offsetY: 0 },
+      laici:   { idx: 25, anchor: 'end',    offsetY: 0 },
+      diritto: { idx: 32, anchor: 'start',  offsetY: -14 }
     };
 
     config.catLabels.forEach(function(cl) {
-      var d = dots[catMidpoints[cl.key]];
-      var ly = cy - radius - 32;
+      var pos = catPositions[cl.key];
+      var d = dots[pos.idx];
+      var ly = cy - radius - 32 + pos.offsetY;
       g.append('text')
         .attr('x', d.x)
         .attr('y', ly)
-        .attr('text-anchor', 'middle')
+        .attr('text-anchor', pos.anchor)
         .attr('font-family', "'IBM Plex Mono', monospace")
-        .attr('font-size', '9px')
+        .attr('font-size', '8px')
         .attr('font-weight', '600')
-        .attr('letter-spacing', '0.12em')
+        .attr('letter-spacing', '0.1em')
         .attr('fill', cl.color)
         .text(cl.label);
-      g.append('text')
-        .attr('x', d.x)
-        .attr('y', ly + 13)
-        .attr('text-anchor', 'middle')
-        .attr('font-family', "'IBM Plex Mono', monospace")
-        .attr('font-size', '7px')
-        .attr('letter-spacing', '0.15em')
-        .attr('fill', '#636070')
-        .text(cl.sublabel);
     });
 
     // Lines (behind dots)

@@ -6,8 +6,6 @@
 <title>Separazione delle carriere — Referendum Giustizia 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-<script src="assets/chart-defaults.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 </head>
 <body>
@@ -33,7 +31,7 @@
     <div class="sec-label">Punto focale</div>
     <h2>Fino a dove arrivava la Cartabia, dove arriva la riforma</h2>
     <p>Per decenni i magistrati potevano passare liberamente da giudice a PM e viceversa. Era un problema reale: un PM che ha indagato un imputato non dovrebbe poi giudicarlo. La critica era fondata.</p>
-    <p>Ma il legislatore ordinario ci ha gia&#768; messo mano. Prima limitando i passaggi a quattro (2007), poi riducendoli a <strong>uno solo nell'intera carriera</strong> (D.lgs. 44/2024, attuativo della legge Cartabia). La riforma costituzionale rende la separazione definitiva e irreversibile.</p>
+    <p>Ma il legislatore ordinario ci ha gia&#768; messo mano. Prima limitando i passaggi a quattro (2007), poi riducendoli a <strong>uno solo nell'intera carriera</strong> (decreto legislativo 44/2024 (D.lgs. 44/2024), attuativo della legge Cartabia). La riforma costituzionale rende la separazione definitiva e irreversibile.</p>
     <p>La domanda che resta: se la legge ordinaria aveva gia&#768; ridotto il problema a una dimensione marginale, perche&#769; intervenire sulla Costituzione? E soprattutto &#8212; cosa viaggia nello stesso pacchetto di riforma?</p>
   </div>
 </section>
@@ -49,7 +47,7 @@
       <div class="tl-item n">
         <div class="tl-lbl">Pre-2007</div>
         <h4>Passaggi illimitati</h4>
-        <p>Nessun vincolo formale: un magistrato poteva passare da giudice a PM e viceversa piu&#768; volte nel corso della carriera. La "cultura della fungibilita&#768;" tra le funzioni era la norma.</p>
+        <p>Nessun vincolo formale: un magistrato poteva passare da giudice a PM e viceversa piu&#768; volte nel corso della carriera. La "cultura dell'intercambiabilita&#768;" tra le funzioni era la norma.</p>
       </div>
       <div class="tl-item y">
         <div class="tl-lbl">2007 &#8212; Riforma Mastella</div>
@@ -64,7 +62,7 @@
       <div class="tl-item r">
         <div class="tl-lbl">2025 &#8212; Riforma costituzionale Nordio</div>
         <h4>Separazione costituzionale definitiva</h4>
-        <p>L'art. 102 Cost. riformato stabilisce che la magistratura e&#768; composta da «magistrati della carriera giudicante e della carriera requirente». L'art. 104 istituisce due CSM distinti. Nessun passaggio e&#768; piu&#768; possibile, a nessuna condizione. La scelta e&#768; irreversibile dal concorso.</p>
+        <p>L'art. 102 Cost. riformato stabilisce che la magistratura e&#768; composta da «magistrati della carriera giudicante (i giudici, che decidono le sentenze) e della carriera requirente (i PM, che indagano e sostengono l'accusa)». L'art. 104 istituisce due CSM distinti. Nessun passaggio e&#768; piu&#768; possibile, a nessuna condizione. La scelta e&#768; irreversibile dal concorso.</p>
       </div>
     </div>
   </div>
@@ -92,13 +90,11 @@
       </div>
     </div>
 
-    <!-- Bar chart: Passaggi PM↔Giudice per anno -->
-    <div style="margin:24px 0;">
-      <canvas id="chart-passaggi" style="max-width:100%;max-height:350px;"></canvas>
-    </div>
-    <p class="pbar-note" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin-top:4px;margin-bottom:20px;">Fonte: audizioni parlamentari CSM 2023&#8211;2024. Media: ~28 passaggi/anno su 8.800 magistrati = 0,31%.</p>
+    <!-- Waffle chart: 28 su 8.800 magistrati -->
+    <div id="waffle-passaggi" class="chart-wrap"></div>
+    <p class="pbar-note">3 su 1.000 &#8212; ogni quadrato &#8776; 9 magistrati. Solo 3 cambiano funzione ogni anno.<br>Fonte: audizioni parlamentari CSM 2023&#8211;2024. Media: ~28 passaggi/anno su 8.800 magistrati = 0,31%.</p>
 
-    <p>Circa 28 magistrati su 8.800 cambiavano funzione ogni anno &#8212; lo 0,31% del corpo. Dopo l'entrata in vigore del D.lgs. 44/2024, questo numero sarebbe sceso ulteriormente, perche&#769; il passaggio era limitato a una sola volta nell'intera carriera.</p>
+    <p>Circa 28 magistrati su 8.800 cambiavano funzione ogni anno &#8212; lo 0,31% del corpo. Dopo l'entrata in vigore del D.lgs. 44/2024, questo numero sarebbe sceso ulteriormente, perche&#769; il passaggio era limitato a una sola volta nell'intera carriera. Con la Cartabia a pieno regime, il dato era destinato ad avvicinarsi allo zero. La riforma costituzionalizza un risultato che la legge ordinaria stava gia&#768; raggiungendo.</p>
 
     <div class="alert info reveal">
       <div class="alert-title">Nota metodologica</div>
@@ -169,8 +165,8 @@
           <div class="flow-arrow r">&#8594;</div>
           <div class="flow-node red">PM<small>per sempre</small></div>
         </div>
-        <div style="margin-top:8px;background:var(--bg4);border:1px dashed var(--border);padding:10px;font-size:11px;color:var(--muted);border-radius:2px;font-family:'IBM Plex Mono',monospace;text-align:center;">
-          Nessun passaggio. Due CSM separati. Due mondi.
+        <div class="flow-note">
+          Nessun passaggio possibile. Due CSM separati.
         </div>
       </div>
     </div>
@@ -180,11 +176,11 @@
 <!-- ════ BIFORCAZIONE CARRIERE (D3) ════ -->
 <section id="biforcazione">
   <div class="wrap">
-    <div class="sec-label">Diagramma</div>
-    <h2>Due carriere: prima e dopo</h2>
-    <p>Prima della riforma, un concorso unico e un ponte residuale. Dopo, due binari separati fin dall'ingresso &#8212; senza alcuna possibilita&#768; di attraversamento.</p>
+    <div class="sec-label">Struttura istituzionale</div>
+    <h2>Da un concorso unico a due mondi istituzionali</h2>
+    <p>Il diagramma mostra come la separazione delle carriere si riflette sull'intera struttura istituzionale: non solo due percorsi diversi, ma due organi di autogoverno distinti.</p>
     <div id="biforcazione-diagram" style="max-width:600px;margin:28px auto 0;"></div>
-    <p class="pbar-note" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin-top:16px;margin-bottom:0;text-align:center;">Guarda il ponte tratteggiato nel PRIMA e la X nel DOPO. La differenza strutturale e&#768; tutta li&#768;: da un passaggio residuale (0,31%/anno) a zero passaggi per Costituzione.</p>
+    <p class="pbar-note" style="text-align:center;">Guarda il ponte tratteggiato nel PRIMA e la X nel DOPO. La differenza strutturale e&#768; tutta li&#768;: da un passaggio residuale (0,31%/anno) a zero passaggi per Costituzione.</p>
   </div>
 </section>
 
@@ -197,7 +193,7 @@
     <div class="alert warning reveal">
       <div class="alert-title">La domanda strutturale</div>
       <p>La separazione delle carriere, presa da sola, aveva una giustificazione. Ma la legge Cartabia l'aveva gia&#768; affrontata con un intervento proporzionato &#8212; un solo passaggio nell'intera carriera.</p>
-      <p>Costituzionalizzare la separazione ha un effetto collaterale che non e&#768; collaterale: <strong>richiede due CSM separati</strong> (art. 104 riformato). Due CSM significano una nuova composizione, un nuovo meccanismo di selezione (il sorteggio), e l'estrazione della funzione disciplinare verso un nuovo organo (l'Alta Corte).</p>
+      <p>Scrivere la separazione in Costituzione ha una conseguenza importante: <strong>richiede due CSM (Consiglio Superiore della Magistratura &#8212; l'organo che governa nomine, trasferimenti e carriere dei magistrati) separati</strong> (art. 104 riformato). Due CSM significano una nuova composizione, un nuovo meccanismo di selezione (il sorteggio), e l'estrazione della funzione disciplinare verso un nuovo organo (l'Alta Corte).</p>
       <p>La separazione delle carriere e&#768; il punto centrale della riforma &#8212; o e&#768; la porta attraverso cui passa il resto?</p>
     </div>
 
@@ -230,7 +226,7 @@
 
     <div class="alert info reveal">
       <div class="alert-title">Coerenza con il modello accusatorio</div>
-      <p>Il sistema processuale penale italiano, dal 1989, e&#768; fondato sul modello accusatorio: accusa e giudizio sono funzioni strutturalmente diverse. La separazione delle carriere &#8212; si argomenta &#8212; porta la Costituzione in linea con il codice di procedura, completando una transizione iniziata trentacinque anni fa.</p>
+      <p>Il sistema processuale penale italiano, dal 1989, e&#768; fondato sul modello accusatorio (dove chi accusa e chi giudica hanno ruoli nettamente separati): accusa e giudizio sono funzioni strutturalmente diverse. La separazione delle carriere &#8212; si argomenta &#8212; porta la Costituzione in linea con il codice di procedura, completando una transizione iniziata trentacinque anni fa.</p>
     </div>
 
     <div class="alert info reveal">
@@ -240,7 +236,7 @@
 
     <div class="alert warning reveal">
       <div class="alert-title">Il punto che resta aperto</div>
-      <p>Questi argomenti riguardano la separazione delle carriere in se&#769;. <strong>Nessuno di essi richiede</strong> di sostituire l'elezione dei togati con il sorteggio, di eliminare il ricorso in Cassazione sulle sentenze disciplinari, o di lasciare le garanzie di indipendenza del PM a leggi ordinarie. La riforma fa tutte e tre le cose insieme, dentro lo stesso pacchetto costituzionale. Il quesito referendario e&#768; unitario: accetta o rifiuta l'intero testo della legge costituzionale.</p>
+      <p>Questi argomenti riguardano la separazione delle carriere in se&#769;. Richiedono necessariamente anche il sorteggio dei togati, l'eliminazione del ricorso in Cassazione sulla disciplina, e il rinvio delle garanzie del PM a leggi ordinarie? O potrebbero essere realizzati con la sola separazione delle carriere? La riforma li presenta insieme, in un unico pacchetto costituzionale. Il quesito referendario e&#768; unitario: accetta o rifiuta l'intero testo.</p>
     </div>
   </div>
 </section>
@@ -255,7 +251,7 @@
     </blockquote>
 
     <p style="text-align:center;margin-top:28px;">
-      <a href="02-csm.html" style="display:inline-block;background:var(--bg3);border:1px solid var(--border);padding:14px 28px;text-decoration:none;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;border-radius:2px;transition:border-color .2s;">Prossima pagina: il CSM e il sorteggio &#8594;</a>
+      <a href="02-csm.html" class="next-link">Prossima pagina: il CSM e il sorteggio &#8594;</a>
     </p>
 
     <div class="source-note">
@@ -266,90 +262,41 @@
 </section>
 
 <script>
-// Bar chart — Passaggi PM↔Giudice per anno (2019-2023)
+// Waffle chart — 28 su 8.800 magistrati (D3.js)
 (function() {
-  var ctx = document.getElementById('chart-passaggi').getContext('2d');
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['2019', '2020', '2021', '2022', '2023'],
-      datasets: [{
-        label: 'Passaggi PM\u2194Giudice',
-        data: [32, 26, 30, 25, 28],
-        backgroundColor: '#4490e0',
-        borderColor: '#4490e0',
-        borderWidth: 0,
-        borderRadius: 2,
-        barPercentage: 0.6
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: false
-        },
-        tooltip: {
-          callbacks: {
-            afterLabel: function(context) {
-              return (context.raw / 8800 * 100).toFixed(2) + '% su 8.800 magistrati';
-            }
-          }
-        }
-      },
-      scales: {
-        x: {
-          grid: {
-            display: false
-          },
-          border: {
-            display: false
-          }
-        },
-        y: {
-          title: {
-            display: true,
-            text: 'NUMERO PASSAGGI',
-            font: { size: 10, family: "'IBM Plex Mono', monospace" },
-            color: '#636070'
-          },
-          grid: {
-            color: '#252530'
-          },
-          border: {
-            display: false
-          },
-          beginAtZero: true,
-          max: 45
-        }
-      }
-    },
-    plugins: [{
-      id: 'sogliaCartabia',
-      afterDraw: function(chart) {
-        var yScale = chart.scales.y;
-        var xScale = chart.scales.x;
-        var yPixel = yScale.getPixelForValue(1);
-        var ctx = chart.ctx;
+  var cols = 40, rows = 25, total = cols * rows; // 1000 quadratini
+  var cellSize = 12, gap = 2;
+  var w = cols * (cellSize + gap) - gap;
+  var h = rows * (cellSize + gap) - gap;
 
-        ctx.save();
-        ctx.setLineDash([6, 4]);
-        ctx.strokeStyle = '#e0b848';
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        ctx.moveTo(xScale.left, yPixel);
-        ctx.lineTo(xScale.right, yPixel);
-        ctx.stroke();
+  // 3 quadratini evidenziati, sparsi nella griglia
+  var highlighted = new Set([142, 487, 831]); // posizioni sparse
 
-        ctx.fillStyle = '#e0b848';
-        ctx.font = "10px 'IBM Plex Mono', monospace";
-        ctx.textAlign = 'right';
-        ctx.fillText('Soglia Cartabia (1 passaggio/carriera)', xScale.right, yPixel - 6);
-        ctx.restore();
-      }
-    }]
-  });
+  var container = d3.select('#waffle-passaggi');
+  var svg = container.append('svg')
+    .attr('viewBox', '0 0 ' + w + ' ' + h)
+    .attr('width', '100%')
+    .attr('preserveAspectRatio', 'xMidYMid meet')
+    .attr('role', 'img')
+    .attr('aria-label', 'Waffle chart: 3 quadratini su 1000 evidenziati in blu, rappresentano i circa 28 magistrati su 8800 che cambiano funzione ogni anno')
+    .style('display', 'block')
+    .style('max-width', '100%');
+
+  var data = d3.range(total);
+
+  svg.selectAll('rect')
+    .data(data)
+    .enter()
+    .append('rect')
+    .attr('x', function(d) { return (d % cols) * (cellSize + gap); })
+    .attr('y', function(d) { return Math.floor(d / cols) * (cellSize + gap); })
+    .attr('width', cellSize)
+    .attr('height', cellSize)
+    .attr('rx', 1.5)
+    .attr('ry', 1.5)
+    .attr('fill', function(d) { return highlighted.has(d) ? '#4490e0' : '#1e1e27'; })
+    .attr('stroke', function(d) { return highlighted.has(d) ? '#4490e0' : '#252530'; })
+    .attr('stroke-width', 0.5);
 })();
 </script>
 
@@ -364,6 +311,8 @@
     .attr('viewBox', '0 0 ' + totalW + ' ' + totalH)
     .attr('width', '100%')
     .attr('preserveAspectRatio', 'xMidYMid meet')
+    .attr('role', 'img')
+    .attr('aria-label', 'Diagramma che mostra la biforcazione delle carriere: prima con un ponte possibile tra giudice e PM, dopo con due percorsi completamente separati')
     .style('display', 'block');
 
   // Colors

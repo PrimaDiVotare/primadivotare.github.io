@@ -360,9 +360,18 @@
       <p>I valori nel grafico sono <strong>stime editoriali a scopo illustrativo</strong>, non indici ufficiali. Scala 0 (minimo) &ndash; 5 (massimo). Il valore &laquo;Separazione carriere: 2&raquo; per l'Italia oggi riflette il limite Cartabia (1 passaggio nell'intera carriera).</p>
     </div>
 
-    <div style="position:relative;width:100%;max-width:800px;height:700px;margin:24px auto;">
+    <div id="radarWrap" style="position:relative;width:100%;max-width:800px;margin:24px auto;">
       <canvas id="radarEuropa" role="img" aria-label="Radar chart: confronto Italia attuale, Italia dopo riforma, Portogallo, Germania, Francia e Spagna su 5 dimensioni di indipendenza della magistratura"></canvas>
     </div>
+
+    <div class="radar-axes-key" style="display:none; margin:16px 0 12px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); line-height:1.8;">
+      <div><strong style="color:var(--text);">Indipendenza</strong> &mdash; Indipendenza del PM dall'esecutivo</div>
+      <div><strong style="color:var(--text);">Garanzie</strong> &mdash; Garanzie costituzionali per il PM</div>
+      <div><strong style="color:var(--text);">Separazione</strong> &mdash; Separazione delle carriere</div>
+      <div><strong style="color:var(--text);">Nomine</strong> &mdash; Controllo politico sulle nomine</div>
+      <div><strong style="color:var(--text);">Disciplina</strong> &mdash; Ricorso esterno su disciplina</div>
+    </div>
+    <script>if(window.innerWidth<600)document.querySelector('.radar-axes-key').style.display='block';</script>
 
     <p class="chart-caption">Confronto qualitativo basato sulle fonti citate. L'Italia con la riforma si avvicinerebbe al modello tedesco (PM meno indipendente) allontanandosi da quello portoghese (garanzie costituzionali).</p>
   </div>
@@ -370,17 +379,17 @@
 
 <script>
 (function() {
+  var isMobile = window.innerWidth < 600;
+  var wrap = document.getElementById('radarWrap');
+  wrap.style.height = isMobile ? '380px' : '700px';
+
   var ctx = document.getElementById('radarEuropa').getContext('2d');
   new Chart(ctx, {
     type: 'radar',
     data: {
-      labels: [
-        'Indipendenza PM\ndall\'esecutivo',
-        'Garanzie costituzionali\nPM',
-        'Separazione\ncarriere',
-        'Controllo politico\nsulle nomine',
-        'Ricorso esterno\nsu disciplina'
-      ],
+      labels: isMobile
+        ? ['Indipendenza', 'Garanzie', 'Separazione', 'Nomine', 'Disciplina']
+        : ['Indipendenza PM\ndall\'esecutivo', 'Garanzie costituzionali\nPM', 'Separazione\ncarriere', 'Controllo politico\nsulle nomine', 'Ricorso esterno\nsu disciplina'],
       datasets: [
         {
           label: 'IT oggi',
@@ -457,11 +466,12 @@
             color: '#313244'
           },
           pointLabels: {
-            color: '#7f849c',
+            color: '#cdd6f4',
             font: {
               family: "'IBM Plex Mono', monospace",
-              size: 12
-            }
+              size: isMobile ? 11 : 13
+            },
+            padding: isMobile ? 14 : 12
           }
         }
       },

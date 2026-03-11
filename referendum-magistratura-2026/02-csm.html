@@ -696,7 +696,7 @@
 
   var isMobile = window.innerWidth < 600;
   var W = isMobile ? 550 : 1100;
-  var H = isMobile ? 900 : 480;
+  var H = isMobile ? 1060 : 480;
   var N = 33;
   var dotR = isMobile ? 6 : 7;
   var radius = 130;
@@ -704,8 +704,8 @@
   // Centers for PRIMA and DOPO semicircles
   var primaCx, primaCy, dopoCx, dopoCy;
   if (isMobile) {
-    primaCx = 275; primaCy = 200;
-    dopoCx = 275;  dopoCy = 650;
+    primaCx = 275; primaCy = 240;
+    dopoCx = 275;  dopoCy = 790;
   } else {
     primaCx = 275; primaCy = 220;
     dopoCx = 825;  dopoCy = 220;
@@ -756,7 +756,7 @@
     // Title label above semicircle
     g.append('text')
       .attr('x', cx)
-      .attr('y', cy - radius - 50)
+      .attr('y', cy - radius - 66)
       .attr('text-anchor', 'middle')
       .attr('font-family', "'IBM Plex Mono', monospace")
       .attr('font-size', '15px')
@@ -765,25 +765,16 @@
       .attr('fill', config.titleColor)
       .text(config.title);
 
-    // Category labels above arc — staggered to avoid overlap
-    var catPositions = {
-      togati:  { idx: 9,  anchor: 'middle', offsetY: 0 },
-      laici:   { idx: 25, anchor: 'end',    offsetY: 0 },
-      diritto: { idx: 32, anchor: 'start',  offsetY: -14 }
-    };
-
-    config.catLabels.forEach(function(cl) {
-      var pos = catPositions[cl.key];
-      var d = dots[pos.idx];
-      var ly = cy - radius - 32 + pos.offsetY;
+    // Category labels — stacked vertically, centered
+    config.catLabels.forEach(function(cl, i) {
       g.append('text')
-        .attr('x', d.x)
-        .attr('y', ly)
-        .attr('text-anchor', pos.anchor)
+        .attr('x', cx)
+        .attr('y', cy - radius - 50 + i * 16)
+        .attr('text-anchor', 'middle')
         .attr('font-family', "'IBM Plex Mono', monospace")
         .attr('font-size', '11px')
         .attr('font-weight', '600')
-        .attr('letter-spacing', '0.1em')
+        .attr('letter-spacing', '0.08em')
         .attr('fill', cl.color)
         .text(cl.label);
     });
@@ -874,7 +865,7 @@
     ],
     boxes: {
       togati:  { fill: '#1a2a28', stroke: '#94e2d5', title: '8.800 MAGISTRATI', sub: 'elezione tra pari', textColor: '#94e2d5' },
-      laici:   { fill: '#1e2235', stroke: '#89b4fa', title: 'PARLAMENTO 3/5',   sub: 'maggioranza qualificata', textColor: '#89b4fa' },
+      laici:   { fill: '#1e2235', stroke: '#89b4fa', title: 'PARLAMENTO 3/5',   sub: 'magg. qualificata', textColor: '#89b4fa' },
       diritto: { fill: '#262015', stroke: '#f9e2af', title: 'ISTITUZIONALE',     sub: 'PP e PG Cass., PdR', textColor: '#f9e2af' }
     }
   };
@@ -891,8 +882,8 @@
       diritto: { color: '#f9e2af', opacity: 0.25, dash: null }
     },
     catLabels: [
-      { key: 'togati',  label: '20 TOGATI SORTEGGIATI', sublabel: '', color: '#7f849c' },
-      { key: 'laici',   label: '10 LAICI DA LISTA',     sublabel: '', color: '#fab387' },
+      { key: 'togati',  label: isMobile ? '20 SORTEGGIATI' : '20 TOGATI SORTEGGIATI', sublabel: '', color: '#7f849c' },
+      { key: 'laici',   label: isMobile ? '10 DA LISTA' : '10 LAICI DA LISTA',        sublabel: '', color: '#fab387' },
       { key: 'diritto', label: '3 DI DIRITTO',          sublabel: '', color: '#f9e2af' }
     ],
     boxes: {
@@ -906,8 +897,17 @@
   drawHalf(primaCx, primaCy, primaConf);
   drawHalf(dopoCx, dopoCy, dopoConf);
 
-  // Vertical separator line (desktop only)
-  if (!isMobile) {
+  if (isMobile) {
+    // Horizontal separator between PRIMA and DOPO
+    var sepY = (primaCy + radius + 60 + boxH + dopoCy - radius - 66) / 2;
+    svg.append('line')
+      .attr('x1', 40).attr('y1', sepY)
+      .attr('x2', W - 40).attr('y2', sepY)
+      .attr('stroke', '#313244')
+      .attr('stroke-width', 1)
+      .attr('stroke-dasharray', '4,4');
+  } else {
+    // Vertical separator (desktop)
     svg.append('line')
       .attr('x1', 550).attr('y1', 20)
       .attr('x2', 550).attr('y2', H - 20)

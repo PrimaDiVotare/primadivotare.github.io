@@ -464,129 +464,136 @@
   </div>
 </section>
 
-<!-- ═══ CUI PRODEST ═══ -->
+<!-- ═══ CUI PRODEST — SEPARAZIONE DEI POTERI ═══ -->
 <section id="potere">
   <div class="wrap">
     <div class="sec-label">Dove va il potere</div>
-    <h2>L'equilibrio si sposta</h2>
-    <p>Ogni barra mostra chi controlla una leva dell'autogoverno della magistratura. A sinistra la magistratura, a destra il Parlamento. Guarda come cambia.</p>
+    <h2>Due poteri separati. Per una ragione.</h2>
 
-    <div class="legend-row reveal" style="margin-bottom:20px;">
-      <div class="leg-item"><div class="leg-dot" style="background:var(--pri);"></div> Magistratura</div>
-      <div class="leg-item"><div class="leg-dot" style="background:var(--dpo);"></div> Parlamento / maggioranza</div>
-      <div class="leg-item"><div class="leg-dot" style="background:var(--blu);"></div> Condiviso / bipartisan</div>
+    <div class="powers-duo reveal">
+      <div class="power-block parl">
+        <div class="power-name">Parlamento</div>
+        <div class="power-role">Fa le leggi. Governa.</div>
+      </div>
+      <div class="powers-sep"></div>
+      <div class="power-block magi">
+        <div class="power-name">Magistratura</div>
+        <div class="power-role">Le applica. Controlla chi governa.</div>
+      </div>
     </div>
 
-    <div class="pshift reveal">
+    <div class="powers-quote reveal">
+      Art. 104 Cost.: &laquo;La magistratura costituisce un ordine autonomo e indipendente da <em>ogni altro potere</em>.&raquo;
+    </div>
+
+    <p class="reveal">Perch&eacute; questo funzioni, la magistratura si autogoverna. L'autogoverno non &egrave; perfetto &mdash; le correnti, il caso Palamara, le nomine negoziate sono problemi reali. Ma la riforma non corregge l'autogoverno dall'interno: sposta cinque sue leve verso l'esterno. Tutte nella stessa direzione.</p>
+
+    <!-- Asse orizzontale fisso -->
+    <div class="paxis reveal">
+      <span class="paxis-end left">Controllo esterno</span>
+      <span class="paxis-end right">Autogoverno</span>
+    </div>
+
+    <!-- 5 leve -->
+    <div class="plevers">
 
       <!-- 1. Scelta togati -->
-      <div class="pshift-item">
-        <div class="pshift-lever">Scelta componenti togati</div>
-        <div class="pshift-pair">
-          <div class="pshift-row before">
-            <div class="pshift-tag">Prima</div>
-            <div class="pshift-bar">
-              <div class="seg mag" style="width:100%"><span>Eletti dai magistrati</span></div>
-            </div>
-          </div>
-          <div class="pshift-row after">
-            <div class="pshift-tag">Dopo</div>
-            <div class="pshift-bar">
-              <div class="seg parl" style="width:70%"><span>Requisiti fissati per legge ord.</span></div>
-              <div class="seg mag" style="width:30%"><span>Sorteggio</span></div>
-            </div>
-          </div>
+      <div class="plever-item reveal" style="transition-delay:.0s">
+        <div class="plever-name">Scelta componenti togati</div>
+        <div class="plever-track">
+          <div class="plever-rail"></div>
+          <div class="plever-dot prima" style="left:92%"><span class="plever-pip">prima</span></div>
+          <div class="plever-dot dopo" style="left:22%"><span class="plever-pip">dopo</span></div>
+          <div class="plever-arrow" style="left:22%; width:70%"></div>
         </div>
-        <div class="pshift-detail">Oggi i magistrati eleggono direttamente i togati. Dopo, il Parlamento fissa i requisiti di chi pu&ograve; essere sorteggiato &mdash; chi scrive i requisiti decide il bacino.</div>
+        <div class="plever-labels">
+          <span class="plever-lbl dopo">Requisiti fissati per legge ord.</span>
+          <span class="plever-lbl prima">Eletti dai colleghi</span>
+        </div>
+        <div class="plever-detail">Oggi i magistrati eleggono i togati &mdash; con tutte le dinamiche interne, correnti comprese. Dopo, il Parlamento fissa i requisiti di chi pu&ograve; essere sorteggiato: chi scrive i requisiti decide il bacino.</div>
       </div>
 
       <!-- 2. Scelta laici -->
-      <div class="pshift-item">
-        <div class="pshift-lever">Scelta componenti laici</div>
-        <div class="pshift-pair">
-          <div class="pshift-row before">
-            <div class="pshift-tag">Prima</div>
-            <div class="pshift-bar">
-              <div class="seg mix" style="width:100%"><span>Parlamento con soglia 3/5</span></div>
-            </div>
-          </div>
-          <div class="pshift-row after">
-            <div class="pshift-tag">Dopo</div>
-            <div class="pshift-bar">
-              <div class="seg parl" style="width:100%"><span>Lista parlamentare senza soglia</span></div>
-            </div>
-          </div>
+      <div class="plever-item reveal" style="transition-delay:.12s">
+        <div class="plever-name">Scelta componenti laici</div>
+        <div class="plever-track">
+          <div class="plever-rail"></div>
+          <div class="plever-dot prima" style="left:50%"><span class="plever-pip">prima</span></div>
+          <div class="plever-dot dopo" style="left:12%"><span class="plever-pip">dopo</span></div>
+          <div class="plever-arrow" style="left:12%; width:38%"></div>
         </div>
-        <div class="pshift-detail">Oggi serve un accordo bipartisan (3/5). Dopo, la maggioranza semplice basta per compilare la lista da cui si sorteggia.</div>
+        <div class="plever-labels">
+          <span class="plever-lbl dopo">Lista a maggioranza semplice</span>
+          <span class="plever-lbl prima">Accordo bipartisan (3/5)</span>
+        </div>
+        <div class="plever-detail">Oggi i laici richiedono un accordo largo (3/5 dei votanti): maggioranza e opposizione devono convergere. Dopo, la maggioranza semplice basta per compilare la lista da cui si sorteggia.</div>
       </div>
 
       <!-- 3. Vicepresidenza -->
-      <div class="pshift-item">
-        <div class="pshift-lever">Vicepresidenza CSM</div>
-        <div class="pshift-pair">
-          <div class="pshift-row before">
-            <div class="pshift-tag">Prima</div>
-            <div class="pshift-bar">
-              <div class="seg mix" style="width:100%"><span>Laico eletto con 3/5 &mdash; compromesso</span></div>
-            </div>
-          </div>
-          <div class="pshift-row after">
-            <div class="pshift-tag">Dopo</div>
-            <div class="pshift-bar">
-              <div class="seg parl" style="width:100%"><span>Sempre laico &mdash; da lista senza soglia</span></div>
-            </div>
-          </div>
+      <div class="plever-item reveal" style="transition-delay:.24s">
+        <div class="plever-name">Vicepresidenza CSM</div>
+        <div class="plever-track">
+          <div class="plever-rail"></div>
+          <div class="plever-dot prima" style="left:50%"><span class="plever-pip">prima</span></div>
+          <div class="plever-dot dopo" style="left:12%"><span class="plever-pip">dopo</span></div>
+          <div class="plever-arrow" style="left:12%; width:38%"></div>
         </div>
-        <div class="pshift-detail">Il VP orienta i lavori del CSM. Oggi &egrave; espressione di un compromesso parlamentare. Dopo, proviene dalla lista della maggioranza.</div>
+        <div class="plever-labels">
+          <span class="plever-lbl dopo">Da lista a magg. semplice</span>
+          <span class="plever-lbl prima">Compromesso bipartisan (3/5)</span>
+        </div>
+        <div class="plever-detail">Il VP orienta i lavori del CSM. Oggi &egrave; espressione di un accordo largo tra le forze parlamentari. Dopo, proviene dalla lista della maggioranza di turno.</div>
       </div>
 
       <!-- 4. Requisiti sorteggio -->
-      <div class="pshift-item">
-        <div class="pshift-lever">Requisiti per il sorteggio</div>
-        <div class="pshift-pair">
-          <div class="pshift-row before">
-            <div class="pshift-tag">Prima</div>
-            <div class="pshift-bar">
-              <div class="seg none" style="width:100%"><span>Non esiste &mdash; si vota, non si sorteggia</span></div>
-            </div>
-          </div>
-          <div class="pshift-row after">
-            <div class="pshift-tag">Dopo</div>
-            <div class="pshift-bar">
-              <div class="seg parl" style="width:100%"><span>Legge ordinaria &mdash; maggioranza semplice</span></div>
-            </div>
-          </div>
+      <div class="plever-item reveal" style="transition-delay:.36s">
+        <div class="plever-name">Requisiti per il sorteggio</div>
+        <div class="plever-track">
+          <div class="plever-rail"></div>
+          <div class="plever-dot ghost" style="left:50%"><span class="plever-pip">prima</span></div>
+          <div class="plever-dot dopo" style="left:8%"><span class="plever-pip">dopo</span></div>
+          <div class="plever-arrow" style="left:8%; width:42%"></div>
         </div>
-        <div class="pshift-detail">Una leva nuova, interamente in mano al Parlamento. Chi fissa i requisiti del sorteggio decide chi pu&ograve; entrare nel CSM.</div>
+        <div class="plever-labels">
+          <span class="plever-lbl dopo">Legge ordinaria &mdash; magg. semplice</span>
+          <span class="plever-lbl ghost">Non esiste &mdash; si vota</span>
+        </div>
+        <div class="plever-detail">Una leva nuova, interamente in mano al Parlamento. Chi fissa i requisiti del sorteggio decide chi pu&ograve; entrare nel CSM.</div>
       </div>
 
       <!-- 5. Disciplina -->
-      <div class="pshift-item">
-        <div class="pshift-lever">Disciplina dei magistrati</div>
-        <div class="pshift-pair">
-          <div class="pshift-row before">
-            <div class="pshift-tag">Prima</div>
-            <div class="pshift-bar">
-              <div class="seg mag" style="width:60%"><span>Sez. disciplinare CSM</span></div>
-              <div class="seg mix" style="width:40%"><span>Ricorso in Cassazione</span></div>
-            </div>
-          </div>
-          <div class="pshift-row after">
-            <div class="pshift-tag">Dopo</div>
-            <div class="pshift-bar">
-              <div class="seg parl" style="width:60%"><span>Alta Corte (40% laici)</span></div>
-              <div class="seg none" style="width:40%"><span>Nessun ricorso esterno</span></div>
-            </div>
-          </div>
+      <div class="plever-item reveal" style="transition-delay:.48s">
+        <div class="plever-name">Disciplina dei magistrati</div>
+        <div class="plever-track">
+          <div class="plever-rail"></div>
+          <div class="plever-dot prima" style="left:72%"><span class="plever-pip">prima</span></div>
+          <div class="plever-dot dopo" style="left:18%"><span class="plever-pip">dopo</span></div>
+          <div class="plever-arrow" style="left:18%; width:54%"></div>
         </div>
-        <div class="pshift-detail">Oggi la sezione disciplinare &egrave; interna al CSM con ricorso in Cassazione. Dopo, l'Alta Corte ha il 40% di componenti laici e nessun controllo esterno.</div>
+        <div class="plever-labels">
+          <span class="plever-lbl dopo">Alta Corte 40% laici, no ricorso</span>
+          <span class="plever-lbl prima">CSM + ricorso in Cassazione</span>
+        </div>
+        <div class="plever-detail">Oggi la sezione disciplinare &egrave; interna al CSM con ricorso in Cassazione. Dopo, l'Alta Corte ha il 40% di componenti laici e nessun controllo esterno.</div>
       </div>
 
     </div>
 
-    <div class="flow-note danger reveal">
-      La tendenza &egrave; uniforme: su cinque leve di potere, tutte e cinque si spostano verso il Parlamento e la maggioranza di turno. Il sorteggio non elimina l'influenza &mdash; la trasferisce.
+    <!-- Sommario visivo: 5 frecce -->
+    <div class="plever-summary reveal">
+      <div class="plever-sum-arrows">
+        <span class="sum-arrow" style="width:70%">&nbsp;</span>
+        <span class="sum-arrow" style="width:38%">&nbsp;</span>
+        <span class="sum-arrow" style="width:38%">&nbsp;</span>
+        <span class="sum-arrow" style="width:42%">&nbsp;</span>
+        <span class="sum-arrow" style="width:54%">&nbsp;</span>
+      </div>
+      <div class="plever-sum-text">
+        <strong>5 leve su 5</strong> si spostano dall'autogoverno verso il controllo esterno.<br>
+        L'art.&nbsp;104 non cambia. I suoi strumenti s&igrave;.
+      </div>
     </div>
+
   </div>
 </section>
 

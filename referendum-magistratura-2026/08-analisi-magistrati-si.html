@@ -57,30 +57,41 @@
 <link rel="stylesheet" href="assets/style.css">
 <style>
 /* Accordion for author syntheses */
-.acc-item { border-bottom: 1px solid var(--border); }
+.acc-item {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gld);
+  margin-bottom: 6px;
+  border-radius: 2px;
+  transition: border-color .2s;
+}
+.acc-item:hover { border-left-color: var(--gld-l); }
+.acc-item.open { border-left-color: var(--gld-l); }
 .acc-btn {
   width: 100%;
   background: none;
   border: none;
-  padding: 20px 0;
+  padding: 20px 20px;
   text-align: left;
   cursor: pointer;
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+  gap: 16px;
   color: var(--text);
   font-family: inherit;
 }
-.acc-btn:hover { color: var(--red-l); }
 .acc-btn .acc-arrow {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 14px;
-  color: var(--muted);
   flex-shrink: 0;
-  margin-top: 4px;
-  transition: transform .2s;
+  width: 0;
+  height: 0;
+  border-left: 6px solid var(--gld);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  margin-top: 7px;
+  transition: transform .2s, border-color .2s;
 }
-.acc-item.open .acc-arrow { transform: rotate(90deg); }
+.acc-btn:hover .acc-arrow { border-left-color: var(--gld-l); }
+.acc-item.open .acc-arrow { transform: rotate(90deg); border-left-color: var(--gld-l); }
 .acc-btn h3 {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 18px;
@@ -97,6 +108,15 @@
   color: var(--muted);
   margin-top: 4px;
 }
+.acc-btn .acc-hint {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  color: var(--gld-l);
+  margin-top: 6px;
+}
+.acc-item.open .acc-hint { display: none; }
 .acc-body {
   max-height: 0;
   overflow: hidden;
@@ -352,7 +372,7 @@
           </tr>
           <tr>
             <td><strong>Luigi Salvato</strong></td>
-            <td>Gi&agrave; Procuratore Generale della Cassazione (luglio 2022 &ndash; marzo 2025)</td>
+            <td>Gi&agrave; Procuratore generale della Corte di Cassazione (luglio 2022 &ndash; marzo 2025)</td>
             <td>Come PG, era titolare dell'azione disciplinare. Ufficio Studi del CSM (1995-1997), assistente di studio dei giudici costituzionali Capotosti, Tesauro, Barbera (1997-2002), Segretario generale del CSM (2004). Ha operato nelle strutture di vertice sia del CSM sia della Corte Costituzionale.</td>
           </tr>
           <tr>
@@ -362,8 +382,8 @@
           </tr>
           <tr>
             <td><strong>Paolo Itri</strong></td>
-            <td>Presidente di sezione, Corte tributaria di Napoli</td>
-            <td>Sostituto Procuratore nazionale antimafia e antiterrorismo (dal 2023). DDA Napoli (2002-2011). Ha ottenuto la condanna all'ergastolo di Tot&ograve; Riina. Ispettore generale del Ministero della Giustizia (2011-2015). Ha lasciato l'ANM per dissenso.</td>
+            <td>Magistrato e scrittore, presidente di sezione della Corte tributaria di Napoli</td>
+            <td>Sostituto Procuratore nazionale antimafia e antiterrorismo (dal 2023). DDA Napoli (2002-2011). Ispettore generale del Ministero della Giustizia (2011-2015). Ha lasciato l'ANM per dissenso.</td>
           </tr>
           <tr>
             <td><strong>Giacomo Rocchi</strong></td>
@@ -410,10 +430,11 @@
     <!-- SALVATO -->
     <div class="acc-item" id="salvato">
       <button class="acc-btn" onclick="this.parentElement.classList.toggle('open')">
-        <span class="acc-arrow">&rsaquo;</span>
+        <span class="acc-arrow"></span>
         <div>
           <h3>Luigi Salvato &mdash; &laquo;La riforma non rende le toghe succubi del governo&raquo;</h3>
-          <span class="acc-role">Gi&agrave; Procuratore Generale della Cassazione &middot; p.11-15</span>
+          <span class="acc-role">Gi&agrave; Procuratore generale della Corte di Cassazione &middot; p.11-15</span>
+          <span class="acc-hint">Leggi sintesi +</span>
         </div>
       </button>
       <div class="acc-body"><div class="acc-body-inner">
@@ -434,10 +455,11 @@
     <!-- ITRI -->
     <div class="acc-item" id="itri">
       <button class="acc-btn" onclick="this.parentElement.classList.toggle('open')">
-        <span class="acc-arrow">&rsaquo;</span>
+        <span class="acc-arrow"></span>
         <div>
           <h3>Paolo Itri &mdash; &laquo;Magistrati finalmente liberati dalla tirannia delle correnti&raquo;</h3>
           <span class="acc-role">Sostituto Procuratore nazionale antimafia &middot; p.17-21</span>
+          <span class="acc-hint">Leggi sintesi +</span>
         </div>
       </button>
       <div class="acc-body"><div class="acc-body-inner">
@@ -458,10 +480,11 @@
     <!-- ROCCHI -->
     <div class="acc-item" id="rocchi">
       <button class="acc-btn" onclick="this.parentElement.classList.toggle('open')">
-        <span class="acc-arrow">&rsaquo;</span>
+        <span class="acc-arrow"></span>
         <div>
           <h3>Giacomo Rocchi &mdash; &laquo;La riforma non &egrave; contro i magistrati&raquo;</h3>
           <span class="acc-role">Presidente I Sezione penale, Cassazione &middot; p.23-27</span>
+          <span class="acc-hint">Leggi sintesi +</span>
         </div>
       </button>
       <div class="acc-body"><div class="acc-body-inner">
@@ -480,10 +503,11 @@
     <!-- D'AVINO -->
     <div class="acc-item" id="davino">
       <button class="acc-btn" onclick="this.parentElement.classList.toggle('open')">
-        <span class="acc-arrow">&rsaquo;</span>
+        <span class="acc-arrow"></span>
         <div>
           <h3>Alfonso D'Avino &mdash; &laquo;Pi&ugrave; verit&agrave; sullo scossone che fa bene alla giustizia&raquo;</h3>
           <span class="acc-role">Procuratore della Repubblica di Parma &middot; p.29-33</span>
+          <span class="acc-hint">Leggi sintesi +</span>
         </div>
       </button>
       <div class="acc-body"><div class="acc-body-inner">
@@ -502,10 +526,11 @@
     <!-- MANCA -->
     <div class="acc-item" id="manca">
       <button class="acc-btn" onclick="this.parentElement.classList.toggle('open')">
-        <span class="acc-arrow">&rsaquo;</span>
+        <span class="acc-arrow"></span>
         <div>
           <h3>Ettore Manca &mdash; &laquo;Una riforma che non tradisce la Costituzione&raquo;</h3>
           <span class="acc-role">Presidente sezione TAR Lecce &middot; p.35-38</span>
+          <span class="acc-hint">Leggi sintesi +</span>
         </div>
       </button>
       <div class="acc-body"><div class="acc-body-inner">
@@ -522,10 +547,11 @@
     <!-- D'ANGIOLELLA -->
     <div class="acc-item" id="dangiolella">
       <button class="acc-btn" onclick="this.parentElement.classList.toggle('open')">
-        <span class="acc-arrow">&rsaquo;</span>
+        <span class="acc-arrow"></span>
         <div>
           <h3>Rosita D'Angiolella &mdash; &laquo;Le 3 buone ragioni per cui votare S&igrave;&raquo;</h3>
           <span class="acc-role">Consigliere di Cassazione, Vicecapo DAGL &middot; p.41-44</span>
+          <span class="acc-hint">Leggi sintesi +</span>
         </div>
       </button>
       <div class="acc-body"><div class="acc-body-inner">
@@ -542,10 +568,11 @@
     <!-- CAPOCCIA -->
     <div class="acc-item" id="capoccia">
       <button class="acc-btn" onclick="this.parentElement.classList.toggle('open')">
-        <span class="acc-arrow">&rsaquo;</span>
+        <span class="acc-arrow"></span>
         <div>
           <h3>Giuseppe Capoccia &mdash; &laquo;In Europa carriere gi&agrave; separate&raquo;</h3>
           <span class="acc-role">Procuratore Distrettuale antimafia di Lecce &middot; p.47-50</span>
+          <span class="acc-hint">Leggi sintesi +</span>
         </div>
       </button>
       <div class="acc-body"><div class="acc-body-inner">
@@ -562,10 +589,11 @@
     <!-- ORRÙ -->
     <div class="acc-item" id="orru">
       <button class="acc-btn" onclick="this.parentElement.classList.toggle('open')">
-        <span class="acc-arrow">&rsaquo;</span>
+        <span class="acc-arrow"></span>
         <div>
           <h3>Raimondo Orr&ugrave; &mdash; &laquo;Rispetto per i cittadini&raquo;</h3>
           <span class="acc-role">Vice Procuratore Onorario, Presidente FEDERMOT &middot; p.53-57</span>
+          <span class="acc-hint">Leggi sintesi +</span>
         </div>
       </button>
       <div class="acc-body"><div class="acc-body-inner">
@@ -630,7 +658,11 @@
         <br><br>
         <strong>Cosa faresti tu?</strong> Immagina venti dipendenti di un&rsquo;azienda. Nel sistema attuale sono organizzati in sindacati &mdash; clientelari, degenerati, ma capaci di negoziare con la direzione come blocco. Nel sistema proposto, ogni dipendente viene estratto a sorte da una lista compilata dalla direzione, non conosce gli altri, non pu&ograve; organizzarsi, e le regole del lavoro le scrive la direzione con procedura semplificata. La domanda non &egrave; se i singoli dipendenti sono bravi. &Egrave; se la <strong>struttura</strong> li mette in condizione di essere autonomi.
         <br><br>
-        <strong>Il punto strutturale.</strong> Per un giocatore isolato in un&rsquo;istituzione le cui regole sono definite da un attore esterno, opporsi ha costi certi (nessun alleato, nessuna rete di protezione) e benefici incerti. Adeguarsi ha costi zero. La strategia razionale &egrave; l&rsquo;<strong>adeguamento</strong> &mdash; non per debolezza personale, ma perch&eacute; la struttura non offre alternative. Le correnti &mdash; per quanto degenerate &mdash; funzionano come meccanismo di coordinamento: permettono ai togati di agire come blocco, di negoziare, di opporre resistenza collettiva. Il sorteggio elimina il meccanismo di coordinamento senza sostituirlo con un altro.
+        <strong>Il punto strutturale.</strong> La <strong>teoria dei giochi</strong> &mdash; la branca della matematica che studia le decisioni strategiche, pilastro di economia, scienze politiche e diritto &mdash; ha un risultato <strong>consolidato e non controverso</strong>: quando un attore &egrave; isolato dentro un&rsquo;istituzione le cui regole sono scritte da un soggetto esterno, la sua strategia razionale &egrave; l&rsquo;adeguamento.
+        <br><br>
+        <strong>Perch&eacute; si applica qui?</strong> Il sorteggiato entra nel CSM solo, senza alleati, senza mandato, senza possibilit&agrave; di rielezione. Le regole &mdash; requisiti, composizione, catalogo degli illeciti &mdash; le scrive il Parlamento con legge ordinaria. Il VP &egrave; laico. Opporsi ha <strong>costi certi</strong> (nessuna rete di protezione) e <strong>benefici incerti</strong>. Adeguarsi ha <strong>costi zero</strong>. La strategia dominante &egrave; una sola: <strong>adeguarsi</strong>.
+        <br><br>
+        Le correnti &mdash; per quanto degenerate &mdash; funzionano come meccanismo di coordinamento: permettono ai togati di agire come blocco, negoziare, opporre resistenza collettiva. Il sorteggio elimina questo meccanismo senza sostituirlo con un altro.
         <br><br>
         Itri (p.19) argomenta che recidere il rapporto elettore-eletto rende le nomine pi&ugrave; trasparenti. Ma il rapporto elettore-eletto &egrave; ci&ograve; che rende l'eletto <strong>responsabile</strong> verso qualcuno. Reciderlo elimina la responsabilit&agrave; verso i colleghi &mdash; ma non la sostituisce con nulla. Il sorteggiato non risponde a nessuno dentro la magistratura. A chi risponde?
       </div>

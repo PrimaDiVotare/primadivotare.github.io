@@ -8,7 +8,8 @@
     { href: '04-leggi-ordinarie.html', label: 'Leggi ord.' },
     { href: '05-scenari.html',     label: 'Scenari' },
     { href: '06-europa.html',      label: 'Europa' },
-    { href: '07-domande.html',     label: 'Domande' }
+    { href: '07-domande.html',     label: 'Domande' },
+    { href: '08-analisi-magistrati-si.html', label: 'Magistrati per il Sì' }
   ];
 
   var path = decodeURIComponent(location.pathname);

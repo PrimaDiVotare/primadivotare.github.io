@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1e1e2e">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<title>Analisi: "Magistrati per il Sì" — Referendum 2026</title>
+<meta name="description" content="Analisi del volume &laquo;Magistrati per il Sì&raquo; a cura di Isabella Bertolini. Otto contributi esaminati argomento per argomento: cosa dicono, cosa tacciono, dove spostano il potere.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://primadivotare.it/referendum-magistratura-2026/08-analisi-magistrati-si.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://primadivotare.it/referendum-magistratura-2026/08-analisi-magistrati-si.html">
+<meta property="og:title" content="Analisi: &laquo;Magistrati per il Sì&raquo; — Referendum 2026">
+<meta property="og:description" content="Otto magistrati pro-riforma esaminati argomento per argomento. Cosa dicono, cosa tacciono, dove si sposta il potere.">
+<meta property="og:image" content="https://primadivotare.it/referendum-magistratura-2026/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Prima di Votare">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Analisi: &laquo;Magistrati per il Sì&raquo; — Referendum 2026">
+<meta name="twitter:description" content="Otto magistrati pro-riforma esaminati argomento per argomento. Cosa dicono, cosa tacciono, dove si sposta il potere.">
+<meta name="twitter:image" content="https://primadivotare.it/referendum-magistratura-2026/assets/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+[{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Analisi: Magistrati per il Sì",
+  "description": "Analisi del volume a cura di Isabella Bertolini. Otto contributi di magistrati pro-riforma esaminati argomento per argomento.",
+  "url": "https://primadivotare.it/referendum-magistratura-2026/08-analisi-magistrati-si.html",
+  "inLanguage": "it",
+  "datePublished": "2026-03-13",
+  "dateModified": "2026-03-13",
+  "isPartOf": { "@type": "WebSite", "name": "Prima di Votare", "url": "https://primadivotare.it/referendum-magistratura-2026/" },
+  "publisher": { "@type": "Organization", "name": "Prima di Votare" }
+},
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://primadivotare.it/referendum-magistratura-2026/" },
+    { "@type": "ListItem", "position": 2, "name": "Analisi: Magistrati per il Sì", "item": "https://primadivotare.it/referendum-magistratura-2026/08-analisi-magistrati-si.html" }
+  ]
+}]
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+/* Accordion for author syntheses */
+.acc-item { border-bottom: 1px solid var(--border); }
+.acc-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 20px 0;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  color: var(--text);
+  font-family: inherit;
+}
+.acc-btn:hover { color: var(--red-l); }
+.acc-btn .acc-arrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  color: var(--muted);
+  flex-shrink: 0;
+  margin-top: 4px;
+  transition: transform .2s;
+}
+.acc-item.open .acc-arrow { transform: rotate(90deg); }
+.acc-btn h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0;
+}
+.acc-btn .acc-role {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.acc-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s ease;
+}
+.acc-item.open .acc-body { max-height: 5000px; }
+.acc-body-inner { padding: 0 0 24px 28px; }
+.acc-body-inner p { margin-bottom: 12px; }
+
+/* Argument strength badges */
+.arg-strength {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 2px;
+  margin-bottom: 12px;
+}
+.arg-strength.alta { background: var(--pri-bg); color: var(--pri-l); border: 1px solid rgba(148,226,213,.2); }
+.arg-strength.media { background: var(--gld-bg); color: var(--gld-l); border: 1px solid rgba(249,226,175,.2); }
+.arg-strength.bassa { background: var(--dpo-bg); color: var(--dpo-l); border: 1px solid rgba(250,179,135,.2); }
+.arg-strength.forte-debole { background: #1a1528; color: #cba6f7; border: 1px solid rgba(203,166,247,.2); }
+
+/* Pattern cards */
+.pattern-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 24px;
+  margin-bottom: 16px;
+  border-radius: 2px;
+}
+.pattern-card h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+/* Silence cards */
+.silence-card {
+  background: var(--bg3);
+  border-left: 3px solid var(--dpo-l);
+  padding: 20px 24px;
+  margin-bottom: 16px;
+}
+.silence-card h4 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--dpo-l);
+  margin-bottom: 8px;
+}
+
+/* Chain steps */
+.chain-steps { counter-reset: chain; }
+.chain-step {
+  position: relative;
+  padding: 16px 16px 16px 52px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  margin-bottom: 2px;
+  font-size: 14px;
+}
+.chain-step::before {
+  counter-increment: chain;
+  content: counter(chain);
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dpo-l);
+  width: 22px;
+  text-align: center;
+}
+
+/* Toc inline */
+.toc-inline {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 20px 24px;
+  margin-bottom: 28px;
+}
+.toc-inline h4 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.toc-inline a {
+  display: block;
+  font-size: 13px;
+  color: var(--blu-l);
+  text-decoration: none;
+  padding: 3px 0;
+  line-height: 1.5;
+}
+.toc-inline a:hover { color: var(--text); }
+
+/* Quotes */
+.quote-box {
+  border-left: 3px solid var(--gld);
+  padding: 14px 20px;
+  margin: 16px 0;
+  background: var(--bg3);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #bac2de;
+}
+.quote-box cite {
+  display: block;
+  margin-top: 8px;
+  font-style: normal;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: .1em;
+}
+
+/* Word analysis */
+.word-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 20px 24px;
+  margin-bottom: 12px;
+}
+.word-card .word-term {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--gld-l);
+  margin-bottom: 8px;
+}
+.word-card .word-source {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+/* Arg usable table */
+.arg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.arg-table th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.arg-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.arg-table tr:hover td { background: var(--bg3); }
+
+@media (max-width: 700px) {
+  .acc-btn h3 { font-size: 16px; }
+  .acc-body-inner { padding-left: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ TOPBAR ═══ -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-brand">
+      <span class="brand-name">Prima di Votare</span>
+      <span class="brand-dot"></span>
+    </div>
+    <div class="topbar-date">
+      <span class="td-day">22&ndash;23 MAR 2026</span>
+      <span class="td-sep"></span>
+      <span class="td-type">Referendum confermativo<br>Nessun quorum</span>
+    </div>
+    <div class="topbar-countdown" id="countdown">
+      <div class="tc-unit"><div class="tc-num" id="cd-days">--</div><div class="tc-label">Giorni</div></div>
+      <span class="tc-colon">:</span>
+      <div class="tc-unit"><div class="tc-num" id="cd-hours">--</div><div class="tc-label">Ore</div></div>
+      <span class="tc-colon">:</span>
+      <div class="tc-unit"><div class="tc-num" id="cd-mins">--</div><div class="tc-label">Min</div></div>
+      <span class="tc-colon">:</span>
+      <div class="tc-unit"><div class="tc-num" id="cd-secs">--</div><div class="tc-label">Sec</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HEADER ═══ -->
+<header>
+  <div class="wrap">
+    <div class="kicker">&sect; 08 &mdash; Analisi documento</div>
+    <h1>&laquo;Magistrati per il <em>S&igrave;</em>&raquo;</h1>
+    <p class="header-sub">Volume a cura di Isabella Bertolini, marzo 2026. Otto contributi di magistrati soci fondatori del comitato referendario &laquo;S&igrave;Riforma&raquo;. Analisi degli argomenti, delle dinamiche di potere, degli equilibri istituzionali e dei silenzi significativi.</p>
+    <p style="margin-top:16px;"><a href="Magistrati-per-il-Si-a-cura-di-Isabella-Bertolini-4.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--gld-l);text-decoration:none;border:1px solid var(--gld);padding:8px 16px;border-radius:2px;transition:background .2s;">&sect; Leggi il documento originale <span style="font-size:10px;color:var(--muted);">(PDF)</span></a></p>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══ § NOTA SULLA PREMESSA ═══ -->
+<section id="nota-premessa">
+  <div class="wrap">
+    <div class="sec-label">Trasparenza</div>
+    <h2>Nota sulla premessa di questa analisi</h2>
+
+    <p>Questa analisi parte dalla premessa che la Costituzione &egrave; il default e chi la modifica ha l'onere della prova. Chiede &laquo;cui prodest?&raquo; a ogni cambiamento proposto dalla riforma. Questa premessa non &egrave; neutra &mdash; &egrave; una scelta epistemologica che orienta l'asimmetria dell'analisi: ogni argomento pro-riforma viene presentato nella sua forza e poi sottoposto a stress-test; lo status quo viene trattato come baseline.</p>
+
+    <p>Un lettore che parte da una premessa diversa &mdash; per esempio: &laquo;il sistema attuale &egrave; degenerato al punto da giustificare un intervento strutturale anche imperfetto&raquo; &mdash; legger&agrave; questa analisi come orientata. Lo &egrave;.</p>
+
+    <p>La domanda &laquo;cui prodest?&raquo; applicata alla riforma &egrave; altrettanto legittima se applicata allo status quo: a chi giova che le correnti continuino a gestire le nomine? A chi giova che il CSM resti un organo dove colleghi giudicano colleghi? A chi giova che l'ANM mantenga un'influenza determinante sulle Procure?</p>
+
+    <p>Il punto di osservazione non &egrave; esterno al campo. Nessun punto di osservazione lo &egrave;.</p>
+  </div>
+</section>
+
+<!-- ═══ § CHI PARLA ═══ -->
+<section id="chi-parla">
+  <div class="wrap">
+    <div class="sec-label">Gli autori</div>
+    <h2>Chi parla</h2>
+
+    <div class="resp-table-wrap">
+      <table class="resp-table">
+        <thead>
+          <tr><th>Autore</th><th>Ruolo</th><th>Note rilevanti</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Isabella Bertolini</strong> (curatrice)</td>
+            <td>Consigliere laico del CSM</td>
+            <td>Ex parlamentare per tre legislature (2001, 2006, 2008). Relatrice legge Bossi-Fini. Eletta al CSM dal Parlamento in seduta comune, 17 gennaio 2023. Non &egrave; una magistrata &mdash; &egrave; un attore politico dentro l'istituzione che la riforma ridisegna.</td>
+          </tr>
+          <tr>
+            <td><strong>Luigi Salvato</strong></td>
+            <td>Gi&agrave; Procuratore Generale della Cassazione (luglio 2022 &ndash; marzo 2025)</td>
+            <td>Come PG, era titolare dell'azione disciplinare. Ufficio Studi del CSM (1995-1997), assistente di studio dei giudici costituzionali Capotosti, Tesauro, Barbera (1997-2002), Segretario generale del CSM (2004). Ha operato nelle strutture di vertice sia del CSM sia della Corte Costituzionale.</td>
+          </tr>
+          <tr>
+            <td><strong>Rosita D'Angiolella</strong></td>
+            <td>Consigliere di Cassazione</td>
+            <td>Vicecapo del DAGL (Dipartimento Affari Giuridici e Legislativi) presso la Presidenza del Consiglio dei Ministri. Ex Capo Ufficio Legislativo del MIUR (2013-2016). Lavora per il dipartimento governativo che coordina l'attivit&agrave; normativa.</td>
+          </tr>
+          <tr>
+            <td><strong>Paolo Itri</strong></td>
+            <td>Presidente di sezione, Corte tributaria di Napoli</td>
+            <td>Sostituto Procuratore nazionale antimafia e antiterrorismo (dal 2023). DDA Napoli (2002-2011). Ha ottenuto la condanna all'ergastolo di Tot&ograve; Riina. Ispettore generale del Ministero della Giustizia (2011-2015). Ha lasciato l'ANM per dissenso.</td>
+          </tr>
+          <tr>
+            <td><strong>Giacomo Rocchi</strong></td>
+            <td>Presidente I Sezione penale, Cassazione</td>
+            <td>Membro del Centro Studi Rosario Livatino. Componente Sezioni Unite penali.</td>
+          </tr>
+          <tr>
+            <td><strong>Alfonso D'Avino</strong></td>
+            <td>Procuratore della Repubblica di Parma</td>
+            <td>Ex DDA Napoli (Camorra) per 10 anni, ex Procuratore Aggiunto Napoli (dal 2013).</td>
+          </tr>
+          <tr>
+            <td><strong>Ettore Manca</strong></td>
+            <td>Presidente sezione TAR Lecce</td>
+            <td>Magistrato amministrativo, non ordinario. Componente del Consiglio di Presidenza della Giustizia Amministrativa (dal 2023).</td>
+          </tr>
+          <tr>
+            <td><strong>Giuseppe Capoccia</strong></td>
+            <td>Procuratore della Repubblica di Lecce</td>
+            <td>Dal gennaio 2025 Procuratore Distrettuale antimafia di Lecce. Dal 2003 al 2009 al Ministero della Giustizia: Ufficio Legislativo, Direttore Ufficio studi. 6 anni nelle strutture del Ministero che la riforma potenzia indirettamente.</td>
+          </tr>
+          <tr>
+            <td><strong>Raimondo Orr&ugrave;</strong></td>
+            <td>Vice Procuratore Onorario, Presidente FEDERMOT</td>
+            <td>Magistrato onorario, non ordinario.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert warning reveal">
+      <strong>Osservazione:</strong> il documento si presenta come &laquo;qui parlano magistrati, non politici&raquo; (Bertolini, p.5). Ma la curatrice &egrave; un'ex parlamentare per tre legislature. Una contributrice lavora per il dipartimento governativo che coordina l'attivit&agrave; normativa. L'ex PG della Cassazione ha operato ai vertici di CSM e Corte Costituzionale. Due autori hanno trascorso anni al Ministero della Giustizia (Capoccia 6 anni, Itri 4 anni come Ispettore generale). Il posizionamento degli autori non &egrave; neutro &mdash; &egrave; concentrato nell'intersezione tra magistratura e potere politico/esecutivo.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ § SINTESI PER AUTORE ═══ -->
+<section id="sintesi">
+  <div class="wrap">
+    <div class="sec-label">Sintesi per autore</div>
+    <h2>Cosa dice ogni autore</h2>
+    <p>Ogni contributo catturato argomento per argomento, con i riferimenti alle pagine.</p>
+
+    <!-- SALVATO -->
+    <div class="acc-item" id="salvato">
+      <button class="acc-btn" onclick="this.parentElement.classList.toggle('open')">
+        <span class="acc-arrow">&rsaquo;</span>
+        <div>
+          <h3>Luigi Salvato &mdash; &laquo;La riforma non rende le toghe succubi del governo&raquo;</h3>
+          <span class="acc-role">Gi&agrave; Procuratore Generale della Cassazione &middot; p.11-15</span>
+        </div>
+      </button>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p><strong>In sintesi:</strong> <em>&laquo;&Egrave; sufficiente leggerle per constatare l'infondatezza degli slogan contrari alla riforma&raquo;</em> (p.11). Basta leggere il testo per vedere che l'indipendenza della magistratura resta intatta.</p>
+
+        <p><strong>Sull'indipendenza (p.11-13):</strong> l'art. 104 non viene toccato. I due CSM restano presieduti dal Presidente della Repubblica, composti in maggioranza da magistrati, con garanzie di inamovibilit&agrave;. La collocazione istituzionale del PM &egrave; stata <em>&laquo;storicamente ambigua&raquo;</em>; la separazione &egrave; stata sostenuta da dottrina e forze politiche di diverso orientamento, inclusa la Commissione bicamerale degli anni '90 e <em>&laquo;autorevoli esponenti della sinistra riformista&raquo;</em>. Chi teme che i PM finirebbero subordinati al governo manifesta <em>&laquo;una sfiducia ingiustificata verso i magistrati requirenti, che restano magistrati a pieno titolo, soggetti ai controlli del Csm&raquo;</em> (p.13).</p>
+
+        <p><strong>Sulla terziet&agrave; (p.12-13):</strong> non basta separare le funzioni (cosa che la Cartabia ha gi&agrave; fatto). La terziet&agrave; esige <em>&laquo;una estraneit&agrave; &lsquo;ordinamentale&rsquo;, che esige una distinzione anche della separazione delle carriere, non solo delle funzioni&raquo;</em> (p.12) &mdash; in altre parole: non basta che PM e giudice facciano lavori diversi, devono appartenere a ordinamenti separati (concorsi distinti, carriere distinte, organi di autogoverno distinti). Solo cos&igrave; gli atti del PM perdono quella <em>&laquo;valenza simbolica di giudizio anticipato&raquo;</em> che oggi mina la presunzione di innocenza. <em>&laquo;L'immagine della giustizia &egrave; un valore essenziale&raquo;</em> (p.13).</p>
+
+        <p><strong>Sul sorteggio (p.13-14):</strong> il CSM <em>&laquo;non &egrave; un organo rappresentativo in senso politico, ma un organo di garanzia e di alta amministrazione&raquo;</em> (p.14). Il sorteggio &egrave; coerente con questa natura. Gi&agrave; nell'Assemblea Costituente si segnalavano i rischi del metodo elettivo, adombrati successivamente da Calamandrei. Nel 2022, 168 magistrati firmarono una proposta di sorteggio temperato e il referendum ANM registr&ograve; adesione significativa.</p>
+
+        <p><strong>Sull'Alta Corte (p.14-15):</strong> separare la funzione disciplinare dall'autogoverno &egrave; coerente con il <em>&laquo;principio di tipicit&agrave; dell'illecito disciplinare&raquo;</em> (p.14) &mdash; cio&egrave;: ogni comportamento punibile deve essere definito con precisione dalla legge in anticipo, non deciso caso per caso. L'idea che l'Alta Corte possa diventare strumento dell'esecutivo &egrave; <em>&laquo;evidentemente priva di fondamento, considerata la sua composizione&raquo;</em> (p.15) &mdash; 9 togati su 15. Chi sostiene che le norme possano essere &laquo;erose&raquo; dall'interpretazione futura ignora che <em>&laquo;nello Stato costituzionale l'interpretazione incontra limiti chiari quando il testo &egrave; univoco, come in questo caso&raquo;</em> (p.12).</p>
+
+        <p><strong>Chiusura (p.15):</strong> la riforma <em>&laquo;non risolve tutti i problemi della giustizia, ma scioglie nodi fondamentali nell'interesse di tutti&raquo;</em> ed &egrave; <em>&laquo;conforme ai principi costituzionali, a quelli dell'Unione europea e alle raccomandazioni del Consiglio d'Europa&raquo;</em>.</p>
+      </div></div>
+    </div>
+
+    <!-- ITRI -->
+    <div class="acc-item" id="itri">
+      <button class="acc-btn" onclick="this.parentElement.classList.toggle('open')">
+        <span class="acc-arrow">&rsaquo;</span>
+        <div>
+          <h3>Paolo Itri &mdash; &laquo;Magistrati finalmente liberati dalla tirannia delle correnti&raquo;</h3>
+          <span class="acc-role">Sostituto Procuratore nazionale antimafia &middot; p.17-21</span>
+        </div>
+      </button>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p><strong>In sintesi:</strong> le correnti hanno soffocato i singoli magistrati. Il sorteggio li libera. La riforma non &egrave; perfetta, ma l'alternativa &mdash; non cambiare nulla &mdash; &egrave; peggio.</p>
+
+        <p><strong>Esperienza personale (p.17-18):</strong> il fronte del No rifiuta ogni cambiamento <em>&laquo;in nome della sacralit&agrave; della Costituzione&raquo;</em> e si colloca in uno <em>&laquo;schieramento politico-ideologico&raquo;</em>; il fronte del S&igrave; &egrave; <em>&laquo;pi&ugrave; trasversale&raquo;</em> (p.17). Itri ha lasciato l'ANM perch&eacute; l'aveva vista trasformarsi in un <em>&laquo;centro occulto di potere&raquo;</em> dominato da <em>&laquo;logiche spartitorie&raquo;</em>, soprattutto dopo la riforma Mastella che aveva attribuito al CSM <em>&laquo;un'eccessiva discrezionalit&agrave;&raquo;</em> nelle nomine (p.18).</p>
+
+        <p><strong>Sulla separazione (p.19-20):</strong> con due CSM distinti, <em>&laquo;i pubblici ministeri non decideranno pi&ugrave; sulle carriere dei giudici e viceversa, rafforzando l'autonomia di entrambi&raquo;</em> (p.19). Il ruolo del PM &egrave; <em>&laquo;profondamente diverso&raquo;</em> da quello del giudice: richiede <em>&laquo;competenze specifiche, dal coordinamento della polizia giudiziaria alle indagini tecniche e scientifiche&raquo;</em> (p.20). La specializzazione <em>&laquo;migliorer&agrave; quindi la qualit&agrave; delle indagini e il contrasto alla criminalit&agrave;&raquo;</em>. C'&egrave; poi <em>&laquo;un'anomalia tutta italiana: il fatto che un'associazione privata come l'Anm possa influire in modo determinante sulle nomine dei procuratori della Repubblica&raquo;</em> (p.20).</p>
+
+        <p><strong>Sul sorteggio (p.19-20):</strong> il sorteggio, <em>&laquo;recidendo il rapporto tra elettore ed eletto, render&agrave; pi&ugrave; trasparenti le nomine dei capi degli uffici&raquo;</em> (p.19), riducendo il contenzioso amministrativo. La riforma tutela <em>&laquo;anche quei molti magistrati silenziosi che attendono di essere liberati dalla tirannia delle conventicole&raquo;</em> (p.20). Con il sorteggio <em>&laquo;sar&agrave; possibile recuperare, almeno in parte, la fiducia dei cittadini in una magistratura oggi percepita come corporazione pi&ugrave; che come servizio&raquo;</em> (p.20).</p>
+
+        <p><strong>Sull'ANM (p.21):</strong> <em>&laquo;l'Anm, schierandosi in modo cos&igrave; netto per il No, si &egrave; trasformata in un soggetto politico, arrecando un danno profondo e duraturo all'immagine dell'intera magistratura, difficilmente sanabile nel breve periodo.&raquo;</em></p>
+
+        <p><strong>Pragmatismo (p.20):</strong> <em>&laquo;&Egrave; forse la migliore riforma possibile? Probabilmente no. Ma il meglio &egrave; spesso nemico del bene, soprattutto quando l'alternativa &egrave; la conservazione del sistema correntizio.&raquo;</em></p>
+      </div></div>
+    </div>
+
+    <!-- ROCCHI -->
+    <div class="acc-item" id="rocchi">
+      <button class="acc-btn" onclick="this.parentElement.classList.toggle('open')">
+        <span class="acc-arrow">&rsaquo;</span>
+        <div>
+          <h3>Giacomo Rocchi &mdash; &laquo;La riforma non &egrave; contro i magistrati&raquo;</h3>
+          <span class="acc-role">Presidente I Sezione penale, Cassazione &middot; p.23-27</span>
+        </div>
+      </button>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p><strong>In sintesi:</strong> chi ha il potere di mettere un uomo in carcere per tutta la vita non deve solo essere imparziale &mdash; deve essere percepito tale. La separazione serve a questo. Il sorteggio &egrave; una &laquo;purificazione&raquo; dalle correnti.</p>
+
+        <p><strong>Sul dovere della percezione (p.23):</strong> <em>&laquo;Noi che abbiamo il potere di mettere un uomo in carcere per tutta la vita dobbiamo non solo essere &laquo;super partes&raquo;, ma anche essere percepiti tali. Ecco perch&eacute; &egrave; giusto allontanarci dai pubblici ministeri.&raquo;</em></p>
+
+        <p><strong>Sulla separazione (p.25-26):</strong> <em>&laquo;Separazione delle carriere non equivale a separazione delle funzioni: giudici e pubblici ministeri diventano due corpi separati; quindi, non rileva affatto che oggi, meno dell'1% dei magistrati cambia funzione!&raquo;</em> (p.25). Chi usa il dato dello 0,31% manca il punto: il problema &egrave; che restano colleghi nell'intera governance. La riforma non promette efficienza: <em>&laquo;non sono misure che riguardano l'efficienza del sistema giustizia e la rapidit&agrave; delle decisioni [...] la riforma va pi&ugrave; a fondo, individua il ruolo dei giudici e dei pubblici ministeri&raquo;</em> (p.25). La tesi che il PM diventerebbe un <em>&laquo;superpoliziotto&raquo;</em> subordinato all'esecutivo &egrave; <em>&laquo;una tesi basata sul nulla&raquo;</em>: gli artt. 104 e 107 continuano a garantire autonomia, indipendenza e inamovibilit&agrave; (p.25). Rocchi riconosce per&ograve; che <em>&laquo;non si pu&ograve; negare qualsiasi problema di terziet&agrave; nel processo penale, specie nelle indagini preliminari&raquo;</em> (p.26) &mdash; ammissione significativa: il problema di terziet&agrave; non &egrave; solo percepito, esiste nel concreto.</p>
+
+        <p><strong>Sul sorteggio e Palamara (p.24):</strong> l'ANM <em>&laquo;denuncia una perdita di rappresentanza democratica, ma omette di confrontarsi con il caso Palamara, che ha mostrato come trasferimenti, promozioni e nomine fossero gestiti dalle correnti attraverso scambi di favori, pressioni e accordi&raquo;</em>. Il sorteggio <em>&laquo;contribuisce alla &lsquo;purificazione&rsquo; della magistratura: una scelta s&igrave;, politica, ma ormai inevitabile, che nel tempo sar&agrave; vantaggiosa anche per gli stessi magistrati&raquo;</em>.</p>
+
+        <p><strong>Sulle accuse di subordinazione (p.25-27):</strong> chi teme che i magistrati finirebbero sotto il controllo del governo <em>&laquo;ha evidentemente una concezione del magistrato cos&igrave; fragile e pavido da essere pronto a lasciarsi condizionare dai poteri esterni&raquo;</em> (p.25-26). L'Alta Corte per la sua composizione di <em>&laquo;altissimo livello&raquo;</em> garantisce al magistrato accusato <em>&laquo;un giudice autorevole e imparziale; caratteristiche che la Sezione disciplinare del CSM non aveva affatto&raquo;</em> (p.24). Chiude con Rosario Livatino: il giudice &egrave; <em>&laquo;prima di tutto una figura super partes&raquo;</em> che vive di <em>&laquo;ascolto della coscienza, libert&agrave; morale, fedelt&agrave; ai principi, competenza, chiarezza delle decisioni, moralit&agrave; della condotta&raquo;</em> (p.27).</p>
+      </div></div>
+    </div>
+
+    <!-- D'AVINO -->
+    <div class="acc-item" id="davino">
+      <button class="acc-btn" onclick="this.parentElement.classList.toggle('open')">
+        <span class="acc-arrow">&rsaquo;</span>
+        <div>
+          <h3>Alfonso D'Avino &mdash; &laquo;Pi&ugrave; verit&agrave; sullo scossone che fa bene alla giustizia&raquo;</h3>
+          <span class="acc-role">Procuratore della Repubblica di Parma &middot; p.29-33</span>
+        </div>
+      </button>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p><strong>In sintesi:</strong> <em>&laquo;non &egrave; la panacea dei mali della giustizia e non risolver&agrave; problemi strutturali come ritardi, carenze di personale o errori giudiziari&raquo;</em> (p.29). Il suo metodo: prendere ogni punto della riforma e distinguere <em>&laquo;un dato reale, rappresentato dalla nuova normativa&raquo;</em> da <em>&laquo;un dato falso, costituito dai pericoli evocati dal fronte del No&raquo;</em> (p.29). Norma alla mano, cosa dice davvero vs cosa ne dicono i critici.</p>
+
+        <p><strong>Sulla separazione (p.29-30):</strong> &egrave; <em>&laquo;la conclusione, forse tardiva, di un percorso iniziato oltre trentacinque anni fa con il nuovo Codice di procedura penale&raquo;</em> (p.30) &mdash; il Codice Vassalli del 1989. <em>&laquo;Non esiste un reale appiattamento dei giudici sulle posizioni del pubblico ministero&raquo;</em>, ma <em>&laquo;ci&ograve; non basta a eliminare il sospetto di una vicinanza strutturale&raquo;</em> (p.30). La credibilit&agrave; della magistratura <em>&laquo;ha raggiunto livelli minimi, anche a causa di vicende note come lo scandalo Palamara, processi controversi e una crescente esposizione politica di alcuni magistrati&raquo;</em> (p.30). L'argomento che la previsione costituzionale dell'indipendenza non basti perch&eacute; presente anche in Costituzioni di paesi non democratici &egrave; <em>&laquo;una tesi debole e suggestiva, che abbassa il livello del dibattito&raquo;</em> (p.31).</p>
+
+        <p><strong>Sul sorteggio (p.31-32):</strong> <em>&laquo;non &egrave; lo strumento ideale in astratto&raquo;</em> e pu&ograve; apparire <em>&laquo;offensivo per una categoria di alto livello come la magistratura&raquo;</em>. Ma &egrave; <em>&laquo;l'unico mezzo concreto per evitare che il CSM continui a essere una proiezione delle correnti&raquo;</em> (p.31). Del resto, <em>&laquo;anche oggi non esistono corsi, esami o titoli specifici che abilitino a far parte del Csm: l'unico vero requisito &egrave; il consenso della propria corrente&raquo;</em> (p.31). E il sorteggio &egrave; gi&agrave; nell'ordinamento: Corte Costituzionale integrata, Tribunale dei Ministri, giudici popolari. <em>&laquo;&Egrave; paradossale ritenere accettabile il sorteggio di giudici popolari chiamati a decidere su gravi reati e scandalizzarsi per il sorteggio di magistrati chiamati a occuparsi dell'organizzazione degli uffici giudiziari.&raquo;</em> (p.31-32).</p>
+
+        <p><strong>Sull'Alta Corte (p.32):</strong> chi la definisce un &laquo;giudice speciale&raquo; vietato dall'art. 102 usa un <em>&laquo;argomento giuridicamente infondato: una riforma costituzionale non pu&ograve; violare la Costituzione, ma ne diventa parte&raquo;</em>. I laici <em>&laquo;non sono scelti dalla maggioranza&raquo;</em> ma <em>&laquo;sorteggiati da elenchi parlamentari e affiancati da membri di nomina presidenziale&raquo;</em>.</p>
+
+        <p><strong>Sull'indipendenza (p.31):</strong> il nuovo art. 104 prevede che entrambi i CSM siano presieduti dal Presidente della Repubblica, <em>&laquo;massimo garante costituzionale, circostanza che esclude qualunque rischio di subordinazione al governo&raquo;</em>.</p>
+      </div></div>
+    </div>
+
+    <!-- MANCA -->
+    <div class="acc-item" id="manca">
+      <button class="acc-btn" onclick="this.parentElement.classList.toggle('open')">
+        <span class="acc-arrow">&rsaquo;</span>
+        <div>
+          <h3>Ettore Manca &mdash; &laquo;Una riforma che non tradisce la Costituzione&raquo;</h3>
+          <span class="acc-role">Presidente sezione TAR Lecce &middot; p.35-38</span>
+        </div>
+      </button>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p><strong>In sintesi:</strong> la riforma non tocca il rapporto tra magistratura e governo &mdash; interviene sugli equilibri <strong>interni</strong> alla magistratura, <em>&laquo;ambiti in cui il confronto tra le diverse anime della magistratura associata &egrave; talvolta degenerato in logiche consociative&raquo;</em> (p.37). Chiamarla &laquo;attacco alla democrazia&raquo; quando &egrave; stata approvata con la procedura dell'art. 138 <em>&laquo;non costituisce pi&ugrave; una critica, ma un'operazione istituzionalmente fuorviante&raquo;</em> (p.38).</p>
+
+        <p><strong>Sulla legittimit&agrave; (p.35-36):</strong> le obiezioni di ANM, CGIL e partiti di opposizione sono <em>&laquo;largamente sovrapponibili&raquo;</em>, una <em>&laquo;lettura manifestamente strumentale, che non coglie i reali nodi critici del sistema giudiziario&raquo;</em> (p.35). <em>&laquo;Evocare un'aggressione all'assetto democratico del Paese di fronte a una riforma approvata secondo il procedimento di revisione costituzionale dell'articolo 138, senza fornire prove rigorose, appare poco responsabile e istituzionalmente pericoloso&raquo;</em> (p.36). L'indipendenza <em>&laquo;resta scolpita nell'articolo 104 della Costituzione&raquo;</em>. L'Italia <em>&laquo;rappresenta un unicum per ampiezza e profondit&agrave; del controllo giudiziario e per l'imponenza dell'apparato che lo sorregge&raquo;</em> (p.36) &mdash; un quadro che non muterebbe con la riforma.</p>
+
+        <p><strong>Sulla colleganza (p.37-38):</strong> la terziet&agrave; <em>&laquo;richiede che giudici e pubblici ministeri non condividano concorso, carriera e organo di autogoverno. In sintesi, richiede che non siano pi&ugrave; colleghi, poich&eacute; un giudice collega di una delle parti non pu&ograve; essere, per definizione, un giudice terzo&raquo;</em> (p.38). Cita Falcone, intervista del 3 ottobre 1991: <em>&laquo;il sistema accusatorio presuppone un pubblico ministero parte nel processo e un giudice che si staglia come figura neutrale, al di sopra delle parti&raquo;</em> (p.38).</p>
+
+        <p><strong>Sul sorteggio (p.37):</strong> anche dopo la riforma, i due CSM <em>&laquo;resteranno composti per due terzi da magistrati, con una netta maggioranza rispetto ai componenti laici&raquo;</em>. Cita Gratteri che nel settembre 2021, commentando l'affaire Palamara, indicava come indispensabile il sorteggio, <em>&laquo;anche a costo di una revisione costituzionale&raquo;</em>: <em>&laquo;se un magistrato &egrave; in grado di scrivere una sentenza, lo sar&agrave; anche di formulare un parere per la nomina di un presidente o di un procuratore della Repubblica&raquo;</em>.</p>
+      </div></div>
+    </div>
+
+    <!-- D'ANGIOLELLA -->
+    <div class="acc-item" id="dangiolella">
+      <button class="acc-btn" onclick="this.parentElement.classList.toggle('open')">
+        <span class="acc-arrow">&rsaquo;</span>
+        <div>
+          <h3>Rosita D'Angiolella &mdash; &laquo;Le 3 buone ragioni per cui votare S&igrave;&raquo;</h3>
+          <span class="acc-role">Consigliere di Cassazione, Vicecapo DAGL &middot; p.41-44</span>
+        </div>
+      </button>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p><strong>In sintesi:</strong> tre ragioni, una per ogni pilastro della riforma. La separazione attua il giusto processo. Il sorteggio spezza le correnti. L'Alta Corte separa chi governa le carriere da chi giudica i magistrati.</p>
+
+        <p><strong>Sulla separazione (p.41-43):</strong> &egrave; <em>&laquo;l'unica soluzione ordinamentale realmente idonea ad attuare i principi costituzionali del &laquo;giusto processo&raquo;&raquo;</em> (p.41). L'art. 111 richiede contraddittorio <em>&laquo;su un piano di parit&agrave;, davanti a un giudice terzo e imparziale&raquo;</em>. Giudicare e requirere <em>&laquo;richiedono competenze, approcci decisionali, doveri e responsabilit&agrave; differenti&raquo;</em> (p.41) &mdash; la mancanza di distinzione netta rende il modello accusatorio <em>&laquo;disarmonico&raquo;</em>. Come ricordava Falcone, <em>&laquo;con il nuovo codice il pubblico ministero ha perso ogni funzione anche latamente giurisdizionale, assumendo compiti essenzialmente di direzione e impulso delle indagini&raquo;</em> (p.42). La Cartabia ha ridotto i passaggi di funzione a uno, ma <em>&laquo;restava per&ograve; inalterato il rapporto di colleganza, che la riforma intende superare&raquo;</em> (p.43). Il testo riformato <em>&laquo;ribadisce in modo chiaro che la magistratura costituisce un ordine autonomo e indipendente da ogni altro potere&raquo;</em> (p.42).</p>
+
+        <p><strong>Sul sorteggio (p.43):</strong> le correnti sono <em>&laquo;una legittima espressione del pluralismo culturale&raquo;</em>, ma l'appartenenza <em>&laquo;pu&ograve; generare dinamiche di fedelt&agrave; capaci di incidere sui percorsi professionali, indebolendo l'apparenza di imparzialit&agrave;&raquo;</em>. Il sorteggio &egrave; <em>&laquo;l'unico strumento realmente idoneo a interrompere meccanismi di ricerca del consenso che hanno mostrato evidenti segni di degenerazione&raquo;</em>. Il CSM <em>&laquo;non &egrave; un organo rappresentativo della magistratura; il suo sdoppiamento &egrave; conseguenza naturale della distinzione tra i due ordini&raquo;</em>, entrambi <em>&laquo;presieduti dal Capo dello Stato, con identiche competenze in materia di carriera e valutazione&raquo;</em>.</p>
+
+        <p><strong>Sull'Alta Corte (p.43-44):</strong> l'attribuzione della giurisdizione disciplinare all'Alta Corte <em>&laquo;risponde all'esigenza di garantire maggiore uniformit&agrave; e imparzialit&agrave; nel trattamento dei magistrati incolpati&raquo;</em> (p.43-44). Separare chi governa le carriere da chi giudica disciplinarmente elimina <em>&laquo;il rischio, o anche solo la percezione, di una protezione corporativa&raquo;</em> e attribuisce al giudice disciplinare <em>&laquo;un carattere di effettiva terziet&agrave;&raquo;</em> (p.44). Frase chiave del volume: <em>&laquo;In uno Stato democratico, l'autogoverno non pu&ograve; coincidere con l'auto-giurisdizione.&raquo;</em> (p.44).</p>
+      </div></div>
+    </div>
+
+    <!-- CAPOCCIA -->
+    <div class="acc-item" id="capoccia">
+      <button class="acc-btn" onclick="this.parentElement.classList.toggle('open')">
+        <span class="acc-arrow">&rsaquo;</span>
+        <div>
+          <h3>Giuseppe Capoccia &mdash; &laquo;In Europa carriere gi&agrave; separate&raquo;</h3>
+          <span class="acc-role">Procuratore Distrettuale antimafia di Lecce &middot; p.47-50</span>
+        </div>
+      </button>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p><strong>In sintesi:</strong> la carriera unica &egrave; un residuo del vecchio processo inquisitorio. L'evoluzione del diritto italiano in 35 anni ha reso la separazione una conseguenza logica, non un salto nel vuoto. L'EPPO europeo lo dimostra gi&agrave;.</p>
+
+        <p><strong>Sulla storia (p.47-48):</strong> <em>&laquo;L'unicit&agrave; della carriera in magistratura, che accomuna giudici e pubblici ministeri in un unico ruolo, &egrave; un tratto tipico del processo inquisitorio&raquo;</em> (p.47). L'Assemblea Costituente non scelse questa unicit&agrave; ma <em>&laquo;la eredit&ograve; dal passato, rinviando la riforma del processo penale in senso accusatorio&raquo;</em>. Poi vennero tre tappe: il Codice Vassalli nel 1989, l'art. 111 nel 1999 che scolp&igrave; il giusto processo in Costituzione, e oggi la separazione come completamento. L'introduzione dell'art. 111 <em>&laquo;non implicava che i processi precedenti fossero ingiusti&raquo;</em> ma rifletteva <em>&laquo;una maturazione della sensibilit&agrave; sociale&raquo;</em> (p.48). La Costituzione non risolve problemi pratici ma <em>&laquo;fissa principi e indica una direzione evolutiva&raquo;</em>.</p>
+
+        <p><strong>Su PM e giudice (p.48-49):</strong> sono due mestieri diversi. Il PM opera con <em>&laquo;un approccio propositivo, guidando la polizia giudiziaria, costruendo strategie investigative&raquo;</em>, collaborando con <em>&laquo;le Procure nazionali ed europee, condividendo informazioni e coordinando le attivit&agrave;&raquo;</em> (p.48-49). Il giudice fa l'opposto: <em>&laquo;deve mantenere una posizione opposta: valutare le richieste del Pm e della difesa nella loro oggettivit&agrave;&raquo;</em> (p.49). Nelle indagini preliminari, il PM agisce nel segreto istruttorio: <em>&laquo;proprio perch&eacute; le indagini devono restare segrete, il giudice non conosce n&eacute; deve conoscere il percorso investigativo&raquo;</em> (p.49). L'idea del &laquo;PM isolato&raquo; &egrave; superata: <em>&laquo;la Procura &egrave; un ufficio fondato sulla collaborazione, sul lavoro di gruppo e sulla sintesi delle diverse posizioni&raquo;</em> (p.48-49).</p>
+
+        <p><strong>Sull'EPPO (p.50):</strong> <em>&laquo;L'Eppo &ndash; European Public Prosecutor's Office &ndash; rappresenta un modello significativo: un ufficio del Pm separato dai giudici nazionali&raquo;</em>, esempio di <em>&laquo;pubblico ministero indipendente e autonomo da ogni altro potere, distinto dal giudice, in linea con i principi di terziet&agrave; ed imparzialit&agrave;&raquo;</em>.</p>
+      </div></div>
+    </div>
+
+    <!-- ORRÙ -->
+    <div class="acc-item" id="orru">
+      <button class="acc-btn" onclick="this.parentElement.classList.toggle('open')">
+        <span class="acc-arrow">&rsaquo;</span>
+        <div>
+          <h3>Raimondo Orr&ugrave; &mdash; &laquo;Rispetto per i cittadini&raquo;</h3>
+          <span class="acc-role">Vice Procuratore Onorario, Presidente FEDERMOT &middot; p.53-57</span>
+        </div>
+      </button>
+      <div class="acc-body"><div class="acc-body-inner">
+        <p><strong>In sintesi:</strong> vota S&igrave; <em>&laquo;non per spirito di contrapposizione, ma per coerenza istituzionale&raquo;</em> (p.53). I magistrati onorari hanno subito per 25 anni le disfunzioni del sistema correntizio senza averne i benefici. &Egrave; l'unico autore del volume a riconoscere che le leggi attuative andranno scritte con attenzione.</p>
+
+        <p><strong>Sulla magistratura onoraria (p.53-55):</strong> <em>&laquo;a lungo considerata una manodopera a basso costo o un corpo estraneo all'ordine giudiziario&raquo;</em> (p.54), la magistratura onoraria &egrave; <em>&laquo;una lente utile per leggere le distorsioni di un sistema che la riforma costituzionale pu&ograve; finalmente correggere&raquo;</em>. Il correntismo ha prodotto effetti specifici: non semplice distrazione, ma <em>&laquo;l'esito di una logica autoconservativa, volta a mantenere un'egemonia sulla giurisdizione, anche a costo di negare ai magistrati onorari tutele e guarentigie&raquo;</em> (p.55) &mdash; inclusi congedo di maternit&agrave; e accantonamenti previdenziali. <em>&laquo;Negli ultimi venticinque anni, il correntismo giudiziario ha inciso profondamente&raquo;</em> non solo sulla fiducia dei cittadini ma anche sulle prospettive dei magistrati onorari, <em>&laquo;contribuendo al rinvio sistematico di una loro riforma&raquo;</em> (p.54-55).</p>
+
+        <p><strong>Sulla separazione (p.53-56):</strong> separare carriere e superare correnti significa <em>&laquo;introdurre criteri di chiarezza [...] rendere il processo pi&ugrave; leggibile, affidabile e credibile anche all'esterno&raquo;</em> (p.53-54). L'esperienza degli onorari dimostra che <em>&laquo;carriere separate possono convivere con una comune cultura della giurisdizione. Separare non significa dividere, ma restituire a ciascuna funzione il proprio perimetro di responsabilit&agrave;&raquo;</em> (p.56). <em>&laquo;La stabilizzazione della magistratura onoraria, fortemente voluta dal governo Meloni, va letta insieme alla riforma costituzionale&raquo;</em> (p.55). Servono per&ograve; anche <em>&laquo;ulteriori interventi, a partire dal rafforzamento degli organici della magistratura di ruolo&raquo;</em> (p.55-56).</p>
+
+        <p><strong>Sul sorteggio e sulle norme attuative (p.56-57):</strong> <em>&laquo;il sorteggio non &egrave; una panacea, ma uno strumento per ridurre le interferenze e rafforzare trasparenza e libert&agrave; morale&raquo;</em> (p.56-57). Votare S&igrave; significa anche <em>&laquo;onorare il monito riformatore&raquo;</em> di Falcone (p.57). E &mdash; unico nel volume &mdash; riconosce che <em>&laquo;nessuna riforma &egrave; perfetta e serviranno norme attuative costruite con attenzione&raquo;</em> (p.57).</p>
+      </div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ § GLI 8 ARGOMENTI ═══ -->
+<section id="argomenti">
+  <div class="wrap">
+    <div class="sec-label">Stress-test</div>
+    <h2>Gli 8 argomenti analizzati</h2>
+    <p>Ogni argomento presentato nella sua forza, poi sottoposto a stress-test.</p>
+
+    <!-- ARG 1 -->
+    <div class="pattern-card reveal" id="arg1">
+      <h4>Argomento 1: Separazione delle carriere &ne; separazione delle funzioni</h4>
+      <span class="arg-strength alta">Potenza: alta</span>
+
+      <p><strong>Cosa dicono:</strong></p>
+      <ul>
+        <li><strong>Salvato</strong>: la terziet&agrave; esige una estraneit&agrave; &laquo;ordinamentale&raquo;, non solo delle funzioni</li>
+        <li><strong>Rocchi</strong>: <em>&laquo;Separazione delle carriere non equivale a separazione delle funzioni&raquo;</em> &mdash; lo 0,31% non rileva</li>
+        <li><strong>Itri</strong>: i PM non decideranno pi&ugrave; sulle carriere dei giudici e viceversa</li>
+        <li><strong>Manca</strong>: la terziet&agrave; richiede che non siano pi&ugrave; colleghi</li>
+        <li><strong>D'Angiolella</strong>: la Cartabia ha ridotto i passaggi ma la colleganza &egrave; intatta</li>
+      </ul>
+
+      <p><strong>Il reframe &egrave; legittimo.</strong> Nel CSM attuale (33 componenti, 20 togati eletti senza distinzione di funzione), i togati PM votano sulla nomina del Presidente del Tribunale di Milano, e i togati giudici votano sulla nomina del Procuratore di Napoli. L'argomento della colleganza nella governance resiste dopo la Cartabia.</p>
+
+      <div class="alert warning">
+        <strong>Il punto critico:</strong> la soluzione proposta non &egrave; &laquo;due CSM separati con togati eletti e garanzie costituzionali&raquo; (modello portoghese). &Egrave; &laquo;due CSM separati con togati <strong>sorteggiati</strong>, VP <strong>laico</strong>, requisiti del sorteggio scritti da <strong>legge ordinaria a maggioranza semplice</strong>&raquo;.
+        <br><br>
+        Il salto &egrave;: &laquo;la colleganza &egrave; un problema &rarr; servono due CSM&raquo; (passaggio logico forte) &rarr; &laquo;due CSM &rarr; servono togati sorteggiati, VP laico, requisiti scritti da legge ordinaria, Alta Corte senza Cassazione&raquo; (passaggio logico mai giustificato).
+        <br><br>
+        <strong>La struttura retorica del volume rende il salto invisibile.</strong> Il problema legittimo funziona come scudo per le soluzioni discutibili. Il lettore non trova strumenti per distinguere tra il problema (reale) e le soluzioni aggiunte (discutibili) &mdash; la trattazione unificata li presenta come un blocco unico.
+      </div>
+    </div>
+
+    <!-- ARG 2 -->
+    <div class="pattern-card reveal" id="arg2">
+      <h4>Argomento 2: Il sorteggio come risposta alle correnti</h4>
+      <span class="arg-strength media">Potenza: media</span>
+
+      <p><strong>Cosa dicono:</strong> Rocchi (&laquo;purificazione&raquo;), Salvato (168 firmatari, referendum ANM), D'Avino (&laquo;unico mezzo concreto&raquo;), Itri (recidere il rapporto elettore-eletto), D'Angiolella (&laquo;unico strumento idoneo&raquo;), Manca (cita Gratteri pro-sorteggio), D'Avino (analogie: Corte Cost. integrata, giudici popolari).</p>
+
+      <p><strong>Il problema delle correnti &egrave; reale.</strong> L'argomento che il sorteggio rompe il nesso elettore-eletto &egrave; corretto sul piano meccanico. Ma l'analisi si ferma alla prima mossa del gioco &mdash; non segue le conseguenze.</p>
+
+      <div class="alert warning">
+        <strong>Dinamica di potere:</strong> le correnti sono un meccanismo di coordinamento emerso dalla pressione selettiva dell'elezione. Il sorteggio elimina il canale &mdash; non la pressione. Con il sorteggio, la coordinazione tra magistrati diventa impossibile nell'arena CSM. Ma la pressione selettiva migra: se non puoi influenzare chi entra nel CSM, influenzi <strong>le regole</strong> del CSM. Chi scrive i requisiti, chi dimensiona l'organo, chi compila la lista dei laici &mdash; il Parlamento.
+        <br><br>
+        <strong>La condizione del sorteggiato.</strong> Un togato sorteggiato entra nel CSM in tre condizioni simultanee: <strong>senza coalizione</strong> (non conosce gli altri sorteggiati, non li ha scelti, non condivide con loro un programma), <strong>senza mandato</strong> (nessuno lo ha eletto, quindi non &laquo;rappresenta&raquo; nessuno), <strong>senza secondo turno</strong> (non verr&agrave; ri-sorteggiato, quindi non ha incentivo a costruire reputazione dentro l'istituzione). Il VP &egrave; laico. Le regole &mdash; requisiti, composizione, illeciti &mdash; sono scritte dal Parlamento con legge ordinaria.
+        <br><br>
+        <strong>Cosa faresti tu?</strong> Immagina venti dipendenti di un&rsquo;azienda. Nel sistema attuale sono organizzati in sindacati &mdash; clientelari, degenerati, ma capaci di negoziare con la direzione come blocco. Nel sistema proposto, ogni dipendente viene estratto a sorte da una lista compilata dalla direzione, non conosce gli altri, non pu&ograve; organizzarsi, e le regole del lavoro le scrive la direzione con procedura semplificata. La domanda non &egrave; se i singoli dipendenti sono bravi. &Egrave; se la <strong>struttura</strong> li mette in condizione di essere autonomi.
+        <br><br>
+        <strong>Il punto strutturale.</strong> Per un giocatore isolato in un&rsquo;istituzione le cui regole sono definite da un attore esterno, opporsi ha costi certi (nessun alleato, nessuna rete di protezione) e benefici incerti. Adeguarsi ha costi zero. La strategia razionale &egrave; l&rsquo;<strong>adeguamento</strong> &mdash; non per debolezza personale, ma perch&eacute; la struttura non offre alternative. Le correnti &mdash; per quanto degenerate &mdash; funzionano come meccanismo di coordinamento: permettono ai togati di agire come blocco, di negoziare, di opporre resistenza collettiva. Il sorteggio elimina il meccanismo di coordinamento senza sostituirlo con un altro.
+        <br><br>
+        Itri (p.19) argomenta che recidere il rapporto elettore-eletto rende le nomine pi&ugrave; trasparenti. Ma il rapporto elettore-eletto &egrave; ci&ograve; che rende l'eletto <strong>responsabile</strong> verso qualcuno. Reciderlo elimina la responsabilit&agrave; verso i colleghi &mdash; ma non la sostituisce con nulla. Il sorteggiato non risponde a nessuno dentro la magistratura. A chi risponde?
+      </div>
+    </div>
+
+    <!-- ARG 3 -->
+    <div class="pattern-card reveal" id="arg3">
+      <h4>Argomento 3: L'Alta Corte come garanzia, non come minaccia</h4>
+      <span class="arg-strength forte-debole">Il principio &egrave; forte, la soluzione &egrave; debole</span>
+
+      <p><strong>Cosa dicono:</strong> D'Angiolella (&laquo;autogoverno &ne; auto-giurisdizione&raquo;), Rocchi (composizione di &laquo;altissimo livello&raquo;), Salvato (tipicit&agrave; dell'illecito), D'Avino (&laquo;una riforma costituzionale non pu&ograve; violare la Costituzione&raquo;).</p>
+
+      <div class="ba-header reveal">
+        <div class="ba-h b">Sistema attuale</div>
+        <div class="ba-h a">Sistema proposto</div>
+      </div>
+      <div class="ba-split reveal">
+        <div class="ba-col b" data-label="Prima">
+          <p><strong>Ha:</strong> un conflitto di interesse (CSM giudice dei propri membri)</p>
+          <p><strong>Ha:</strong> un check esterno (ricorso in Cassazione ex art. 111, comma 7)</p>
+        </div>
+        <div class="ba-col a" data-label="Dopo">
+          <p><strong>Rimuove</strong> il conflitto di interesse (organo separato)</p>
+          <p><strong>Rimuove</strong> il check esterno (nella lettura prevalente, l'avverbio &laquo;soltanto&raquo; nel nuovo art. 105 esclude la Cassazione)</p>
+        </div>
+      </div>
+
+      <p style="margin-top:16px">La domanda &egrave;: quale combinazione &egrave; pi&ugrave; robusta? Un sistema con bias noto e verifica esterna, o un sistema senza bias ma senza verifica?</p>
+
+      <p>D'Avino (p.32) argomenta: <em>&laquo;una riforma costituzionale non pu&ograve; violare la Costituzione.&raquo;</em> L'argomento &egrave; formalmente ineccepibile e sostanzialmente vuoto. La domanda non &egrave; se la riforma &laquo;viola&raquo; la Costituzione &mdash; &egrave; se crea un'<strong>antinomia interna</strong> tra il nuovo art. 105 (&laquo;soltanto dinanzi alla stessa Alta Corte&raquo;) e l'art. 111 non modificato (&laquo;&egrave; sempre ammesso ricorso in Cassazione&raquo;). Questa &egrave; la questione giuridica reale &mdash; e il documento la risolve con una petizione di principio.</p>
+
+      <div class="alert warning">
+        <strong>La catena disciplinare completa:</strong>
+        <br>1. Il Parlamento scrive il catalogo degli illeciti (legge ordinaria, maggioranza semplice)
+        <br>2. Il Ministro della Giustizia ha facolt&agrave; di promuovere l'azione disciplinare (art. 107, comma 2 &mdash; invariato)
+        <br>3. L'Alta Corte giudica &mdash; con presidente laico e 40% di componenti laici
+        <br>4. L'appello &egrave; solo interno all'Alta Corte
+        <br>5. Nessun ricorso in Cassazione (nella lettura prevalente)
+        <br><br>Ogni anello &egrave; legale. La catena crea un sistema dove il potere disciplinare si ricompone in un circuito che, a differenza dell'attuale, non ha un punto di verifica indipendente.
+      </div>
+    </div>
+
+    <!-- ARG 4 -->
+    <div class="pattern-card reveal" id="arg4">
+      <h4>Argomento 4: &laquo;L'art. 104 resta &mdash; l'indipendenza &egrave; salva&raquo;</h4>
+      <span class="arg-strength bassa">Potenza: bassa come argomento autonomo</span>
+
+      <p><strong>Cosa dicono:</strong> Salvato (art. 104 invariato), D'Avino (&laquo;tesi debole e suggestiva&raquo;), Manca (&laquo;scolpito&raquo;), Itri (art. 104 confermato).</p>
+
+      <div class="alert danger">
+        <strong>Il precedente polacco:</strong> la Costituzione polacca contiene all'art. 173 una formula analoga (&laquo;i tribunali sono un potere separato e indipendente dagli altri poteri&raquo;). Il PiS (2015-2023) non ha toccato quell'articolo. Ha cambiato tutto il resto:
+        <br>&bull; <strong>2017</strong>: composizione del KRS (equivalente del CSM) &mdash; i membri-giudici vengono eletti dal Sejm anzich&eacute; dalla magistratura
+        <br>&bull; <strong>2017</strong>: creazione della Camera Disciplinare con giudici nominati tramite il KRS politicizzato
+        <br>&bull; <strong>2019</strong>: legge bavaglio &mdash; punire i giudici per il contenuto delle loro decisioni
+        <br><br>La CGUE ha condannato la Polonia 4 volte per violazione dell'art. 19(1) TUE, con sanzioni di 1 milione &euro;/giorno. L'art. 173 era intatto per tutto il tempo.
+        <br><br>
+        L'indipendenza reale non vive nelle parole dell'articolo ma nell'architettura istituzionale. L'architettura &egrave; esattamente ci&ograve; che la riforma cambia.
+      </div>
+    </div>
+
+    <!-- ARG 5 -->
+    <div class="pattern-card reveal" id="arg5">
+      <h4>Argomento 5: La citazione di Falcone</h4>
+      <span class="arg-strength media">Alta sul piano retorico, debole sul piano logico</span>
+
+      <p>Due autori citano l'intervista del <strong>3 ottobre 1991</strong>: Manca (il PM come parte nel processo) e D'Angiolella (il PM ha perso ogni funzione giurisdizionale). Rocchi cita invece Livatino. Orr&ugrave; invoca Falcone genericamente.</p>
+
+      <p>Falcone parlava della <strong>terziet&agrave; del giudice nel processo</strong> &mdash; diritto processuale penale. Non parlava di chi governa la magistratura, non di sorteggio, non di Alta Corte. L'estensione dalla terziet&agrave; processuale alla separazione dell'intera governance istituzionale &egrave; un passaggio che il documento non segnala. Chi cita Falcone per la separazione delle carriere implica che opporsi alla riforma <em>nel suo insieme</em> significhi opporsi a Falcone. Ma la critica alla riforma non &egrave; critica alla separazione in s&eacute; &mdash; &egrave; critica al pacchetto.</p>
+    </div>
+
+    <!-- ARG 6 -->
+    <div class="pattern-card reveal" id="arg6">
+      <h4>Argomento 6: L'EPPO come precedente europeo</h4>
+      <span class="arg-strength media">Potenza: interessante ma parziale</span>
+
+      <p><strong>Capoccia</strong> (p.50): l'EPPO &egrave; <em>&laquo;un ufficio del PM separato dai giudici nazionali [...] un esempio di pubblico ministero indipendente e autonomo da ogni altro potere, distinto dal giudice, in linea con i principi di terziet&agrave; ed imparzialit&agrave;.&raquo;</em></p>
+
+      <p>L'EPPO &egrave; effettivamente un modello di PM separato e indipendente. Ma la sua indipendenza &egrave; blindata nel <strong>Regolamento UE 2017/1939</strong> &mdash; norma di rango superiore, non modificabile da una maggioranza nazionale. L'analogia funziona per la separazione. Non funziona per il livello di garanzia: l'EPPO ha le garanzie in una norma rigida; la riforma italiana rinvia le garanzie a legge ordinaria.</p>
+    </div>
+
+    <!-- ARG 7 -->
+    <div class="pattern-card reveal" id="arg7">
+      <h4>Argomento 7: Autogoverno &ne; auto-giurisdizione</h4>
+      <span class="arg-strength alta">Potenza: forte come principio</span>
+
+      <p><strong>D'Angiolella</strong>: <em>&laquo;In uno Stato democratico, l'autogoverno non pu&ograve; coincidere con l'auto-giurisdizione.&raquo;</em> <strong>Rocchi</strong>: l'Alta Corte garantisce un giudice autorevole e imparziale.</p>
+
+      <p>La separazione tra chi governa le carriere e chi giudica disciplinarmente &egrave; un principio solido &mdash; evita che l'organo di autogoverno protegga i propri membri. Ma la soluzione proposta non &egrave; semplicemente &laquo;un giudice disciplinare esterno con garanzie di controllo&raquo;. &Egrave; un giudice disciplinare esterno <strong>senza</strong> controllo di legittimit&agrave; della Cassazione. Si risolve il conflitto di interesse e si rimuove la verifica &mdash; non &egrave; un trade-off ovvio.</p>
+    </div>
+
+    <!-- ARG 8 -->
+    <div class="pattern-card reveal" id="arg8">
+      <h4>Argomento 8: La prospettiva della magistratura onoraria</h4>
+      <span class="arg-strength bassa">Bassa come argomento sulla riforma, significativa come indicatore</span>
+
+      <p><strong>Orr&ugrave;</strong> (p.53-57): la magistratura onoraria ha subito le disfunzioni del sistema senza averne i benefici. Il correntismo ha prodotto danni collaterali reali &mdash; negando tutele concrete ai magistrati onorari. La stabilizzazione <em>&laquo;fortemente voluta dal governo Meloni, va letta insieme alla riforma costituzionale.&raquo;</em> Unico autore a riconoscere che <em>&laquo;serviranno norme attuative costruite con attenzione.&raquo;</em></p>
+
+      <p>Il contributo conferma che le correnti producono danni collaterali reali. Ma il nesso logico tra i problemi della magistratura onoraria e la specifica architettura della riforma non viene argomentato. Funziona come testimonianza di malessere sistemico, non come argomento tecnico per il pacchetto complessivo.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ § CONNESSIONI TRASVERSALI ═══ -->
+<section id="connessioni">
+  <div class="wrap">
+    <div class="sec-label">Connessioni trasversali</div>
+    <h2>Tre pattern ricorrenti tra i saggi</h2>
+    <p>Oltre agli 8 argomenti analizzati sopra, tre pattern trasversali attraversano pi&ugrave; saggi senza essere mai resi espliciti dagli autori.</p>
+
+    <div class="pattern-card reveal">
+      <h4>Pattern 1: &laquo;Non &egrave; una panacea&raquo; &mdash; aspettative gestite</h4>
+      <p>Tre autori usano la stessa formula di ridimensionamento preventivo:</p>
+      <ul>
+        <li><strong>D'Avino</strong> (p.29): <em>&laquo;non &egrave; la panacea dei mali della giustizia&raquo;</em></li>
+        <li><strong>Salvato</strong> (p.15): <em>&laquo;Non risolve tutti i problemi della giustizia, ma scioglie nodi fondamentali&raquo;</em></li>
+        <li><strong>Orr&ugrave;</strong> (p.57): <em>&laquo;Nessuna riforma &egrave; perfetta&raquo;</em></li>
+      </ul>
+      <p>Il pattern funziona come abbassamento preventivo delle aspettative: rende la riforma inattaccabile su ci&ograve; che non fa. Ma la domanda inversa non viene posta: se la riforma non risolve i problemi della giustizia, quali problemi <strong>crea</strong> il pacchetto (sorteggio + Alta Corte + rinvii) che la sola separazione delle carriere non creerebbe?</p>
+    </div>
+
+    <div class="pattern-card reveal">
+      <h4>Pattern 2: Art. 111 come fondamento costituzionale condiviso</h4>
+      <p>Cinque autori convergono sull'art. 111 Cost. (giusto processo, 1999) come base giuridica per la separazione:</p>
+      <ul>
+        <li><strong>Bertolini</strong> (p.6): piena attuazione dell'articolo 111</li>
+        <li><strong>Rocchi</strong> (p.26): parit&agrave; delle parti davanti a giudice terzo</li>
+        <li><strong>D'Angiolella</strong> (p.41-42): modello accusatorio &laquo;disarmonico&raquo; senza separazione</li>
+        <li><strong>Capoccia</strong> (p.47-48): evoluzione storica dal Vassalli all'art. 111</li>
+        <li><strong>Manca</strong> (p.37-38): colleganza incompatibile con terziet&agrave;</li>
+      </ul>
+      <div class="alert info">L'art. 111 &egrave; l'argomento pi&ugrave; solido del volume &mdash; e riguarda la <strong>separazione delle carriere</strong>. Nessuno dei cinque lo usa per giustificare il sorteggio, l'Alta Corte senza Cassazione, o i rinvii a legge ordinaria. Il fondamento costituzionale copre un terzo del pacchetto.</div>
+    </div>
+
+    <div class="pattern-card reveal">
+      <h4>Pattern 3: Percezione > imparzialit&agrave; &mdash; l'argomento replicato</h4>
+      <p>Tre autori costruiscono lo stesso argomento con formulazioni diverse:</p>
+      <ul>
+        <li><strong>Bertolini</strong> (p.6): <em>&laquo;non &egrave; sufficiente che il giudice sia imparziale, &egrave; necessario che appaia tale&raquo;</em></li>
+        <li><strong>Rocchi</strong> (p.23): <em>&laquo;dobbiamo non solo essere super partes, ma anche essere percepiti tali&raquo;</em></li>
+        <li><strong>D'Avino</strong> (p.30): <em>&laquo;Non esiste un reale appiattamento&raquo;</em> ma serve eliminare <em>&laquo;il sospetto di una vicinanza strutturale&raquo;</em></li>
+      </ul>
+      <p>L'argomento sposta l'onere della prova: non devi dimostrare che il giudice <em>&egrave;</em> parziale &mdash; basta che <em>possa sembrarlo</em>. Ma lo stesso principio, applicato all'Alta Corte (6 laici su 15, presidente laico, nessun ricorso esterno), genera la domanda speculare: l'Alta Corte non solo deve essere indipendente dall'esecutivo &mdash; deve anche <em>apparire</em> tale. Se il &laquo;sospetto di vicinanza strutturale&raquo; basta a giustificare la separazione delle carriere, il sospetto di vicinanza politica dell'Alta Corte &mdash; 40% laici, presidente laico, nessun appello esterno &mdash; basta a delegittimarla? Stessa logica, applicata specularmente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ § SUBSTRATO COMUNICATIVO ═══ -->
+<section id="substrato">
+  <div class="wrap">
+    <div class="sec-label">Le parole</div>
+    <h2>Le parole prima degli argomenti</h2>
+    <p>Scelte lessicali che orientano il lettore prima della valutazione critica. Non sono argomenti &mdash; sono condizioni dell'ascolto.</p>
+
+    <div class="word-card reveal">
+      <div class="word-term">&laquo;Purificazione&raquo;</div>
+      <div class="word-source">Rocchi, p.24</div>
+      <p><em>&laquo;contribuendo alla &lsquo;purificazione&rsquo; della magistratura.&raquo;</em> Il registro &egrave; religioso, non istituzionale. &laquo;Purificazione&raquo; sposta il frame da riforma tecnica a rito di espiazione. Chi resiste alla purificazione non &egrave; in disaccordo &mdash; &egrave; impuro. Rocchi usa le virgolette, segnalando consapevolezza del registro &mdash; ma l'effetto sul lettore opera prima delle virgolette.</p>
+    </div>
+
+    <div class="word-card reveal">
+      <div class="word-term">&laquo;Scolpito&raquo;</div>
+      <div class="word-source">Manca, p.36</div>
+      <p><em>&laquo;Resta scolpito nell'articolo 104 della Costituzione.&raquo;</em> Metafora lapidaria &mdash; evoca permanenza, solidit&agrave;, pietra. La mente del lettore sente &laquo;&egrave; scolpito, quindi &egrave; sicuro&raquo; prima di chiedersi se la parola scolpita nella Costituzione sia effettivamente protetta quando l'architettura istituzionale intorno cambia.</p>
+    </div>
+
+    <div class="word-card reveal">
+      <div class="word-term">&laquo;Giuridicamente infondato&raquo;</div>
+      <div class="word-source">D'Avino, p.32</div>
+      <p>Sull'Alta Corte come giudice speciale. Chiusura performativa: non argomenta contro la tesi &mdash; la dichiara inesistente. Il lettore che non ha strumenti per verificare riceve il messaggio: &laquo;non c'&egrave; nulla di cui discutere.&raquo; La formula funziona perch&eacute; chi la pronuncia &egrave; un Procuratore della Repubblica &mdash; l'autorit&agrave; del ruolo sigilla la chiusura.</p>
+    </div>
+
+    <div class="word-card reveal">
+      <div class="word-term">&laquo;Governare l'autonomia&raquo;</div>
+      <div class="word-source">Bertolini, p.8</div>
+      <p><em>&laquo;Governare l'autonomia attraverso regole pi&ugrave; chiare, rafforzare l'indipendenza attraverso una pi&ugrave; netta definizione delle responsabilit&agrave;.&raquo;</em> Doppio ossimoro. &laquo;Governare l'autonomia&raquo; normalizza il controllo esterno: se l'autonomia &egrave; governata, non &egrave; autonomia &mdash; &egrave; autonomia concessa e revocabile. &laquo;Rafforzare l'indipendenza attraverso responsabilit&agrave;&raquo; usa &laquo;responsabilit&agrave;&raquo; come veicolo: verso chi &egrave; la responsabilit&agrave;? Se &egrave; verso chi scrive le regole (il Parlamento), l'indipendenza non si rafforza &mdash; si ridefinisce come dipendenza procedurale.</p>
+    </div>
+
+    <div class="word-card reveal">
+      <div class="word-term">Slittamento della &laquo;terziet&agrave;&raquo;</div>
+      <div class="word-source">Trasversale</div>
+      <p>Il volume usa &laquo;terziet&agrave;&raquo; senza mai distinguere tra terziet&agrave; <strong>processuale</strong> (il giudice nel processo, equidistante da accusa e difesa &mdash; fondamento dell'art. 111) e terziet&agrave; <strong>ordinamentale</strong> (separazione nell'intera governance: concorsi, carriere, autogoverno). L'argomento per la prima &egrave; forte e consolidato. L'estensione alla seconda &egrave; il passaggio argomentativo chiave del volume &mdash; ma il salto non viene mai dichiarato come tale. Il lettore scivola dalla terziet&agrave; processuale a quella ordinamentale senza accorgersi di aver cambiato piano.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ § I CINQUE SILENZI ═══ -->
+<section id="silenzi">
+  <div class="wrap">
+    <div class="sec-label">Ci&ograve; che manca</div>
+    <h2>I cinque silenzi del documento</h2>
+    <p>Ci&ograve; che il documento non dice &egrave; altrettanto significativo di ci&ograve; che dice.</p>
+
+    <div class="silence-card reveal">
+      <h4>Silenzio 1: La maggioranza per la lista dei laici</h4>
+      <p>Otto contributi, zero parole. &Egrave; il rinvio pi&ugrave; critico dell'intera riforma: la maggioranza con cui il Parlamento compila la lista da cui si sorteggiano i laici determina se il CSM resta bipartisan o diventa espressione della maggioranza di turno. Il testo riformato non fissa alcuna soglia &mdash; a differenza dei 3/5 attuali per l'elezione diretta. Il default costituzionale (art. 64, comma 3) &egrave; la maggioranza dei presenti.</p>
+      <p>Nessun autore affronta questo punto &mdash; che pone un dilemma logico: difendere l'assenza di soglia (posizione difficile) o ammettere che &egrave; un problema (indebolendo la tesi complessiva).</p>
+    </div>
+
+    <div class="silence-card reveal">
+      <h4>Silenzio 2: I sei rinvii a legge ordinaria</h4>
+      <p>Gli autori parlano di cosa la Costituzione riformata dice. Mai di cosa tace. Ma il potere reale &egrave; in ci&ograve; che &egrave; rinviato: numero componenti CSM, requisiti sorteggio togati, maggioranza lista laici, composizione collegi Alta Corte, catalogo illeciti, garanzie del PM. Tutti definiti da legge ordinaria a maggioranza semplice.</p>
+    </div>
+
+    <div class="silence-card reveal">
+      <h4>Silenzio 3: Il confronto con il Portogallo</h4>
+      <p>L'unico paese europeo con carriere completamente separate E garanzie costituzionali esplicite per l'indipendenza del PM (art. 219-220 CRP). Il Portogallo blinda in Costituzione: autonomia del PM, funzioni, garanzie personali, struttura dell'autogoverno. La riforma italiana non contiene equivalenti.</p>
+      <p>Se il modello &egrave; &laquo;come in Europa&raquo;, perch&eacute; non come il Portogallo? Il silenzio lascia aperta una lettura: che la separazione proposta non preveda garanzie costituzionali equivalenti a quelle portoghesi per il PM. (Caveat: l'efficacia pratica del modello portoghese andrebbe verificata sul campo &mdash; la garanzia costituzionale &egrave; condizione necessaria ma non sufficiente. Il punto resta: la riforma italiana non la contiene neppure come condizione.)</p>
+    </div>
+
+    <div class="silence-card reveal">
+      <h4>Silenzio 4: La sentenza CGUE C-508/18 sulla Germania</h4>
+      <p>La CGUE ha stabilito (27 maggio 2019) che le procure tedesche non possono emettere mandati d'arresto europei perch&eacute; prive di sufficiente indipendenza dall'esecutivo. La Corte ha statuito che la <strong>mera possibilit&agrave;</strong> di un'ingerenza &egrave; sufficiente a minare l'indipendenza.</p>
+      <p>Il parallelo non &egrave; perfetto: l'art. 104 riformato dice esplicitamente che entrambi gli ordini sono &laquo;autonomi e indipendenti da ogni altro potere&raquo;, mentre la <em>Grundgesetz</em> tedesca non lo dice sui procuratori e il &sect;147 GVG prevede espressamente la supervisione ministeriale. Ma il principio della Corte &egrave; strutturale: la <strong>mera possibilit&agrave;</strong> di un'ingerenza basta a minare l'indipendenza. Se le future leggi attuative configurassero una forma di dipendenza del PM dall'esecutivo &mdash; ipotesi che la Costituzione riformata non impedisce attraverso garanzie specifiche &mdash; i PM italiani rischierebbero una contestazione analoga. Zero menzioni nel documento.</p>
+    </div>
+
+    <div class="silence-card reveal">
+      <h4>Silenzio 5: Cosa succede se le leggi attuative sono scritte male</h4>
+      <p>Tutti gli autori assumono buona fede nell'implementazione. Non analizzano cosa la struttura <strong>permette</strong> &mdash; solo cosa la struttura <strong>dichiara</strong>. Ma l'analisi delle istituzioni non si fa sulle intenzioni degli attori attuali: si fa sugli incentivi e le possibilit&agrave; che la struttura crea per <strong>qualsiasi</strong> attore futuro.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ § LA CATENA ═══ -->
+<section id="catena">
+  <div class="wrap">
+    <div class="sec-label">Mechanism design</div>
+    <h2>La catena completa</h2>
+    <p>Il documento analizza ogni cambiamento singolarmente. Nessun autore guarda la catena completa:</p>
+
+    <div class="chain-steps reveal">
+      <div class="chain-step"><strong>Carriere separate</strong> &rarr; due CSM (argomento legittimo: colleganza)</div>
+      <div class="chain-step"><strong>Due CSM</strong> &rarr; togati <strong>sorteggiati</strong> senza mandato elettorale (salto logico non giustificato)</div>
+      <div class="chain-step"><strong>Sorteggiati senza mandato</strong> &rarr; nessuna protezione collegiale, nessuna constituency</div>
+      <div class="chain-step"><strong>VP laico</strong> in entrambi i CSM &rarr; presidenza orientata dalla lista parlamentare</div>
+      <div class="chain-step"><strong>Requisiti sorteggio</strong> &rarr; legge ordinaria, maggioranza semplice</div>
+      <div class="chain-step"><strong>Numero componenti</strong> &rarr; legge ordinaria, non fissato in Costituzione</div>
+      <div class="chain-step"><strong>Maggioranza per la lista laici</strong> &rarr; non fissata (default: maggioranza semplice)</div>
+      <div class="chain-step"><strong>Catalogo illeciti disciplinari</strong> &rarr; legge ordinaria, maggioranza semplice</div>
+      <div class="chain-step"><strong>Alta Corte</strong> &rarr; presidente laico, 40% laici, nessun appello in Cassazione (nella lettura prevalente)</div>
+    </div>
+
+    <div class="alert danger reveal">
+      <strong>La propriet&agrave; emergente:</strong> ogni anello &egrave; legale. Ogni anello &egrave; singolarmente difendibile. La catena crea un sistema con una propriet&agrave; emergente &mdash; un effetto che nessun singolo cambiamento produce da solo, ma che la combinazione crea: <strong>la dipendenza strutturale dell'autogoverno della magistratura dalla maggioranza parlamentare di turno</strong>, attraverso leggi ordinarie modificabili a maggioranza semplice.
+      <br><br>
+      Non &egrave; subordinazione diretta. &Egrave; dipendenza strutturale &mdash; una condizione in cui l'indipendenza formale resta intatta (art. 104) mentre l'indipendenza sostanziale dipende, a ogni livello decisivo, da scelte revocabili della maggioranza politica.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ § RELAZIONE TRA POTERI ═══ -->
+<section id="relazione-poteri" style="background:linear-gradient(180deg, var(--bg3) 0%, var(--bg) 100%); padding-top:48px; padding-bottom:48px; border-top:2px solid var(--gld); border-bottom:2px solid var(--gld);">
+  <div class="wrap">
+    <div class="sec-label" style="color:var(--gld-l);">Lo spostamento</div>
+    <h2 style="font-size:clamp(24px,6vw,36px);">Il cambiamento nella relazione tra poteri</h2>
+    <p style="color:var(--muted);margin-bottom:24px;">Questo &egrave; il punto di arrivo dell'analisi. Tutto ci&ograve; che precede converge qui.</p>
+
+    <div class="ba-header reveal">
+      <div class="ba-h b">Prima della riforma</div>
+      <div class="ba-h a">Dopo la riforma</div>
+    </div>
+    <div class="ba-split reveal">
+      <div class="ba-col b" data-label="Prima">
+        <h3>Magistratura &harr; Magistratura</h3>
+        <p>Il CSM &egrave; un organo unitario. I togati sono eletti dai colleghi magistrati. La soglia per l'elezione dei laici (3/5 dei votanti) &egrave; in legge ordinaria (art. 22 L. 195/1958, mod. L. 71/2022) &mdash; non in Costituzione. L'autogoverno ha un unico punto di contatto con il Parlamento: la scelta dei laici, che richiede una maggioranza qualificata. Il check disciplinare ha un controllo esterno indipendente (Cassazione).</p>
+        <p>I legami interni &mdash; correnti, colleganza, protezione reciproca &mdash; sono anche una forma di <strong>protezione orizzontale tra pari</strong>. Sono una rete. La rete &egrave; degenerata (Palamara). Ma &egrave; una rete &mdash; per chi &egrave; dentro. Per chi &egrave; fuori &mdash; magistrati non allineati, magistrati onorari (Orr&ugrave;), profili scomodi &mdash; la rete &egrave; un muro. <em>Cui prodest</em> lo status quo? Le correnti, la dirigenza ANM, i magistrati senior che controllano le nomine. Il malessere che il volume descrive &egrave; reale, non inventato.</p>
+      </div>
+      <div class="ba-col a" data-label="Dopo">
+        <h3>Magistratura &harr; Parlamento</h3>
+        <p>I punti di contatto tra autogoverno e Parlamento si moltiplicano. La soglia attuale dei 3/5 per i laici era gi&agrave; in legge ordinaria &mdash; ma riguardava un solo atto (l'elezione diretta). La riforma crea <strong>almeno sei nuove deleghe</strong> a legge ordinaria, ciascuna senza soglia qualificata fissata in Costituzione: requisiti del sorteggio togati, numero componenti CSM, maggioranza per la lista dei laici, composizione collegi Alta Corte, catalogo illeciti disciplinari, garanzie del PM.</p>
+        <p>Il problema non &egrave; che si usa la legge ordinaria &mdash; anche la soglia attuale dei 3/5 per i laici &egrave; in legge ordinaria, non in Costituzione. Il cambiamento &egrave; nella <strong>superficie di intervento</strong>: da un punto (la scelta dei laici) a sei, ciascuno dei quali incide sull'architettura dell'autogoverno. La vulnerabilit&agrave; si moltiplica &times;6, non cambia di natura. Il documento presenta questo come <em>&laquo;governare l'autonomia attraverso regole pi&ugrave; chiare&raquo;</em> (Bertolini, p.8).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ § DOMANDE APERTE ═══ -->
+<section id="domande-aperte" class="no-border">
+  <div class="wrap">
+    <div class="sec-label">Domande aperte</div>
+    <h2>Domande aperte</h2>
+
+    <div class="chain-steps reveal">
+      <div class="chain-step">Se il problema &egrave; la colleganza nella governance, perch&eacute; non basta separare i CSM con togati <strong>eletti</strong> dalla rispettiva carriera &mdash; senza sorteggio, senza Alta Corte, senza rinvii?
+        <br><span style="font-size:12px;color:var(--muted);font-family:'IBM Plex Mono',monospace;">Separa il problema (reale) dalla soluzione (discutibile). Il volume non permette mai questa separazione.</span></div>
+      <div class="chain-step">Quale garanzia strutturale impedisce che i requisiti del sorteggio vengano scritti per selezionare profili graditi alla maggioranza di turno?
+        <br><span style="font-size:12px;color:var(--muted);font-family:'IBM Plex Mono',monospace;">La Costituzione riformata non ne contiene nessuna. Il volume non ne discute nessuna.</span></div>
+      <div class="chain-step">Perch&eacute; non adottare il modello portoghese: separazione delle carriere con garanzie costituzionali esplicite per l'indipendenza del PM?
+        <br><span style="font-size:12px;color:var(--muted);font-family:'IBM Plex Mono',monospace;">L'unico modello europeo con separazione e garanzie. Il volume cita l'Europa ma non il Portogallo.</span></div>
+      <div class="chain-step">Come si concilia il principio &laquo;autogoverno &ne; auto-giurisdizione&raquo; con la rimozione del ricorso in Cassazione &mdash; l'unico controllo esterno sul disciplinare?
+        <br><span style="font-size:12px;color:var(--muted);font-family:'IBM Plex Mono',monospace;">Si risolve il conflitto di interesse e si rimuove la verifica. Non &egrave; un trade-off ovvio.</span></div>
+      <div class="chain-step">Il sorteggio elimina le correnti o elimina la rete di protezione orizzontale tra pari &mdash; lasciando il sorteggiato isolato di fronte a un'istituzione le cui regole sono scritte altrove?
+        <br><span style="font-size:12px;color:var(--muted);font-family:'IBM Plex Mono',monospace;">Il sorteggiato non risponde a nessuno dentro la magistratura. A chi risponde?</span></div>
+    </div>
+
+    <p style="margin-top:28px;font-size:13px;color:var(--muted);">Hai letto l'analisi. Ora <a href="#nota-premessa" style="color:var(--gld-l);">rileggi la premessa</a> &mdash; ha un peso diverso dopo aver visto i dati.</p>
+
+    <div class="source-note" style="margin-top:32px">
+      Fonte: &laquo;Magistrati per il S&igrave;&raquo;, a cura di Isabella Bertolini, marzo 2026. Contributi di G. Capoccia, R. D'Angiolella, A. D'Avino, P. Itri, E. Manca, R. Orr&ugrave;, G. Rocchi, L. Salvato. Riscontri verificati su LAW-TRUTH.md dove indicato.
+    </div>
+
+    <p style="margin-top:24px">
+      <a href="07-domande.html" class="next-link">&larr; Pagina precedente: Domande</a>
+    </p>
+  </div>
+</section>
+
+</main>
+
+<script src="assets/countdown.js"></script>
+<script src="assets/nav.js" defer></script>
+<script src="assets/reveal.js" defer></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "f5c1547a81934c37ab77fb9be26d124d"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
